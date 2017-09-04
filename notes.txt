@@ -1,0 +1,80 @@
+
+
+#--------- Shell Commands ----------
+
+#Upload local dev folder to server
+scp -r -i ~/.ssh/yo_rsa -P 59387 /Users/marcusseiler/SMOP/postilotta/* marcus@5.189.180.246:/home/marcus/dev/postilotta/pta_dev/
+
+# sync via rsync
+eval $(ssh-agent) # Create agent and environment variables
+ssh-add ~/.ssh/yo_rsa # passphrase front.Yo
+rsync -uvae "ssh -p 59387" /Users/marcusseiler/SMOP/postilotta/* marcus@5.189.180.246:/home/marcus/dev/postilotta/pta_dev/
+# -n for testing
+
+#Copy remote folder to local
+scp -r -i ~/.ssh/yo_rsa -P 59387 marcus@5.189.180.246:/home/marcus/dev/postilotta/* /Users/marcusseiler/SMOP/postilotta/
+
+# transport from dev to test
+cp pta_dev/www/* pta_test/www/.
+
+#--------- Docker Commands ---------
+
+# Copy files out of container
+docker cp nginx-proxy:/etc/nginx/conf.d/default.conf ./default.conf
+
+# and back
+docker cp ./default.conf nginx-proxy:/etc/nginx/conf.d/default.conf
+
+# Get Docker Container IP
+docker inspect $CID | grep IPAddress
+
+# Restart conatiner
+docker restart <cname>
+
+# ----------- mySQL -------------
+
+# Export DB
+mysqldump postilotta_msgng -uroot -p123456 > init_examples.sql
+
+mysql -uroot -p123456 postilotta_msgng < init_examples.sql
+
+# Variables
+show variables like 'max%';
+SELECT @@GLOBAL.innodb_data_file_path;
+
+shell> mysql --max_allowed_packet=16M
+SET GLOBAL max_allowed_packet=16*1024*1024;
+
+ service mysql restart
+
+#--------- nginx -----------------
+
+# restart after config change
+nginx -s reload
+
+#--------- openssl ----------
+
+# list available cipher algs
+openssl list-cipher-algorithms
+
+
+
+
+
+
+
+# Generate sec key file
+openssl ecparam -name secp256k1 -genkey -noout -out ecprivkey.pem
+
+# Generate pub key file out of sec key file
+openssl ec -in ecprivkey.pem -pubout -out ecpubkey.pem
+
+# Encode
+openssl pkeyutl -out cip_out.pem -inkey ecprivkey.pem -peerkey ecpubkey.pem -encrypt
+[-pubin] [-certin] [-rev] [-sign] [-verify] [-verifyrecover] [-encrypt] [-decrypt] [-derive] [-pkeyopt opt:value] [-hexdump] [-asn1parse] [-engine id]
+
+
+#signing with RSA Example
+openssl genrsa -out private.pem 1024
+openssl rsa -in private.pem -out public.pem -outform PEM -pubout
+openssl sha -sha256 -sign private.pem < data.txt
