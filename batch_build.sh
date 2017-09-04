@@ -35,6 +35,7 @@ docker build -t $php . \
 #    -e "LETSENCRYPT_TEST=true" \
 #    -e "DEBUG=true" \
 
+
 # write sql container-id to .inc file
 sqlip=$(docker ps --filter "name=$db" --format "{{.ID}}")
 out="<?php \$servername = \"$sqlip\"; ?>"
