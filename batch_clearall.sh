@@ -1,7 +1,7 @@
 #!/bin/bash
 
-db="$1-sql"
-php="$1-php"
+db="pta_$1-sql"
+php="pta_$1-php"
 
 docker stop $db && \
 docker rm $db && \
