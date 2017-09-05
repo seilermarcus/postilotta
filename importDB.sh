@@ -1,7 +1,7 @@
 #!/bin/bash
 
 dir=${PWD##*/}
-db="$dir-sql"
+db="pta_$dir-sql"
 
 read -p "File: " fl
 docker cp $fl $db:/tmp/$fl

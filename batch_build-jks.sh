@@ -18,6 +18,11 @@ docker build -t $db . \
     --max-allowed-packet=67108864 \
 && docker cp init.sql $db:/tmp/init.sql
 
+# write sql container-id to .inc file
+sqlip=$(docker ps --filter "name=$db" --format "{{.ID}}")
+out="<?php \$servername = \"$sqlip\"; ?>"
+echo $out > "www/inc/sql-ip.inc"
+
 # setup php container without src-path mnt
 cd ../php-jks/
 docker build -t $php . \
@@ -33,11 +38,6 @@ docker build -t $php . \
    $php
 #    -e "LETSENCRYPT_TEST=true" \
 #    -e "DEBUG=true" \
-
-# write sql container-id to .inc file
-sqlip=$(docker ps --filter "name=$db" --format "{{.ID}}")
-out="<?php \$servername = \"$sqlip\"; ?>"
-echo $out > "www/inc/sql-ip.inc"
 
 # wait for mysql server to come up
 echo 'waiting for mysql server (50 sec)'
