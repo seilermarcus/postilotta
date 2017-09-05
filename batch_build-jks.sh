@@ -21,7 +21,7 @@ docker build -t $db . \
 # write sql container-id to .inc file
 sqlip=$(docker ps --filter "name=$db" --format "{{.ID}}")
 out="<?php \$servername = \"$sqlip\"; ?>"
-echo $out > "www/inc/sql-ip.inc"
+echo $out > "../php-jks/www/inc/sql-ip.inc"
 
 # setup php container without src-path mnt
 cd ../php-jks/
