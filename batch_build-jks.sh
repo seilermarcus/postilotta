@@ -34,11 +34,10 @@ docker build -t $php . \
 #    -e "LETSENCRYPT_TEST=true" \
 #    -e "DEBUG=true" \
 
-
 # write sql container-id to .inc file
 sqlip=$(docker ps --filter "name=$db" --format "{{.ID}}")
 out="<?php \$servername = \"$sqlip\"; ?>"
-echo $out > "../www/inc/sql-ip.inc"
+echo $out > "www/inc/sql-ip.inc"
 
 # wait for mysql server to come up
 echo 'waiting for mysql server (50 sec)'

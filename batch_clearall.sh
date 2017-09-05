@@ -12,4 +12,4 @@ docker stop $php && \
 docker rm $php && \
 docker rmi $php && \
 sudo rm -rf /srv/$php
-rm ./www/inc/sql-ip.inc
+rm php-jks/www/inc/sql-ip.inc
