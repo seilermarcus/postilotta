@@ -1,8 +1,6 @@
 FROM php:7.0-apache
 COPY upload.ini /usr/local/etc/php/conf.d/
-COPY www/ /var/www/html/
 #COPY php.ini /usr/local/etc/php/
-
 
 # SQL Extension
 RUN docker-php-ext-install -j$(nproc) pdo_mysql
