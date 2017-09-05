@@ -19,11 +19,11 @@ docker build -t $db . \
 && docker cp init.sql $db:/tmp/init.sql
 
 # setup php container
-cd ../php/
+cd ../php-dev/
 docker build -t $php . \
 && docker run \
     -d \
-    -v $tpwd/www:/var/www/html/ \
+    -v $tpwd/php-jks/www:/var/www/html/ \
     --expose=80 \
     -e "VIRTUAL_HOST=$syst.postilotta.com" \
     -e "LETSENCRYPT_HOST=$syst.postilotta.com" \
@@ -34,6 +34,7 @@ docker build -t $php . \
    $php
 #    -e "LETSENCRYPT_TEST=true" \
 #    -e "DEBUG=true" \
+
 
 # write sql container-id to .inc file
 sqlip=$(docker ps --filter "name=$db" --format "{{.ID}}")
