@@ -19,7 +19,7 @@
     <td>1.</td>
     <td>We believe that without the ability for everyone<br>
       to send confidential information anonymous and in private,<br>
-      the power of the (potentially autocratic) authorities in controll,<br>
+      the power of the (potentially autocratic) authorities in control,<br>
       like governments and cooperations, surpasses a limit<br>
       where democracy and human rights are at high risk.</td>
   </tr>
@@ -29,19 +29,19 @@
   </tr>
   <tr>
     <td>3.</td>
-    <td>We consider building an independent, transparent and common good oriented online service plattform
-      to be the best way for us to acchive this. Which means in more detail:
+    <td>We consider building an independent, transparent and common good oriented online service platform
+      to be the best way for us to archive this. Which means in more detail:
       <ol type="a">
-        <li>Independent: not controlled or influenced, no interfering interests...</li>
-        <li>Transparent: don't trust our words only, trust our actions and system/code...</li>
-        <li>Common good oriented: we don't it for money, but to solve the problem outlined above.</li>
-        <li>Decentralized?: not yet, but we are thinking about it...</li> 
+        <li>Independent: Not controlled or hiddenly influenced by third parties (avoiding interfering interests).</li>
+        <li>Transparent: Don't trust our words only, trust our actions and system/code (open source et al.).</li>
+        <li>Common good oriented: We don't do it for money, but to solve a social and environmental problems (<a href="http://uwezo-engineering.com/philosophy"><u>see UE</u></a>)</li>
+        <li>Decentralized: Not yet, but we are thinking about how to apply that on postilotta.</li>
       </ol>
     </td>
   </tr>
   <tr>
     <td>4.</td>
-    <td>We see the difficulty of finding balance between security and control on one, and freedon and self-determince on the other hand.<br>
+    <td>We see the difficulty of finding balance between security and control on one, and freedom and self-determince on the other hand.<br>
     And we respect different opinions on that, other than ours.</td>
   </tr>
   <tr>
@@ -55,7 +55,7 @@
 <div class="txt">
 <strong>1. Area of application and changes to these conditions</strong><br>
 <br>
-1.1. These Terms and Conditions govern the customer's use of the email service postilotta by Uwezo Engineering GmbH, Emmeransstr. 38, 55116 Mainz, Germany (“postilotta”).<br>
+1.1. These Terms and Conditions govern the customer's use of the messaging service postilotta by Uwezo Engineering GmbH, Emmeransstr. 38, 55116 Mainz, Germany (“postilotta”).<br>
 1.2. Customers will be informed of any changes. If changes occur that are to the disadvantage of the customer, they can terminate the relationship without notice. postilotta also advises customers of their right to terminate in the notification of changes.<br>
 <br>
 <strong>2. Customer relationship</strong><br>
@@ -64,15 +64,14 @@
 <br>
 <strong>3. Services</strong><br>
 <br>
-3.1. After registration, customers gain access to their account. Until the first payment has been made, the customer can only send 10 emails within a two hour period. After setting up the account, the following services are available to the customer:<br>
+3.1. After registration, customers gain access to their account and the following services are available to the customer:<br>
 <ul>
-<li>A online inbox account, identified by an address in the form “&lt;desiredname&gt;#&gt;.postilotta.org”.</li>
+<li>A online inbox account, identified by an address in the form “&lt;desiredname&gt;#postilotta.org”.</li>
 <li>An related storage capacity of 1 GB.</li>
+<li>If the customer's storage space becomes full, the inbox account will not be able to receive any more messages.</li>
+<li>Attachments of up to 50 MB are supported</li>
+<li>A spam filter is not in use, because the message contents are not and can not be accessed by postilotta in any way.</li>
 </ul>
-If the customer's storage space becomes full, the inbox account will not be able to receive any more messages.<br>
-Ability to send and receive emails<br>
-Attachments of up to 50 MB are supported<br>
-A spam filter is not in use, because the message contents are not and can not be accessed by postilotta in any way.<br>
 3.2 postilotta is generally available 24 hours a day. postilotta can make no guarantees about the continual availability of all services. Outages due to possible maintenance work will be advised of in advance.<br>
 <br>
 <strong>4. Fees and payment methods</strong><br>
