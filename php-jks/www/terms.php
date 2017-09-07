@@ -34,7 +34,7 @@
       <ol type="a">
         <li>Independent: Not controlled or hiddenly influenced by third parties (avoiding interfering interests).</li>
         <li>Transparent: Don't trust our words only, trust our actions and system/code (open source et al.).</li>
-        <li>Common good oriented: We don't do it for money, but to solve a social and environmental problems (<a href="http://uwezo-engineering.com/philosophy"><u>see UE</u></a>)</li>
+        <li>Common good oriented: We don't do it for money, but to solve social and environmental problems (<a href="http://uwezo-engineering.com/philosophy"><u>see UE</u></a>)</li>
         <li>Decentralized: Not yet, but we are thinking about how to apply that on postilotta.</li>
       </ol>
     </td>
