@@ -2,7 +2,7 @@
 
 syst=$1
 reuse=$2
-dbpas=$3
+dbpas=123456
 tpwd=$PWD
 #dir=${PWD##*/}
 db="pta_$syst-sql"
@@ -49,4 +49,4 @@ echo 'waiting for mysql server (50 sec)'
 sleep 50
 
 # initialise DB scheme
-docker exec $db bash -c "mysql -u root -p123456 < /tmp/init.sql"
+docker exec $db bash -c "mysql -u root -p$dbpas < /tmp/init.sql"
