@@ -2,10 +2,15 @@
 
 syst=$1
 reuse=$2
+dbpas=$3
 tpwd=$PWD
 #dir=${PWD##*/}
 db="pta_$syst-sql"
 php="pta_$syst-php"
+
+# write sql password to .inc file
+pasfile="<?php \$password = \"$dbpas\"; ?>"
+echo $pasfile > "./php-jks/www/inc/sql-pwd.inc"
 
 # setup mysql container
 cd db/
@@ -13,7 +18,7 @@ docker build -t $db . \
 && docker run \
     --name $db \
     -v /srv/$db/:/var/lib/mysql/ \
-    -e MYSQL_ROOT_PASSWORD=123456 \
+    -e MYSQL_ROOT_PASSWORD=$dbpas \
     -d mysql \
     --max-allowed-packet=67108864 \
 && docker cp init.sql $db:/tmp/init.sql
