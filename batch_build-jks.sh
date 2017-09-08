@@ -2,7 +2,8 @@
 
 syst=$1
 reuse=$2
-dbpas=123456
+#dbpas=123456
+dbpas=$3
 tpwd=$PWD
 #dir=${PWD##*/}
 db="pta_$syst-sql"
