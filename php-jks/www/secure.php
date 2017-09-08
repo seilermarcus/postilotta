@@ -14,7 +14,7 @@
   <p>
     <b>In a nutshell:</b><br>
     You don't have to trust us, that we do what we promise. Our code is open source, so everyone can verify this,
-     and hundreds of geeks and IT-professionals have already done this (soon).
+     and hundreds of geeks and IT-professionals have already done thad (soon).
    </p>
    <table align="center">
      <tr>
