@@ -9,6 +9,18 @@ tpwd=$PWD
 db="pta_$syst-sql"
 php="pta_$syst-php"
 
+# clean up sql container
+docker stop $db && \
+docker rm $db && \
+docker rmi $db && \
+rm -rf /srv/$db
+
+# clean up php container
+docker stop $php && \
+docker rm $php && \
+docker rmi $php && \
+rm php-jks/www/inc/sql-ip.inc
+
 # write sql password to .inc file
 out="<?php \$password = \"$dbpas\"; ?>"
 echo $out > "./php-jks/www/inc/sql-pwd.inc"
@@ -22,7 +34,7 @@ docker build -t $db . \
     -e MYSQL_ROOT_PASSWORD=$dbpas \
     -d mysql \
     --max-allowed-packet=67108864 \
-&& docker cp init2.sql $db:/tmp/init2.sql
+&& docker cp init.sql $db:/tmp/init.sql
 
 # write sql container-id to .inc file
 sqlip=$(docker ps --filter "name=$db" --format "{{.ID}}")
@@ -50,4 +62,4 @@ echo 'waiting for mysql server (50 sec)'
 sleep 50
 
 # initialise DB scheme
-docker exec $db bash -c "mysql -u root -p$dbpas < /tmp/init2.sql"
+docker exec $db bash -c "mysql -u root -p$dbpas < /tmp/init.sql"
