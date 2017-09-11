@@ -22,11 +22,11 @@
   <p id="err" class="err"></p>
   <form id="theForm">
     <div class="capture">Inbox:</div><br>
-    <input type="text" name="p_to" id="p_to" list="adds" autocomplete="on" size="20">#postilotta.org
+    <input type="text" name="p_to" id="p_to" list="adds" autocomplete="on" size="20" onchange="adrSelect(this);">#postilotta.org  <img id="adr-typ" src="">
     <datalist id="adds">
-      <option>great</option>
     </datalist>
-    <br><br>
+    <br>
+    <br>
     <div class="capture">Password:</div><br>
     <input type="password" id="p_pwd" size="20">
     <br><br>

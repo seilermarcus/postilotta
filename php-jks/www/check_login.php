@@ -14,7 +14,7 @@ try {
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     if (sizeof($result)==1 ){
-      $arr = array('rcode' => 0, 'msg' => 'sizeof(result): ' . sizeof($result));
+      $arr = array('rcode' => 0, 'msg' => 'sizeof(result): ' . sizeof($result), 'typ' => $result[0]['Type']);
 
       // initialize session
       // $_SESSION['name'] = $adr;

@@ -17,7 +17,7 @@
 <div class="txt">
   <form id="theForm">
     <div class="capture">Inbox:</div><br>
-    <input type="text" name="p_to" id="p_to" list="adds"  autocomplete="on" size="20">#postilotta.org
+    <input type="text" name="p_to" id="p_to" list="adds"  autocomplete="on" size="20" onchange="adrSelect(this);">#postilotta.org <img id="adr-typ" src="">
     <datalist id="adds">
     </datalist>
     <br><br>
