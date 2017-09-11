@@ -31,6 +31,15 @@ docker inspect $CID | grep IPAddress
 # Restart conatiner
 docker restart <cname>
 
+# remove stoppted containers
+docker ps -q |xargs docker rm
+
+# remove unused images
+docker images -q |xargs docker rmi
+docker rmi $(docker ps -q)
+
+https://gist.github.com/bastman/5b57ddb3c11942094f8d0a97d461b430
+
 # ----------- mySQL -------------
 
 # Export DB

@@ -22,7 +22,7 @@ docker build -t $db . \
     -e MYSQL_ROOT_PASSWORD=$dbpas \
     -d mysql \
     --max-allowed-packet=67108864 \
-&& docker cp init.sql $db:/tmp/init.sql
+&& docker cp init2.sql $db:/tmp/init2.sql
 
 # write sql container-id to .inc file
 sqlip=$(docker ps --filter "name=$db" --format "{{.ID}}")
@@ -50,4 +50,4 @@ echo 'waiting for mysql server (50 sec)'
 sleep 50
 
 # initialise DB scheme
-docker exec $db bash -c "mysql -u root -p$dbpas < /tmp/init.sql"
+docker exec $db bash -c "mysql -u root -p$dbpas < /tmp/init2.sql"
