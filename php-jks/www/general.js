@@ -197,9 +197,12 @@ function getToList() {
   con('get_adrlist.php', {}, cbAfter_get_adrlist, true);
 }
 function cbAfter_get_adrlist(jadds){
+  sessionStorage.toList = JSON.stringify(jadds);
   var options = '';
   for (i = 0; i < jadds.length; i++) {
-    options += '<option value="' + jadds[i].Address + '" />';
+    if(jadds[i].Visible == 1){
+      options += '<option value="' + jadds[i].Address + '" />';
+    }
   }
   document.getElementById('adds').innerHTML = options;
 }
@@ -207,7 +210,7 @@ function cbAfter_get_adrlist(jadds){
 /*
 *
 */
-function signSubmit(adr, pwd, eml){
+function signSubmit(adr, pwd, eml, vis, agb, pay, prc, typ){
   // Generate BoxID
   var id = Math.floor(Math.random() * 1000000000); //TODO ensure uniquness
 
@@ -215,34 +218,49 @@ function signSubmit(adr, pwd, eml){
   var bitArray = sjcl.hash.sha256.hash(pwd);
   var pwd_h = sjcl.codec.hex.fromBits(bitArray);
 
-  //Generate key pair with sjcl
+  // Generate key pair with sjcl
   var pair = sjcl.ecc.elGamal.generateKeys(sjcl.ecc.curves.k256);
   var pub = pair.pub.get();
   var sec = pair.sec.get();
 
-  //Serializing key elements
+  // Serializing key elements
   var pub_s = sjcl.codec.base64.fromBits(pub.x.concat(pub.y));
   var sec_s = sjcl.codec.base64.fromBits(sec);
 
-  //Mask for transmission
+  // Mask for transmission
   pub_s = encodeURI(encodeURIComponent(pub_s));
   sec_s = encodeURI(encodeURIComponent(sec_s));
 
-  //Writing sec key to local file
+  // Writing sec key to local file
   var filename = adr + '-rsa.key';
   download(filename, sec_s);
 
-  con('write_signup.php', {id:id, adr:adr, pub:pub_s, pw:pwd_h, eml:eml}, cbAfter_write_signup, true);
+  // Init PaidUntil
+    var d = new Date();
+    var s = d.toISOString();
+    var unt = s.substring(0, 9); // YYYY-MM-DD only
+
+  // Make bool to int
+  vis = vis ? 1 : 0;
+  agb = agb ? 1 : 0;
+
+  con('write_signup.php', {id:id, adr:adr, pub:pub_s, pw:pwd_h, eml:eml, vis:vis, pay:pay, prc:prc, typ:typ, unt:unt}, cbAfter_write_signup, true);
 } function cbAfter_write_signup(resp){
 
   document.body.scrollTop = 0; // For Chrome, Safari and Opera
   document.documentElement.scrollTop = 0; // For IE and Firefox
 
   if(resp.rcode == 0) {
-    document.getElementById('err').innerHTML = '';
-    document.getElementById('inf').innerHTML = resp.msg;
-    document.getElementById('theForm').style.visibility = 'hidden';
-    document.getElementById('theForm').style.height = '1px';
+    switch (resp.pay) {
+      case 'paypal':
+        document.getElementById('paypal_button').style.display = 'block';
+//        break;
+      default:
+        document.getElementById('err').innerHTML = '';
+        document.getElementById('inf').innerHTML = resp.msg;
+        document.getElementById('theForm').style.visibility = 'hidden';
+        document.getElementById('theForm').style.height = '1px';
+    }
   }else{
     document.getElementById('inf').innerHTML = '';
     document.getElementById('err').innerHTML = resp.msg;
@@ -266,6 +284,8 @@ function loginSubmit(adr, pwd){
 function cbAfter_check_login(resp){
   if (resp.rcode == 0){
     window.location.assign('inbox.php');
+    sessionStorage.typ = resp.typ;
+    console.log('sessionStorage.typ: ' + sessionStorage.typ);
   } else {
     document.getElementById('inf').innerHTML = '';
     document.getElementById('err').innerHTML = 'Login failed.';
@@ -316,6 +336,7 @@ function cbAfter_get_msglist(resp){
     document.getElementById('out').innerHTML = '';
     document.getElementById('inf').innerHTML = 'No messages.';
   }
+  checkPremium();
 }
 
 /**
@@ -343,6 +364,7 @@ function loadMsg(mid){
   document.getElementById('out').innerHTML = out;
   //document.getElementById('keyFile').focus();
   window.document.body.style.cursor = "auto"; // reset cursor after waiting.
+  checkPremium();
 }
 
 
@@ -409,7 +431,7 @@ function decodeMsg(){
 
         // Add reply button only within inboxes
         if (window.location.pathname === '/inbox.php' && sessionStorage.state2dc != 'REPLYED'){
-          document.getElementById('out').innerHTML += '<br><p><button type="button" class="button" onclick="reply()">Reply</button><p>';
+          document.getElementById('out').innerHTML += '<br><p><button id="reButton" type="button" class="button" onclick="reply()">Reply</button><p>';
         }
     }
     catch(err) {
@@ -420,6 +442,7 @@ function decodeMsg(){
       // Clear file upload section
       document.getElementById('fileup').innerHTML = '';
       window.document.body.style.cursor = "auto"; // reset cursor after waiting.
+      checkPremium();
     }
   };
 
@@ -481,6 +504,8 @@ function downAttach(){
 *
 */
 function reply(){
+  var but = document.getElementById('reButton')
+  but.parentNode.removeChild(but);
   var repl = '<form id="reForm">'
      + 'Reply:<br>'
      + '<textarea id="p_text" cols="40" rows="10"></textarea>'
@@ -488,10 +513,9 @@ function reply(){
      + '<button type="button" class="button" onclick="rEncryption()">Submit</button>'
   + '</form>';
 
-  var out = document.getElementById('out').innerHTML;
-  out = out.replace('<button type="button" class="button" onclick="reply()">Reply</button>', repl);
-  document.getElementById('out').innerHTML = out;
+  document.getElementById('out').innerHTML += repl;
   document.forms["reForm"]["p_text"].focus();
+  checkPremium();
 }
 
 /**
@@ -559,6 +583,7 @@ function loadSendForm(){
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById('out').innerHTML = this.responseText;
       getToList();
+      checkPremium();
     }
   };
   //Send msg state change request to server
@@ -901,4 +926,35 @@ var CryptoJSAesJson = {
         if (j.s) cipherParams.salt = CryptoJS.enc.Hex.parse(j.s)
         return cipherParams;
     }
+}
+
+/*---------- Premium ----------------------*/
+
+function checkPremium() {
+  if(sessionStorage.typ =='premium'){
+    var elements = document.getElementsByClassName('button');
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].style.backgroundColor='#A9BCF5';
+    }
+    document.getElementById('tn-li-login').style.backgroundColor='#A9BCF5';
+    document.getElementById('typ').src = './pics/premium.png';
+
+  }
+}
+
+function searchItem(item){
+  return item.Address == this;
+}
+function adrSelect(th){
+  var a_toList = JSON.parse(sessionStorage.toList);
+  var selected = a_toList.find(searchItem, th.value);
+  switch (selected.Type) {
+    case 'premium':
+      document.getElementById('adr-typ').src = './pics/premium_25.png';
+      break;
+    case 'basic':
+      document.getElementById('adr-typ').src = './pics/basic_25.png';
+    break;
+    default:
+  }
 }

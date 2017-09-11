@@ -29,17 +29,17 @@
     <input type="email" id="p_mail" size="40">
     <br><br>
     <div>
-      <input type="checkbox" id="visible" name="visible" value="visible" checked>
+      <input type="checkbox" id="p_visible" name="visible" value="1" checked>
       <label for="visible"><div class="capture">Visible</div> (e.g. in dropdown list and autocompletion on send form. You can change it anytime after login.)</label>
     </div>
     <br>
     <div>
-      <input type="checkbox" id="sandbox" name="sandbox" value="sandbox">
+      <input type="checkbox" id="p_sandbox" name="sandbox" value="1">
       <label for="visible"><div class="capture">Test Inbox</div> (for rehearsal and dry run, auto-deleted after 48h)</label>
     </div>
     <br>
     <div>
-      <input type="checkbox" id="agb" name="agb" value="ok">
+      <input type="checkbox" id="p_agb" name="agb" value="1">
       <label for="agb">I agree with postilotta's <u><a href="terms.php">Terms</a></u> and <u><a href="privacy.php">Privacy Policy</a></u></label>
     </div>
     <br><br>
@@ -52,7 +52,7 @@
     <br>
     <p id="ios-info"></p>
     <div style="color:red"><p>You noticed that this service is not yet in productive use, right?</p></div>
-    <button type="button" class="button" onclick="signSubmit(iname.value, ipwd.value, ipmail.value)">Submit</button>
+    <button type="button" class="button" onclick="signSubmit(iname.value, ipwd.value, ipmail.value, ivisi.checked, iagb.checked, 0, 0, 'basic', isand.checked)">Submit</button>
   </form>
   <p id="out"></p>
   <p id="inf" class="inf"></p>
@@ -77,6 +77,9 @@
     var iname = document.forms["theForm"]["p_name"];
     var ipwd = document.forms["theForm"]["p_pwd"];
     var ipmail = document.forms["theForm"]["p_mail"];
+    var ivisi = document.forms["theForm"]["p_visible"];
+    var isand = document.forms["theForm"]["p_sandbox"];
+    var iagb = document.forms["theForm"]["p_agb"];
 
     function checkPWDConf() {
         if (document.getElementById('p_pwd').value ==

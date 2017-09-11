@@ -8,7 +8,7 @@ scp -r -i ~/.ssh/yo_rsa -P 59387 /Users/marcusseiler/SMOP/postilotta/* marcus@5.
 # sync via rsync
 eval $(ssh-agent) # Create agent and environment variables
 ssh-add ~/.ssh/yo_rsa # passphrase front.Yo
-rsync -uvae "ssh -p 59387" /Users/marcusseiler/SMOP/postilotta/* marcus@5.189.180.246:/home/marcus/dev/postilotta/pta_dev/
+rsync -uvae "ssh -p 59387" /Users/marcusseiler/GitHub/postilotta/* marcus@5.189.180.246:/home/marcus/dev/postilotta/dev/
 # -n for testing
 
 #Copy remote folder to local

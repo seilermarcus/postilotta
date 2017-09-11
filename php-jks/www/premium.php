@@ -10,6 +10,8 @@
 <?php include 'module-head.htm'; ?>
 <h1>postilotta premium</h1>
 <div class="txt">
+  <button id="signPrem" type="button" class="button" onclick="window.location='signup-premium.php'">SignUp</button>
+  <button id="signPrem" type="button" class="butonfrm" onclick="">LearnMore</button>
   <p>postilotta and its basic features are forever free for everyone.</p>
     <p>In addition, we offer <i>postilotta premium</i>, which includes:
       <ul>
@@ -28,7 +30,8 @@
       Money should not stop you from using <i>postilotta premium</i>.<br>
       So our approach is to agree with you on a monthly fee that fits your financial means and perceived benefit.<br>
       <br>
-      Interessted? <u><a href="mailto:info@postilotta.com?Subject=premium" target="_top">info@postilotta.com</a></u> (Signup form coming soon.)
+      Interessted?
+      <button id="signPrem" type="button" class="button" onclick="window.location='signup-premium.php'">SignUp</button> <br>
     </p>
 </div>
 <?php include 'module-banner-small.htm'; ?>

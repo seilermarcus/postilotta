@@ -5,21 +5,26 @@ CREATE TABLE Message (
     MsgID INT PRIMARY KEY,
     Recipient VARCHAR(255),
     Date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  State VARCHAR(255) DEFAULT "NEW",
+    State VARCHAR(255) DEFAULT "NEW",
     Content MEDIUMBLOB,
     ReturnPubKey BLOB,
     ReturnLink VARCHAR(255)
 );
 CREATE TABLE Inbox (
-    BoxID int PRIMARY KEY,
-    Address varchar (255) UNIQUE,
-    PubKey varchar (255),
-    Password varchar (255),
-    Email varchar (255)
+    BoxID INT PRIMARY KEY,
+    Address VARCHAR (255) UNIQUE,
+    PubKey VARCHAR (255),
+    Password VARCHAR (255),
+    Email VARCHAR (255),
+    Visible BOOLEAN DEFAULT NULL,
+    Type VARCHAR (255),
+    Payment VARCHAR (255),
+    Price INT,
+    PaidUntil DATE
 );
 CREATE TABLE Paranoia (
-    PLink varchar (255) PRIMARY KEY,
-    Passphrase varchar (255),
-    Watchword varchar (255),
+    PLink VARCHAR (255) PRIMARY KEY,
+    Passphrase VARCHAR (255),
+    Watchword VARCHAR (255),
     Time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );

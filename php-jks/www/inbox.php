@@ -14,7 +14,7 @@
 </head>
 <body>
 <?php include 'module-head.htm'; ?>
-<h1 id="p_h1">Inbox: </h1>
+<h1 id="p_h1" style="display:inline">Inbox: </h1><img id="typ" src="">
 <div class="txt">
   <p id="err" class="err"></p>
   <p id="inf" class="inf">Welcome</p>
@@ -36,6 +36,7 @@
     if (sessionStorage.p_adr == null){
      location.replace('login.php');
     } else {
+      checkPremium();
       document.getElementById('tn-li-login').className += " active";
       document.getElementById('mn-li-login').className += " active";
       // Paranoia mode
