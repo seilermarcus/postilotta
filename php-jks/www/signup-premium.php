@@ -14,7 +14,7 @@
 <h1>Get Your postilotta Premium Inbox</h1>
 <div class="txt">
   <form id="theForm">
-    <div class="capture">Desired inbox address:</div><br>
+    <div class="capture">Desired Inbox Address:</div><br>
     <input type="text" id="p_name" size="30">#postilotta.org
     <br><br>
     <div class="capture">Login Password:</div><br>
@@ -46,7 +46,7 @@
     <br><br>
     We don't care who or how. Just make sure there are credit entries refering to your inbox name or id (?) in reason for transfer.<br>
 
-    <input type="radio" id="r_paypal" name="p_pay" value="paypal" onchange='displayPaypaInfo();'> PayPal<br>
+    <input type="radio" id="r_paypal" name="p_pay" value="paypal" onchange='displayPaypalInfo();'> PayPal<br>
       <div id="inf-pal" style="display: none;" class="inf"><p>Great choice. For your convenience a PayPal 'PayNow-Button' will be displayed after you hit submit.</p></div>
     <input type="radio" id="r_bank" name="p_pay" value="bank" onchange='displayBankInfo();'> Bank Transfer<br>
       <div id="inf-bank" style="display: none;" class="inf"><p>IBAN:.... BIC:...</p></div>
@@ -113,8 +113,7 @@
     var iprice = document.forms["theForm"]["p_price"];
 
     function checkPWDConf() {
-        if (document.getElementById('p_pwd').value ==
-        document.getElementById('p_pwd2').value) {
+        if (document.getElementById('p_pwd').value == document.getElementById('p_pwd2').value) {
           document.getElementById('notConf').style.color = 'green';
           document.getElementById('notConf').innerHTML = '';
         } else {
@@ -122,7 +121,7 @@
           document.getElementById('notConf').innerHTML = 'not matching';
         }
       }
-    function displayPaypaInfo(){
+    function displayPaypalInfo(){
       if(document.getElementById('r_paypal').checked){
         document.getElementById('inf-pal').style.display = 'block';
         document.getElementById('inf-bank').style.display = 'none';

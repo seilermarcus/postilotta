@@ -16,7 +16,7 @@
 <h1>Get your own postilotta inbox</h1>
 <div class="txt">
   <form id="theForm">
-    <div class="capture">Desired inbox address:</div><br>
+    <div class="capture">Desired Inbox Address:</div><br>
     <input type="text" id="p_name" size="30">#postilotta.org
     <br><br>
     <div class="capture">Login Password:</div><br>

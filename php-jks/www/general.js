@@ -144,9 +144,15 @@ function mTransmit(to, e_c, rpub, frm, mode) {
 
   e_c = encodeURI(encodeURIComponent(e_c));
 
-  sessionStorage.mode = mode;
+  // Set msg expire period
+  var exp ='';
+  if ( (sessionStorage.getItem("myMsgLife") !== null) && (sessionStorage.typ == 'premium') ) {
+    exp = sessionStorage.myMsgLife;
+  }
 
-  con('write.php', {id:id, to:to, c:e_c, pub:rpub, link:link}, cbAfter_mT_write, true);
+  sessionStorage.mode = mode; // e.g. 'rpl', store tmp for cbAfter
+
+  con('write.php', {id:id, to:to, c:e_c, pub:rpub, link:link, exp:exp}, cbAfter_mT_write, true);
 }
 function cbAfter_mT_write(resp){
     if(resp.rcode == 0) {
@@ -279,13 +285,16 @@ function signSubmit(adr, pwd, eml, vis, agb, pay, prc, typ){
 */
 function loginSubmit(adr, pwd){
   sessionStorage.p_adr = adr;
-  con('check_login.php', {adr:adr, pw:pwd}, cbAfter_check_login, true);
+  // Hash password
+  var bitArray = sjcl.hash.sha256.hash(pwd);
+  var h_pwd = sjcl.codec.hex.fromBits(bitArray);
+  sessionStorage.p_pwd = h_pwd;
+  con('check_login.php', {adr:adr, pw:h_pwd}, cbAfter_check_login, true);
 }
 function cbAfter_check_login(resp){
   if (resp.rcode == 0){
     window.location.assign('inbox.php');
     sessionStorage.typ = resp.typ;
-    console.log('sessionStorage.typ: ' + sessionStorage.typ);
   } else {
     document.getElementById('inf').innerHTML = '';
     document.getElementById('err').innerHTML = 'Login failed.';
@@ -982,17 +991,68 @@ function loadSettings(){
       document.getElementById('out').innerHTML = this.responseText;
       checkPremium();
       document.forms["settings"]["p_mail"].value = sessionStorage.myEmail;
-      if (sessionStorage.myVisible) {document.forms["settings"]["p_visible"].checked = true;}
+      if (sessionStorage.myVisible == 1) {document.forms["settings"]["p_visible"].checked = true;}
       document.getElementById('p_typ').innerHTML = sessionStorage.typ;
-      document.getElementById('p_pay').innerHTML = sessionStorage.myPayment;
-      document.getElementById('p_price').innerHTML = sessionStorage.myPrice + ' EUR per Month';
-      document.getElementById('p_until').innerHTML = 'settled until: ' + sessionStorage.myPaidUntil;
+
+      if (sessionStorage.myPayment!= 0) {
+        document.getElementById('o_' + sessionStorage.myPayment).selected = true;
+      }else {
+        document.getElementById('o_none').selected = true;
+      }
+      document.forms["settings"]["p_price"].value = sessionStorage.myPrice;
+//      document.getElementById('p_until').innerHTML = 'settled until: ' + sessionStorage.myPaidUntil;
       document.forms["settings"]["p_msglife"].value = parseInt(sessionStorage.myMsgLife);
 
+      // make premium settins editable
+      if (sessionStorage.typ === 'premium'){
+        document.forms["settings"]["p_msglife"].readOnly = false;
+        document.getElementById('p_until').innerHTML = 'settled until: ' + sessionStorage.myPaidUntil;
+        document.forms["settings"]["p_price"].readOnly = false;
+        document.getElementById('p_pay').disabled = false;
+        document.getElementById('p_color').disabled = false;
+        // remove signup button
+        var but = document.getElementById('b_sign');
+        but.parentNode.removeChild(but);
+      } else {
+        document.getElementById('d_quit').innerHTML = 'Go premium';
+        // remove back to basic button
+        var but = document.getElementById('b_quit');
+        but.parentNode.removeChild(but);
+      }
     }
   };
   //Send msg state change request to server
   xhttp.open('POST', 'module-inbox-settings.htm', true);
   xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
   xhttp.send();
+}
+
+function submitSettingsUpdate(){
+  var adr = sessionStorage.p_adr;
+  var npwd = document.forms['settings']['p_newpas'].value;
+  if (npwd != ''){
+    // Hash new password
+    var bitArray = sjcl.hash.sha256.hash(npwd);
+    npwd = sjcl.codec.hex.fromBits(bitArray);
+  }else{
+    npwd = sessionStorage.p_pwd;
+  }
+  var mail = document.forms["settings"]["p_mail"].value;
+  var vis = document.forms["settings"]["p_visible"].checked;
+  vis = vis ? 1 : 0;
+  var mlf = document.forms["settings"]["p_msglife"].value;
+  var pay = document.getElementById('p_pay').value;
+  var price = document.getElementById('p_price').value;
+
+  con('write_settings.php', {adr:adr, mail:mail, vis:vis, mlf:mlf, pay:pay, price:price, pw:npwd}, cbAfter_write_set, true);
+} function cbAfter_write_set(resp){
+  if(resp.rcode == 0) {
+    document.getElementById('err').innerHTML = '';
+    document.getElementById('out').innerHTML = '';
+    document.getElementById('inf').innerHTML = resp.msg;
+  }else{
+    document.getElementById('inf').innerHTML = '';
+    document.getElementById('err').innerHTML = resp.msg;
+  }
+
 }
