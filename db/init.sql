@@ -8,7 +8,8 @@ CREATE TABLE Message (
     State VARCHAR(255) DEFAULT "NEW",
     Content MEDIUMBLOB,
     ReturnPubKey BLOB,
-    ReturnLink VARCHAR(255)
+    ReturnLink VARCHAR(255),
+    Expire DATETIME
 );
 CREATE TABLE Inbox (
     BoxID INT PRIMARY KEY,
@@ -20,7 +21,10 @@ CREATE TABLE Inbox (
     Type VARCHAR (255),
     Payment VARCHAR (255),
     Price INT,
-    PaidUntil DATE
+    PaidUntil DATE,
+    MsgLife INT DEFAULT 120,
+    Info VARCHAR(255)
+
 );
 CREATE TABLE Paranoia (
     PLink VARCHAR (255) PRIMARY KEY,
@@ -28,3 +32,13 @@ CREATE TABLE Paranoia (
     Watchword VARCHAR (255),
     Time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+CREATE EVENT MessageExpire
+    ON SCHEDULE EVERY 1 HOUR
+    COMMENT 'Deletes expired medssages.'
+    DO
+      DELETE FROM Message WHERE Expire <= NOW();
+
+CREATE VIEW v_Msg AS SELECT MsgID, Recipient, Date, State, Expire FROM Message;
+CREATE VIEW v_Inb AS SELECT Address, EMail, Visible, Type, Payment, Price, PaidUntil, MsgLife, Info FROM Inbox;
+
+SET GLOBAL event_scheduler = ON;

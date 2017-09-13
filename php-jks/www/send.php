@@ -34,11 +34,12 @@
     <br>
     When you hit the submit button, the following things will happen:
     <ul>
-      <li>The message will be encrypted immediately and transferred as cipher data to the recipients inbox.</li>
+      <li>The message will be encrypted immediately and transferred as cipher data to the recipients inbox. His/her key will be the only way to decrypt it.</li>
       <li>A key-file will be generated for you, which will be the only way to decrypt the response, if the recipient replies to your message.</li>
-      <li>An link (URL)  will be generated and displayed, which will be the location a response can be accessed, if - you guessed it - the recipient replies to your message.</li>
+      <li>A link (URL) will be generated and displayed, which will be the location a response can be accessed, if - you guessed it - the recipient replies to your message.</li>
+      <li>Both messages will expire after 120 hours and then deleted automatically without any recovery option.</li>
     </ul>
-    So make sure you keep key-file and link safe and secure.
+    Make sure you keep key-file and link safe and secure.
     <p id="ios-info"></p>
     <div style="color:red"><p>You noticed that this service is not yet in productive use, right?</p></div>
     <button type="button" id="send" class="button" onclick="prepReply(i_to.value, i_c.value)">Submit</button>

@@ -1,0 +1,75 @@
+<h3>Settings</h3>
+<form id="settings">
+<table class="set">
+  <tr>
+    <td>Email:</td>
+    <td><input type="email" id="p_mail" size="40" readonly> (?)</td>
+  </tr>
+  <tr>
+    <td>Reset Password:</td>
+    <td><input type="password" id="p_newpas" size="20" readonly> (?)</td>
+  </tr>
+  <tr>
+    <td>Reset Key-File:</td>
+    <td><button type="button" class="button" onclick="alert('coming soon');">Generate New Key</button> (?)</td>
+  </tr>
+  <tr>
+    <td>Visible:</td>
+    <td><input type="checkbox" id="p_visible" name="p_visible" value="1" onclick="return false;"> (?)</td>
+  </tr>
+  <tr>
+    <td>Inbox Type: </td>
+    <td><div id="p_typ"></div></td>
+  </tr>
+</table>
+<hr>
+<h3>premium Settings</h3>
+<table class="set">
+  <tr>
+    <td>Message Expiration:</td>
+    <td><input type="numner" id="p_msglife" size="5" readonly> hours (?)</td>
+  </tr>
+  <tr>
+    <td>ID Verification:</td>
+    <td><button type="button" class="button" onclick="alert('coming soon');">Start Verification</button> (?)</td>
+  </tr>
+  <tr>
+    <td>Color Scheme</td>
+    <td>
+      <div class="setselect">
+      <select id="p_color" name="p_color"> <!-- use "disabled" -->
+        <option value="blue" selected>blue</option>
+        <option value="yellow">yellow</option>
+        <option value="grey">grey</option>
+        <option value="black">black</option>
+        <option value="forest">forest</option>
+        <option value="urban">urban</option>
+      </select>
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>Own Subdomain:</td>
+    <td><button type="button" class="button" onclick="alert('coming soon');">Request Subdomain</button> (?)</td>
+  </tr>
+  <tr>
+    <td>Payment Type:</td>
+    <td><div id="p_pay"></div></td>
+  </tr>
+  <tr>
+    <td>Contribution:</td>
+    <td><div id="p_price"></div></td>
+  </tr>
+  <tr>
+    <td>Payment State:</td>
+    <td><div id="p_until"></div></td>
+  </tr>
+  <tr>
+    <td>Terminate premium:</td>
+    <td><button type="button" class="button" onclick="alert('coming soon');">Back to basic</button> (?)</td>
+  </tr>
+
+</table>
+
+
+</form>

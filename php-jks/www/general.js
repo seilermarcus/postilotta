@@ -295,11 +295,18 @@ function cbAfter_check_login(resp){
 /**
 *
 */
-function setOwnPub(){
-  con('get_pub.php', {to:sessionStorage.p_adr}, cbAfter_OwnPub, true);
+function getInboxData(){
+  con('get_inbox.php', {to:sessionStorage.p_adr}, cbAfter_inbox, true);
 }
-function cbAfter_OwnPub(resp){
-  sessionStorage.myPub = resp[0].PubKey;;
+function cbAfter_inbox(resp){
+  sessionStorage.myPub = resp[0].PubKey;
+  sessionStorage.myEmail = resp[0].Email;
+  sessionStorage.myVisible = resp[0].Visible;
+  sessionStorage.myPayment = resp[0].Payment;
+  sessionStorage.myPayment = resp[0].Payment;
+  sessionStorage.myPrice = resp[0].Price;
+  sessionStorage.myPaidUntil = resp[0].PaidUntil;
+  sessionStorage.myMsgLife = resp[0].MsgLife;
 }
 
 /**
@@ -957,4 +964,35 @@ function adrSelect(th){
     break;
     default:
   }
+}
+
+/*-------------- Settings ----------------------*/
+
+function loadSettings(){
+  // Clear inbox screen
+  document.getElementById('err').innerHTML = '';
+  document.getElementById('inf').innerHTML = '';
+  document.getElementById('fileup').innerHTML = '';
+  document.getElementById('out').innerHTML ='';
+
+  var xhttp = new XMLHttpRequest();
+  // prepare response and callback
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById('out').innerHTML = this.responseText;
+      checkPremium();
+      document.forms["settings"]["p_mail"].value = sessionStorage.myEmail;
+      if (sessionStorage.myVisible) {document.forms["settings"]["p_visible"].checked = true;}
+      document.getElementById('p_typ').innerHTML = sessionStorage.typ;
+      document.getElementById('p_pay').innerHTML = sessionStorage.myPayment;
+      document.getElementById('p_price').innerHTML = sessionStorage.myPrice + ' EUR per Month';
+      document.getElementById('p_until').innerHTML = 'settled until: ' + sessionStorage.myPaidUntil;
+      document.forms["settings"]["p_msglife"].value = parseInt(sessionStorage.myMsgLife);
+
+    }
+  };
+  //Send msg state change request to server
+  xhttp.open('POST', 'module-inbox-settings.htm', true);
+  xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+  xhttp.send();
 }
