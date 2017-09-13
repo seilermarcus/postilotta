@@ -44,6 +44,13 @@ a:active {
 input {
  font-size: 16px;
 }
+.setselect {
+  font-size: 16px;
+}
+
+.setselect select {
+  font-size: 16px;
+}
 textarea {
   font-size: 16px;
   width: 95%;
@@ -183,6 +190,11 @@ ul.topnav li.right {float: right;}
 
     .hide-small{display:none!important;}
     .show-small{display:block!important;}
+}
+.set td {
+  vertical-align: top;
+  text-align: left;
+  padding: 7px;
 }
 
 table.indx {

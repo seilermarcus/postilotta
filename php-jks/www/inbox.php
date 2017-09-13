@@ -28,6 +28,7 @@
       <button id="sendMsg" type="button" class="button" onclick="loadSendForm()">Send Message</button>
       <button id="logOut" type="button" class="button" onclick="logOut()">Logout</button>
       <button id="blowUp" type="button" class="button" onclick="confirmBlow(sessionStorage.p_adr)">Destroy Inbox</button>
+      <button id="settings" type="button" class="button" onclick="loadSettings()">Settings</button>
     </p>
   </div>
   <?php include 'module-banner-small.htm'; ?>
@@ -44,7 +45,7 @@
       // Header
       document.getElementById("p_h1").innerHTML += sessionStorage.p_adr + '#postilotta.org';
       // Prepare i2i encryption
-      setOwnPub();
+      getInboxData();
     }
     </script>
 </body>

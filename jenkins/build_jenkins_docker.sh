@@ -8,6 +8,7 @@ docker run \
     --expose=80 \
     --expose=50000 \
     -v jenkins_home:/var/jenkins_home \
+    -v /var/postilotta/prototype:/var/postilotta/prototype \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v $(which docker):/usr/bin/docker \
     -v /srv:/srv \
@@ -22,6 +23,5 @@ docker run \
 #    -v $(which docker):/usr/bin/docker \
 #    --expose 8080
 #    --env JENKINS_OPTS="--prefix=/jenkins" \
-#    -v /var/postilotta/prototype:/var/postilotta/prototype \
 
 echo 'pta: done'

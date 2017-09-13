@@ -84,7 +84,7 @@
     <input type="hidden" name="no_note" value="1">
     <input type="hidden" name="item_name" value="set#dynamicly"><!-- TODO make value dynamic onchange p_adr-->
     <input type="hidden" name="return" value="https://prototype.postilotta.com/login.php"><!-- TODO from settings -->
-    <input type="hidden" name="notify_url" value="prototype.postilotta.com/paypal-notify.php"><!-- TODO from settings -->
+    <input type="hidden" name="notify_url" value="https://prototype.postilotta.com/paypal-confirm.php"><!-- TODO from settings -->
     <input type="image" name="submit" src="pics/paynow.png" alt="Subscribe">
   </form>
 </div>

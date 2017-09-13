@@ -56,6 +56,15 @@ SET GLOBAL max_allowed_packet=16*1024*1024;
 
  service mysql restart
 
+# Writes infos e.g. about event schelude errors to /var/log/mysql/error.log
+mysqladmin -uroot -p123456 debug
+
+# show processes in execution
+SHOW PROCESSLIST
+
+# Turn on event scheduler
+SET GLOBAL event_scheduler = ON;
+
 #--------- nginx -----------------
 
 # restart after config change
