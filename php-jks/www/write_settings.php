@@ -1,23 +1,23 @@
 <?php
-
 include 'inc/settings.inc';
+include 'inc/session.php'; // Session check
 
-$id = $_REQUEST["id"];
-$to = $_REQUEST["to"];
-$c = $_REQUEST["c"];
-$pub = $_REQUEST["pub"];
-$link = $_REQUEST["link"];
-$exp = $_REQUEST["exp"] ? $_REQUEST["exp"] : $msgexp;
+$adr = $_REQUEST["adr"];
+$mail = $_REQUEST["mail"];
+$vis = $_REQUEST["vis"];
+$pay = $_REQUEST["pay"];
+$price = $_REQUEST["price"];
+$pw = $_REQUEST["pw"];
+$mlf = isset($_REQUEST["mlf"]) ? $_REQUEST["mlf"] : $msgexp;
 
 try {
   $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
   // set the PDO error mode to exception
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  $sql = "INSERT INTO Message (MsgId, Recipient, Content, ReturnPubKey, ReturnLink, Expire)
-  VALUES (". $id .", '". $to ."', '". $c ."', '". $pub ."', '". $link ."', DATE_ADD(NOW(), INTERVAL ". $exp ." HOUR) )";
+  $sql = "UPDATE Inbox SET Email='". $mail ."', Visible='". $vis ."', MsgLife=". $mlf .", Payment='". $pay ."', Price=". $price .", Password='".$pw ."' WHERE ADDRESS='". $adr ."'";
   // use exec() because no results are returned
   $conn->exec($sql);
-  $arr = array('rcode' => 0, 'msg' => 'Message successfully sent.', 'lnk' => $link);
+  $arr = array('rcode' => 0, 'msg' => 'Settings successfully updated, becomming effective after re-login.');
   $out = json_encode($arr);
 
 }catch(PDOException $e){
