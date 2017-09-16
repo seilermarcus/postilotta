@@ -1,3 +1,4 @@
+<?php include './inc/language-prep.php'; ?>
 <h3>Settings</h3>
 <form id="settings">
 <table class="set">

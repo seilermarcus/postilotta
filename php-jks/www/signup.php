@@ -13,7 +13,7 @@
   <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
-<?php include 'module-head.htm'; ?>
+<?php include 'module-head.php'; ?>
 <h1>Get your own postilotta inbox</h1>
 <div class="txt">
   <form id="theForm">
@@ -59,8 +59,8 @@
   <p id="inf" class="inf"></p>
   <p id="err" class="err"></p><br>
 </div>
-<?php include 'module-banner-small.htm'; ?>
-<?php include 'module-footer.htm'; ?>
+<?php include 'module-banner-small.php'; ?>
+<?php include 'module-footer.php'; ?>
 <script>
   document.getElementById('tn-li-signup').className += " active";
   document.getElementById('mn-li-signup').className += " active";

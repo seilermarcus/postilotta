@@ -8,7 +8,7 @@
   <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
-<?php include 'module-head.htm'; ?>
+<?php include 'module-head.php'; ?>
 <h1>Donate</h1>
 <div class="txt">
   <p>postilotta is free for everyone.</p>
@@ -27,8 +27,8 @@
     <b>Or even better:</b> consider <a href="premium.php"><u>postilotta premium</u></a> as a great way for giving and getting the best out of it.
   </p>
 </div>
-<?php include 'module-banner-small.htm'; ?>
-<?php include 'module-footer.htm'; ?>
+<?php include 'module-banner-small.php'; ?>
+<?php include 'module-footer.php'; ?>
 <script>
   document.getElementById('tn-li-donate').className += " active";
   document.getElementById('mn-li-donate').className += " active";

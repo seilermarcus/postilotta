@@ -8,7 +8,7 @@
   <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
-<?php include 'module-head.htm'; ?>
+<?php include 'module-head.php'; ?>
 <h1>postilotta premium</h1>
 <div class="txt">
   <button id="signPrem" type="button" class="button" onclick="window.location='signup-premium.php'">SignUp</button>
@@ -35,8 +35,8 @@
       <button id="signPrem" type="button" class="button" onclick="window.location='signup-premium.php'">SignUp</button> <br>
     </p>
 </div>
-<?php include 'module-banner-small.htm'; ?>
-<?php include 'module-footer.htm'; ?>
+<?php include 'module-banner-small.php'; ?>
+<?php include 'module-footer.php'; ?>
 <script>
   document.getElementById('tn-li-premium').className += " active";
   document.getElementById('mn-li-premium').className += " active";
