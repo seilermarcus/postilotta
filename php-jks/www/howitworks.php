@@ -8,7 +8,7 @@
   <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
-<?php include 'module-head.htm'; ?>
+<?php include 'module-head.php'; ?>
 <h1>How It Works</h1>
 <div class="txt">
   <p>Infographic coming soon.</p>
@@ -30,7 +30,7 @@
 <h2>Technology Map</h2>
 <img src="pics/technologies.jpeg">
 </div>
-<?php include 'module-banner-small.htm'; ?>
-<?php include 'module-footer.htm'; ?>
+<?php include 'module-banner-small.php'; ?>
+<?php include 'module-footer.php'; ?>
 </body>
 </html>

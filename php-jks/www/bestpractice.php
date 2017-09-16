@@ -8,7 +8,7 @@
   <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
-<?php include 'module-head.htm'; ?>
+<?php include 'module-head.php'; ?>
 <h1>Best Practice</h1>
 <div class="txt">
   <p><i>Infographic coming soon.</i></p>
@@ -32,7 +32,7 @@
   <b>As a rule of thumb: Take care of your generated key-file, browser, device and internet access point, we take care of the rest.</b>
 </p>
 </div>
-<?php include 'module-banner-small.htm'; ?>
-<?php include 'module-footer.htm'; ?>
+<?php include 'module-banner-small.php'; ?>
+<?php include 'module-footer.php'; ?>
 </body>
 </html>

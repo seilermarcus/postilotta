@@ -8,7 +8,7 @@
   <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
-<?php include 'module-head.htm'; ?>
+<?php include 'module-head.php'; ?>
 <h1>Contact</h1>
 <hr>
 <h2>Report Misuse</h2>
@@ -32,8 +32,8 @@ Inbox: <a href="send.php?p_to=misuse"><u>misuse#postilotta.com</u></a><br>
 email: info@postilotta.com<br>
 inbox: info#postilotta.com<br>
 </div>
-<?php include 'module-banner-small.htm'; ?>
-<?php include 'module-footer.htm'; ?>
+<?php include 'module-banner-small.php'; ?>
+<?php include 'module-footer.php'; ?>
 <script>
   document.getElementById('tn-li-contact').className += " active";
   document.getElementById('mn-li-contact').className += " active";

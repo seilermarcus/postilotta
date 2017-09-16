@@ -13,12 +13,17 @@
   <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
-<?php include 'module-head.htm'; ?>
+<?php include 'module-head.php'; ?>
 <h1>Send an anonymous message to a postilotta inbox</h1>
 <div class="txt">
   <form id="theForm">
     <div class="capture">Inbox:</div><br>
-    <input type="text" name="p_to" id="p_to" list="adds"  autocomplete="on" size="20" onchange="adrSelect(this);">#postilotta.org <img id="adr-typ" src=""><img id="adr-idv" src="">
+    <input type="text" name="p_to" id="p_to" list="adds"  autocomplete="on" size="20" onchange="adrSelect(this);">#postilotta.org
+    <img id="adr-typ" src="">
+    <div class="tooltip">
+      <img id="adr-idv" src="">
+      <span class="tooltiptext"><?php echo $ln['tt_idv']; ?></span>
+    </div>
     <datalist id="adds">
     </datalist>
     <br><br>
@@ -50,9 +55,9 @@
   <p id="err" class="err"></p>
   <p id="inf" class="inf"></p>
 </div>
-<?php include 'module-banner-small.htm'; ?>
+<?php include 'module-banner-small.php'; ?>
 <div class="foot">
-  <p><footer> <?php include 'module-footer.htm'; ?> </footer></p>
+  <p><footer> <?php include 'module-footer.php'; ?> </footer></p>
 </div>
 <script>
   document.getElementById('tn-li-send').className += " active";

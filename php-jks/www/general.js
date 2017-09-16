@@ -624,7 +624,7 @@ function loadSendForm(){
     }
   };
   //Send msg state change request to server
-  xhttp.open('POST', 'module-send-form.htm', true);
+  xhttp.open('POST', 'module-send-form.php', true);
   xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
   xhttp.send();
 }
@@ -1060,7 +1060,7 @@ function loadSettings(){
     }
   };
   //Send msg state change request to server
-  xhttp.open('POST', 'module-inbox-settings.htm', true);
+  xhttp.open('POST', 'module-inbox-settings.php', true);
   xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
   xhttp.send();
 }
@@ -1113,7 +1113,7 @@ function loadVerify(){
     }
   };
   //Send msg state change request to server
-  xhttp.open('POST', 'module-verify-id.htm', true);
+  xhttp.open('POST', 'module-verify-id.php', true);
   xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
   xhttp.send();
 }

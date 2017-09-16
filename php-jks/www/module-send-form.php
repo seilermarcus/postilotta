@@ -1,6 +1,12 @@
+<?php include './inc/language-prep.php'; ?>
 <form id="sendInbox">
   postilotta inbox address:<br>
-  <input type="text" name="p_to" id="p_to" list="adds"  autocomplete="on" size="20" onchange="adrSelect(this);">#postilotta.org <img id="adr-typ" src=""><img id="adr-idv" src="">
+  <input type="text" name="p_to" id="p_to" list="adds"  autocomplete="on" size="20" onchange="adrSelect(this);">#postilotta.org
+  <img id="adr-typ" src="">
+  <div class="tooltip">
+    <img id="adr-idv" src="">
+    <span class="tooltiptext"><?php echo $ln['tt_idv']; ?></span>
+  </div>
   <datalist id="adds">
   </datalist>
   <br><br>

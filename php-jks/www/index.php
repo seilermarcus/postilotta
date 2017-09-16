@@ -8,14 +8,14 @@
   <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
-  <?php include 'module-head.htm'; ?>
+  <?php include 'module-head.php'; ?>
 <h1><?php echo $ln['tagline']; ?></h1>
 <h2><?php echo $ln['header']; ?></h2>
 <div class="txt">
   <p><?php echo $ln['text']; ?></p>
 </div>
-<?php include 'module-banner.htm'; ?>
-<?php include 'module-footer.htm'; ?>
+<?php include 'module-banner.php'; ?>
+<?php include 'module-footer.php'; ?>
 <script>
   clearSessionSoft(); // paranoia vars excluded
   checkParaOn();      // Paranoia mode

@@ -11,7 +11,7 @@
   <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
-<?php include 'module-head.htm'; ?>
+<?php include 'module-head.php'; ?>
 <h1>Get Your postilotta Premium Inbox</h1>
 <div class="txt">
   <form id="theForm">
@@ -89,8 +89,8 @@
     <input type="image" name="submit" src="pics/paynow.png" alt="Subscribe">
   </form>
 </div>
-<?php include 'module-banner-small.htm'; ?>
-<?php include 'module-footer.htm'; ?>
+<?php include 'module-banner-small.php'; ?>
+<?php include 'module-footer.php'; ?>
 <script>
   document.getElementById('tn-li-premium').className += " active";
   document.getElementById('mn-li-premium').className += " active";

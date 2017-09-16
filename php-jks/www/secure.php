@@ -8,7 +8,7 @@
   <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
-<?php include 'module-head.htm'; ?>
+<?php include 'module-head.php'; ?>
 <h1>Trusted Security</h1>
 <div class="txt">
   <p><i>Infographic coming soon.</i></p>
@@ -34,8 +34,8 @@
     We can do this without risking system integrity, because we practice <i>privacy by design</i> and don't rely on <i>security through obscurity</i>.
   </p>
 </div>
-<?php include 'module-banner-small.htm'; ?>
-<?php include 'module-footer.htm'; ?> </footer></p>
+<?php include 'module-banner-small.php'; ?>
+<?php include 'module-footer.php'; ?> </footer></p>
 <script>
   checkParaOn();      // Paranoia mode
 </script>

@@ -1,4 +1,5 @@
 <?php session_start(); ?>
+<?php include './inc/language-prep.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,10 +12,9 @@
   <script src="./cryptojs/enc-base64-min.js"></script>
   <!-- postilotta core -->
   <script src="general.js"></script>
-  <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
-<?php include 'module-head.htm'; ?>
+<?php include 'module-head.php'; ?>
 <p><h1 id="p_h1" style="display:inline">Inbox: </h1><img id="typ" src=""> <img id="idv" src=""></p>
 <div class="txt">
   <p id="err" class="err"></p>
@@ -22,9 +22,9 @@
   <p id="out"></p>
   <p id="fileup"></p>
 </div>
-<?php include 'module-toolbar.htm'; ?>
-<?php include 'module-banner-small.htm'; ?>
-<?php include 'module-footer.htm'; ?>
+<?php include 'module-toolbar.php'; ?>
+<?php include 'module-banner-small.php'; ?>
+<?php include 'module-footer.php'; ?>
   <script>
   if (sessionStorage.p_adr == null){
    location.replace('login.php');

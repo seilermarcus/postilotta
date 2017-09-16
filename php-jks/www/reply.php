@@ -13,7 +13,7 @@
   <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
-<?php include 'module-head.htm'; ?>
+<?php include 'module-head.php'; ?>
 <h1>Anonymous Reply</h1>
 <div class="txt">
 <p id="out"></p>
@@ -21,8 +21,8 @@
 <p id="err" class="err"></p>
 <p id="fileup"></p>
 </div>
-<?php include 'module-banner-small.htm'; ?>
-<?php include 'module-footer.htm'; ?>
+<?php include 'module-banner-small.php'; ?>
+<?php include 'module-footer.php'; ?>
 <script>
   checkParaOn();
   var str = window.location.href;

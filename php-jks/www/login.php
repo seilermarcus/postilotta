@@ -14,7 +14,7 @@
   <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
-<?php include 'module-head.htm'; ?>
+<?php include 'module-head.php'; ?>
   </ul>
 <h1 id="p_h2">Inbox</h1>
 <div class="txt">
@@ -23,7 +23,12 @@
   <p id="err" class="err"></p>
   <form id="theForm">
     <div class="capture">Inbox:</div><br>
-    <input type="text" name="p_to" id="p_to" list="adds" autocomplete="on" size="20" onchange="adrSelect(this);">#postilotta.org  <img id="adr-typ" src=""><img id="adr-idv" src="">
+    <input type="text" name="p_to" id="p_to" list="adds" autocomplete="on" size="20" onchange="adrSelect(this);">#postilotta.org
+    <img id="adr-typ" src="">
+    <div class="tooltip">
+      <img id="adr-idv" src="">
+      <span class="tooltiptext"><?php echo $ln['tt_idv']; ?></span>
+    </div>
     <datalist id="adds">
     </datalist>
     <br>
@@ -37,8 +42,8 @@
 
 <div class="bottom">
 <br>
-<?php include 'module-banner-small.htm'; ?>
-<?php include 'module-footer.htm'; ?>
+<?php include 'module-banner-small.php'; ?>
+<?php include 'module-footer.php'; ?>
 </div>
 
 <script>

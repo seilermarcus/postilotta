@@ -7,6 +7,8 @@
   "confirmblow"  : "Destroy Inbox",
   "loadsettings" : "Settings",
 
+  "tt_idv"  : "The identity of the responsible person as well as permissions needed to represent related entities have been checked and verified.", 
+
   "sendto"  : "SendTo",
   "login"   : "Inbox",
   "signup"  : "SignUp",

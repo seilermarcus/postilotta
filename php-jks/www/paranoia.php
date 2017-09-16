@@ -32,7 +32,7 @@
   <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
-<?php include 'module-head.htm'; ?>
+<?php include 'module-head.php'; ?>
 <h1 id="p_h2">ExtraSecure Mode</h1>
 <div class="txt">
 
@@ -63,8 +63,8 @@
   </form>
 </div>
 <br>
-<?php include 'module-banner-small.htm'; ?>
-<?php include 'module-footer.htm'; ?>
+<?php include 'module-banner-small.php'; ?>
+<?php include 'module-footer.php'; ?>
 <script>
   document.getElementById('tn-li-para').className += ' active';
   document.getElementById('mn-li-para').className += ' active';

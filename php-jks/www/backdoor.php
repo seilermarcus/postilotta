@@ -67,7 +67,7 @@
         return json_encode($data);
     }
   ?>
-<?php include 'module-head.htm'; ?>
+<?php include 'module-head.php'; ?>
 <h1 id="p_h2">Backdoor</h1>
 <div class="txt">
 
@@ -81,8 +81,8 @@
   <p id="err" class="err"></p>
   <p id="inf" class="inf"></p>
 </div>
-<?php include 'module-banner-small.htm'; ?>
-<?php include 'module-footer.htm'; ?>
+<?php include 'module-banner-small.php'; ?>
+<?php include 'module-footer.php'; ?>
 <script>
   document.getElementById('logoframe').className += " para";
   document.getElementById('logo').src = 'pics/schwarzerumschlag_p_96.jpg';
