@@ -34,7 +34,7 @@
    //Process after file is loaded
    reader.onload = function(e) {
      try {
-       window.gAttachment = reader.result;
+       window.attach = reader.result;
        var fname = document.getElementById('attach').value;
        fname = fname.substring(fname.lastIndexOf('\\') + 1, fname.length);
        sessionStorage.gFilename = fname;
@@ -95,14 +95,13 @@ function mEncryption(to, c, rpub, frm) {
   // Pack text and attachment into JSON
   var oc = {
     txt:c,
-    attach:window.gAttachment,
+    attach:window.attach,
     fname:sessionStorage.gFilename,
     from:frm
   };
-  window.gAttachment = null;
   sessionStorage.gFilename = null;
   var jc = JSON.stringify(oc);
-  sessionStorage.jc = jc;
+  window.attach = jc;
   sessionStorage.to = to;
   sessionStorage.rpub = rpub;
   sessionStorage.frm = frm;
@@ -120,8 +119,9 @@ function mEncryption(to, c, rpub, frm) {
   );
 
   //Encode message
-  var jc = sessionStorage.jc;
-  sessionStorage.jc = null;
+
+  var jc = window.attach;
+  window.attach = null;
   var ec = sjcl.encrypt(pub, jc);
 
   //Trigger transmission to server
@@ -763,12 +763,12 @@ function con(target, params, callback, enc, ctype){
     if (this.readyState == 4 && this.status == 200) {
       if (callback){
         var resp = this.responseText;
-        console.log('RESPONSE (raw): ' + JSON.stringify(resp));
+//        console.log('RESPONSE (raw): ' + JSON.stringify(resp));
 
         //decode if paranoia
         if((sessionStorage.paranoiaLink != undefined) && (sessionStorage.paranoiaLink != 'undefined')){
           resp = decrytParaResp(resp);
-          console.log('RESPONSE (dec): ' + JSON.stringify(resp));
+//          console.log('RESPONSE (dec): ' + JSON.stringify(resp));
         }
 
         resp = JSON.parse(resp);
@@ -802,7 +802,7 @@ function con(target, params, callback, enc, ctype){
   paramStr = paramStr.slice(0,paramStr.length -1);
   }
 
-  console.log('REQUEST:' + target + '?' + paramStr);
+//  console.log('REQUEST:' + target + '?' + paramStr);
 
   //Send msg state change request to server
   xhttp.open("POST", target, true);
@@ -893,7 +893,7 @@ function activateParanoia(pf){
 
 function checkParaOn(){
   var pp = sessionStorage.paranoiaPWD;
-  console.log(JSON.stringify(sessionStorage));
+//  console.log(JSON.stringify(sessionStorage));
 
   if (pp !== null && pp != "undefined" && pp !== undefined){
     document.body.classList.add('para');
