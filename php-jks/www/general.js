@@ -33,12 +33,17 @@
 
    //Process after file is loaded
    reader.onload = function(e) {
-     window.gAttachment = reader.result;
-     var fname = document.getElementById('attach').value;
-     fname = fname.substring(fname.lastIndexOf('\\') + 1, fname.length);
-     window.gFilename = fname;
-     document.getElementById('attach').style.visibility = 'hidden';
-     document.getElementById('attReady').innerHTML = '<i>' + fname + '</i> ready for sending.';
+     try {
+       window.gAttachment = reader.result;
+       var fname = document.getElementById('attach').value;
+       fname = fname.substring(fname.lastIndexOf('\\') + 1, fname.length);
+       sessionStorage.gFilename = fname;
+       document.getElementById('attach').style.visibility = 'hidden';
+       document.getElementById('attReady').innerHTML = '<i>' + fname + '</i> ready for sending.';
+     }catch(err) {
+       document.getElementById('inf').innerHTML = '';
+       document.getElementById('attReady').innerHTML = '<div style="color:red;">Filesize exceeds your browsers limit! E.g. Firefox can handle about 10 MB.</div>';
+      }
    };
 
    // Start loading file
@@ -91,11 +96,11 @@ function mEncryption(to, c, rpub, frm) {
   var oc = {
     txt:c,
     attach:window.gAttachment,
-    fname:window.gFilename,
+    fname:sessionStorage.gFilename,
     from:frm
   };
   window.gAttachment = null;
-  window.gFilename = null;
+  sessionStorage.gFilename = null;
   var jc = JSON.stringify(oc);
   sessionStorage.jc = jc;
   sessionStorage.to = to;
@@ -165,10 +170,10 @@ function cbAfter_mT_write(resp){
             document.getElementById("theForm").reset();
             document.getElementById("theForm").style.visibility = "hidden";
             document.getElementById("theForm").style.height = "1px";
-            // Display response link
+            // Add response link to display
+            document.getElementById('inf').innerHTML += resp.lnktxt;
             var lnkout = 'http://'+ window.location.host +'/reply.php?' + resp.lnk;
-            document.getElementById('inf').innerHTML += '<br><br>A response will be available here:<br> '
-                                                     + '<b><a href="' + lnkout + '">' + lnkout + '</a></b>';
+            document.getElementById('inf').innerHTML += '<b><a href="' + lnkout + '">' + lnkout + '</a></b>';
             break;
           case '/inbox.php':
           document.getElementById('out').innerHTML = '';
@@ -306,8 +311,7 @@ function cbAfter_check_login(resp){
 */
 function getInboxData(){
   con('get_inbox.php', {to:sessionStorage.p_adr}, cbAfter_inbox, true);
-}
-function cbAfter_inbox(resp){
+} function cbAfter_inbox(resp){
   sessionStorage.myPub = resp[0].PubKey;
   sessionStorage.myEmail = resp[0].Email;
   sessionStorage.myVisible = resp[0].Visible;
@@ -316,6 +320,9 @@ function cbAfter_inbox(resp){
   sessionStorage.myPrice = resp[0].Price;
   sessionStorage.myPaidUntil = resp[0].PaidUntil;
   sessionStorage.myMsgLife = resp[0].MsgLife;
+  sessionStorage.myIdVerified = resp[0].IdVerified;
+  checkPremium(); // color and logo
+  checkVerified(); // logo
 }
 
 /**
@@ -395,6 +402,7 @@ function decodeMsg(){
   //Process after file is loaded
   reader.onload = function(e) {
     var msg2decode = window.gmsg2dc;
+    window.gmsg2dc = null; // save storage space
     var t_text = reader.result;
     t_text = decodeURIComponent(decodeURI(t_text));
     document.getElementById('inf').innerHTML = '';
@@ -419,8 +427,16 @@ function decodeMsg(){
         var msg = oc.txt;
         var attach = oc.attach;
         var fname = oc.fname;
-        window.gAttachment = attach;
-        window.gFilename = fname;
+        window.gAttachment = oc.attach;
+        sessionStorage.gFilename = oc.fname;
+
+
+        oc = null;  // save storage space
+
+//        window.gAttachment = attach;
+//        window.gAttachment = attach;
+//        window.gFilename = fname;
+//      sessionStorage.gFilename = fname;
 
         // Make new lines HTML ready
         msg = msg.replace(/\n/gi,"<br>");
@@ -492,10 +508,13 @@ function download(filename, text) {
 */
 function downAttach(){
   // Get Attachment out of sessionStorage
-  var filename = window.gFilename;
-  window.gFilename = null;
-  var data = window.gAttachment;
-  window.gAttachment = null;
+//  var filename = window.gFilename;
+  var filename = sessionStorage.gFilename;
+//  window.gFilename = null;
+
+//  var data = window.gAttachment;
+   var data = window.gAttachment;
+//  window.gAttachment = null;
 
   // Trigger Fie Download
   var os = getOS();
@@ -511,8 +530,10 @@ function downAttach(){
       element.style.display = 'none';
       document.body.appendChild(element);
       element.click();
-      document.body.removeChild(element);
+//      document.body.removeChild(element);
     }
+    sessionStorage.gFilename = null;
+    window.gAttachment = null;
 }
 
 
@@ -953,6 +974,12 @@ function checkPremium() {
         elements[i].style.backgroundColor='#A9BCF5';
     }
     document.getElementById('tn-li-login').style.backgroundColor='#A9BCF5';
+
+    elements = document.getElementsByClassName('tbitem');
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].style.color='#A9BCF5';
+    }
+
     document.getElementById('typ').src = './pics/premium.png';
 
   }
@@ -972,6 +999,11 @@ function adrSelect(th){
       document.getElementById('adr-typ').src = './pics/basic_25.png';
     break;
     default:
+  }
+  if (selected.IdVerified) {
+    document.getElementById('adr-idv').src = './pics/id-verified_yellow_30.png';
+  } else {
+    document.getElementById('adr-idv').src = '';
   }
 }
 
@@ -1013,6 +1045,12 @@ function loadSettings(){
         // remove signup button
         var but = document.getElementById('b_sign');
         but.parentNode.removeChild(but);
+        // replace verify-id button if already verified
+        if (sessionStorage.myIdVerified == 1) {
+          var but = document.getElementById('b_very');
+          but.parentNode.removeChild(but);
+          document.getElementById('d_very').innerHTML = 'Verification completed &#10003;';
+        }
       } else {
         document.getElementById('d_quit').innerHTML = 'Go premium';
         // remove back to basic button
@@ -1055,4 +1093,88 @@ function submitSettingsUpdate(){
     document.getElementById('err').innerHTML = resp.msg;
   }
 
+}
+
+/*-------------- ID Verification ----------------------*/
+
+function loadVerify(){
+  // Clear inbox screen
+  document.getElementById('err').innerHTML = '';
+  document.getElementById('inf').innerHTML = '';
+  document.getElementById('fileup').innerHTML = '';
+  document.getElementById('out').innerHTML ='';
+
+  var xhttp = new XMLHttpRequest();
+  // prepare response and callback
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById('out').innerHTML = this.responseText;
+      checkPremium();
+    }
+  };
+  //Send msg state change request to server
+  xhttp.open('POST', 'module-verify-id.htm', true);
+  xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+  xhttp.send();
+}
+
+function verifyID(){
+ con('write_verifyid.php', {adr:sessionStorage.p_adr}, cbAfter_write_verifyid, true);
+} function cbAfter_write_verifyid(resp){
+
+  document.body.scrollTop = 0; // For Chrome, Safari and Opera
+  document.documentElement.scrollTop = 0; // For IE and Firefox
+
+  if(resp.rcode == 0) {
+    document.getElementById('err').innerHTML = '';
+    document.getElementById('out').innerHTML = '';
+    document.getElementById('inf').innerHTML = resp.msg;
+  }else{
+    document.getElementById('inf').innerHTML = '';
+    document.getElementById('err').innerHTML = resp.msg;
+  }
+}
+
+function checkVerified() {
+  if(sessionStorage.myIdVerified == 1){
+    document.getElementById('idv').src = './pics/id-verified_yellow_40.png';
+  }
+}
+
+/*-------------- Multilanguage ----------------------*/
+function checkLang(){
+  // fetch general_<lang> if not already in session
+  if (sessionStorage.ln !== undefined) {return}
+
+  var lang = sessionStorage.lang;
+  if(lang === undefined){
+   lang = navigator.language;
+  }
+  setLang(lang);
+}
+
+function setLang(lang, cb){
+  var xhttp = new XMLHttpRequest();
+  // prepare response and callback
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4){
+      if (this.status == 200){
+        sessionStorage.ln = this.responseText;
+      }else{
+        sessionStorage.lang = 'en';
+        setLang('en');
+       }
+    }
+  };
+
+  //Send msg state change request to server
+  xhttp.open('POST', 'language/general_' + lang + '.json', true);
+  xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+  xhttp.send();
+
+}
+
+function test(){
+  var ln = JSON.parse(sessionStorage.ln);
+  document.getElementById('inf').innerHTML = ln['header'];
 }

@@ -4,7 +4,7 @@ include 'inc/settings.inc';
 try {
   $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  $stmt = $conn->prepare("SELECT Address, Visible, Type FROM Inbox");
+  $stmt = $conn->prepare("SELECT Address, Visible, Type, IdVerified FROM Inbox");
   $stmt->execute();
 
   $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

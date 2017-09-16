@@ -10,6 +10,7 @@
   <script src="./cryptojs/enc-base64-min.js"></script>
   <!-- postilotta core -->
   <script src="general.js"></script>
+  <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
 <?php include 'module-head.htm'; ?>
@@ -17,7 +18,7 @@
 <div class="txt">
   <form id="theForm">
     <div class="capture">Inbox:</div><br>
-    <input type="text" name="p_to" id="p_to" list="adds"  autocomplete="on" size="20" onchange="adrSelect(this);">#postilotta.org <img id="adr-typ" src="">
+    <input type="text" name="p_to" id="p_to" list="adds"  autocomplete="on" size="20" onchange="adrSelect(this);">#postilotta.org <img id="adr-typ" src=""><img id="adr-idv" src="">
     <datalist id="adds">
     </datalist>
     <br><br>
@@ -37,7 +38,7 @@
       <li>The message will be encrypted immediately and transferred as cipher data to the recipients inbox. His/her key will be the only way to decrypt it.</li>
       <li>A key-file will be generated for you, which will be the only way to decrypt the response, if the recipient replies to your message.</li>
       <li>A link (URL) will be generated and displayed, which will be the location a response can be accessed, if - you guessed it - the recipient replies to your message.</li>
-      <li>Both messages will expire after 120 hours and then deleted automatically without any recovery option.</li>
+      <li>Both messages will expire 120 hours after sending and deleted automatically without any recovery option.</li>
     </ul>
     Make sure you keep key-file and link safe and secure.
     <p id="ios-info"></p>

@@ -1,0 +1,14 @@
+{
+  "lang"    : "en",
+  "tagline" : "Confidential Communication",
+  "header"  : "Secure Inboxes for Anonymous End-to-End-Encrypted Messaging",
+  "text"    : "You want to give people the opportunity to send you messages anonymously and for your eyes only?<br>With cutting-edge E2EE, 'single-use reply links' and for free?<br>Here you go.",
+
+  "sendto"  : "SendTo",
+  "login"   : "LogIn",
+  "signup"  : "SignUp",
+  "premium" : "Premium",
+  "contact" : "Contact",
+  "donate"  : "Donate",
+  "extrasecure" : "ExtraSecure"
+}

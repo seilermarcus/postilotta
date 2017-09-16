@@ -11,6 +11,7 @@
   <script src="./cryptojs/enc-base64-min.js"></script>
   <!-- postilotta core -->
   <script src="general.js"></script>
+  <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
 <?php include 'module-head.htm'; ?>
@@ -22,7 +23,7 @@
   <p id="err" class="err"></p>
   <form id="theForm">
     <div class="capture">Inbox:</div><br>
-    <input type="text" name="p_to" id="p_to" list="adds" autocomplete="on" size="20" onchange="adrSelect(this);">#postilotta.org  <img id="adr-typ" src="">
+    <input type="text" name="p_to" id="p_to" list="adds" autocomplete="on" size="20" onchange="adrSelect(this);">#postilotta.org  <img id="adr-typ" src=""><img id="adr-idv" src="">
     <datalist id="adds">
     </datalist>
     <br>
@@ -35,6 +36,7 @@
 </div>
 
 <div class="bottom">
+<br>
 <?php include 'module-banner-small.htm'; ?>
 <?php include 'module-footer.htm'; ?>
 </div>

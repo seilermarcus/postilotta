@@ -1,6 +1,7 @@
 <?php
 
 include 'inc/settings.inc';
+include './inc/language-prep.php'; //multilanguage ready
 
 $id = $_REQUEST["id"];
 $to = $_REQUEST["to"];
@@ -17,7 +18,7 @@ try {
   VALUES (". $id .", '". $to ."', '". $c ."', '". $pub ."', '". $link ."', DATE_ADD(NOW(), INTERVAL ". $exp ." HOUR) )";
   // use exec() because no results are returned
   $conn->exec($sql);
-  $arr = array('rcode' => 0, 'msg' => 'Message successfully sent.', 'lnk' => $link);
+  $arr = array('rcode' => 0, 'msg' => $ln['success'], 'lnktxt' => $ln['lnktxt'], 'lnk' => $link);
   $out = json_encode($arr);
 
 }catch(PDOException $e){

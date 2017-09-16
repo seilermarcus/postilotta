@@ -5,6 +5,7 @@
   <link rel="stylesheet" type="text/css" href="./inc/style.css" />
   <!-- postilotta core -->
   <script src="general.js"></script>
+  <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
 <?php include 'module-head.htm'; ?>
@@ -22,7 +23,8 @@ Commercial register ID: HRB 46947<br>
 USt.-Id.-Nr.: DE307695510<br>
 <br>
 Represented by executive:<br>
-Marcus Seilerbr
+Marcus Seiler<br>
+<br>
 </div>
 <?php include 'module-banner-small.htm'; ?>
 <?php include 'module-footer.htm'; ?>

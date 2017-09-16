@@ -23,6 +23,7 @@ CREATE TABLE Inbox (
     Price INT,
     PaidUntil DATE,
     MsgLife INT DEFAULT 120,
+    IdVerified BOOLEAN DEFAULT NULL,
     Info VARCHAR(255)
 
 );
@@ -39,6 +40,6 @@ CREATE EVENT MessageExpire
       DELETE FROM Message WHERE Expire <= NOW();
 
 CREATE VIEW v_Msg AS SELECT MsgID, Recipient, Date, State, Expire FROM Message;
-CREATE VIEW v_Inb AS SELECT Address, EMail, Visible, Type, Payment, Price, PaidUntil, MsgLife, Info FROM Inbox;
+CREATE VIEW v_Inb AS SELECT Address, EMail, Visible, Type, Payment, Price, PaidUntil, MsgLife, IdVerified, Info FROM Inbox;
 
 SET GLOBAL event_scheduler = ON;
