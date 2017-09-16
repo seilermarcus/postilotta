@@ -5,6 +5,7 @@
   <link rel="stylesheet" type="text/css" href="./inc/style.css" />
   <!-- postilotta core -->
   <script src="general.js"></script>
+  <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
 <?php include 'module-head.htm'; ?>
@@ -23,7 +24,7 @@
     </ul>
     <li>Single-use secure response code for anonymous reply</li>
   </ul>
-  As long as you make sure your browser, device and internet access point aren't compromise, we take care of the rest.
+  As long as you make sure your browser, device and internet access point aren't compromised, we take care of the rest.
   Implementing the best technologies and methods out there.
 </p>
 <h2>Technology Map</h2>

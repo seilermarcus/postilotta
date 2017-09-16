@@ -29,6 +29,7 @@
   <script src="./qrcode/qrcode.min.js"></script>
   <!-- postilotta core -->
   <script src="general.js"></script>
+  <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
 <?php include 'module-head.htm'; ?>
@@ -61,6 +62,7 @@
     <button type="button" class="button" onclick="prepareParanoia(ipf.value, iww.value)">Submit</button>
   </form>
 </div>
+<br>
 <?php include 'module-banner-small.htm'; ?>
 <?php include 'module-footer.htm'; ?>
 <script>

@@ -1,0 +1,18 @@
+{
+  "lang"    : "en",
+
+  "fetchmsgs"    : "List Messages",
+  "loadsendform" : "Send Message",
+  "logout"       : "Logout",
+  "confirmblow"  : "Destroy Inbox",
+  "loadsettings" : "Settings",
+
+  "sendto"  : "SendTo",
+  "login"   : "Inbox",
+  "signup"  : "SignUp",
+  "premium" : "Premium",
+  "contact" : "Contact",
+  "donate"  : "Donate",
+  "extrasecure" : "ExtraSecure"
+
+}

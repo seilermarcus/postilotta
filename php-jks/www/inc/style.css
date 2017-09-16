@@ -76,7 +76,7 @@ textarea {
   display: inline-block;
 }
 
-.bansmall p{
+.bansmall-bord {
   background: #585858;
   padding:5px 5px 5px 5px;
   align-items: center;
@@ -191,6 +191,36 @@ ul.topnav li.right {float: right;}
     .hide-small{display:none!important;}
     .show-small{display:block!important;}
 }
+
+ul.toolbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+ul.toolbar li {float: left;}
+
+.tbitem {
+    display: block;
+    color: #ecd201;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family: Arial;
+    font-size: 16px;
+}
+
+.tbitem:hover:not(.active) {
+ background-color: #111;
+}
+
+.tbitem.active {
+  background-color: #ecd201; /* logo yellow */
+  color: #000000;
+}
+
 .set td {
   vertical-align: top;
   text-align: left;
@@ -221,7 +251,7 @@ table.msglst {
 th.msglst, td.msglst {
     padding: 8px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
     font-size: 18px;
 }
 

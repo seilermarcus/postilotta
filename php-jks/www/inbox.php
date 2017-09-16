@@ -11,42 +11,32 @@
   <script src="./cryptojs/enc-base64-min.js"></script>
   <!-- postilotta core -->
   <script src="general.js"></script>
+  <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
 <?php include 'module-head.htm'; ?>
-<h1 id="p_h1" style="display:inline">Inbox: </h1><img id="typ" src="">
+<p><h1 id="p_h1" style="display:inline">Inbox: </h1><img id="typ" src=""> <img id="idv" src=""></p>
 <div class="txt">
   <p id="err" class="err"></p>
   <p id="inf" class="inf">Welcome</p>
   <p id="out"></p>
   <p id="fileup"></p>
 </div>
-  <hr>
-  <div class="txt">
-    <p id="toolbar">
-      <button id="fetchList" type="button" class="button" onclick="fetchMsgs(sessionStorage.p_adr)">List Messages</button>
-      <button id="sendMsg" type="button" class="button" onclick="loadSendForm()">Send Message</button>
-      <button id="logOut" type="button" class="button" onclick="logOut()">Logout</button>
-      <button id="blowUp" type="button" class="button" onclick="confirmBlow(sessionStorage.p_adr)">Destroy Inbox</button>
-      <button id="settings" type="button" class="button" onclick="loadSettings()">Settings</button>
-    </p>
-  </div>
-  <?php include 'module-banner-small.htm'; ?>
-  <?php include 'module-footer.htm'; ?>
-    <script>
-    if (sessionStorage.p_adr == null){
-     location.replace('login.php');
-    } else {
-      checkPremium();
-      document.getElementById('tn-li-login').className += " active";
-      document.getElementById('mn-li-login').className += " active";
-      // Paranoia mode
-      checkParaOn();
-      // Header
-      document.getElementById("p_h1").innerHTML += sessionStorage.p_adr + '#postilotta.org';
-      // Prepare i2i encryption
-      getInboxData();
-    }
-    </script>
+<?php include 'module-toolbar.htm'; ?>
+<?php include 'module-banner-small.htm'; ?>
+<?php include 'module-footer.htm'; ?>
+  <script>
+  if (sessionStorage.p_adr == null){
+   location.replace('login.php');
+  } else {
+    document.getElementById('tn-li-login').className += " active";
+    document.getElementById('mn-li-login').className += " active";
+    getInboxData();
+    checkParaOn(); // color scheme and encryption
+
+    // Header
+    document.getElementById("p_h1").innerHTML += sessionStorage.p_adr + '#postilotta.org';
+  }
+  </script>
 </body>
 </html>

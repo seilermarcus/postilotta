@@ -5,6 +5,7 @@
   <link rel="stylesheet" type="text/css" href="./inc/style.css" />
   <!-- postilotta core -->
   <script src="general.js"></script>
+  <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
 <?php include 'module-head.htm'; ?>
@@ -15,14 +16,14 @@
   <p>postilotta and its basic features are forever free for everyone.</p>
     <p>In addition, we offer <i>postilotta premium</i>, which includes:
       <ul>
-        <li>Identity-verified inbox <i>[under construction]</i></li>
+        <li>Identity-verified inbox</li>
         <li>Message signing <i>[under construction]</i></li>
         <li>Own sub domains (like tim#apple.postilotta.org) <i>[under construction]</i></li>
         <li>Premium Support</li>
         <li>Send multiple attachments <i>[under construction]</i></li>
         <li>Reply directly with attachment <i>[under construction]</i></li>
         <li>Folders in inbox <i>[under construction]</i></li>
-        <li>Message lifetime definition, to meet your corporate records retention policies and industry standards. <i>[under construction]</i></li>
+        <li>Message lifetime definition.</li>
       </ul>
     </p>
     <p>
