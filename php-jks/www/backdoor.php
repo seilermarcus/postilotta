@@ -1,4 +1,5 @@
 <?php session_start();?>
+<?php include './inc/language-prep.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +19,6 @@
   <script src="./cryptojs/enc-base64-min.js"></script>
   <!-- postilotta core -->
   <script src="general.js"></script>
-  <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
   <?php
@@ -68,13 +68,12 @@
     }
   ?>
 <?php include 'module-head.php'; ?>
-<h1 id="p_h2">Backdoor</h1>
+<h1 id="p_h2"><?php echo $ln['header'];?></h1>
 <div class="txt">
-
   <form id="theForm">
-    Passphrase:<br>
+    <?php echo $ln['passphrase'];?><br>
     <input type="password" name="p_pf" id="p_pf" size="20">
-    <button type="button" class="button" onclick="activateParanoia(ipf.value)">Enter</button>
+    <button type="button" class="button" onclick="activateParanoia(ipf.value)"><?php echo $ln['enter'];?></button>
   </form>
   <br>
   <p id="out"></p>

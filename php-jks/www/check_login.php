@@ -4,7 +4,6 @@ include 'inc/settings.inc';
 $adr = $_REQUEST["adr"];
 $pw = $_REQUEST["pw"];
 
-//$pw_h = hash('sha256', $pw);
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
