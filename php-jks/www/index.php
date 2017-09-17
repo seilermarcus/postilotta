@@ -19,7 +19,7 @@
 <script>
   clearSessionSoft(); // paranoia vars excluded
   checkParaOn();      // Paranoia mode
-  checkLang();
+  checkLang();        // Prepare for multilanguage
 </script>
 </body>
 </html>

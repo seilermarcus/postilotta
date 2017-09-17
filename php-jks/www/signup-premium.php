@@ -96,6 +96,8 @@
   document.getElementById('mn-li-premium').className += " active";
   clearSessionSoft(); // paranoia vars excluded
   checkParaOn();      // Paranoia mode
+  checkLang();        // Prepare for multilanguage
+
   var os = getOS(); // TODO move to general.js into a single checkOS()
   if (os === 'iOS'){
     document.getElementById('ios-info').style.color = "#0000ff"; //blue

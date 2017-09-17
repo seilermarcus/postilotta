@@ -66,6 +66,7 @@
   document.getElementById('mn-li-signup').className += " active";
   clearSessionSoft(); // paranoia vars excluded
   checkParaOn();      // Paranoia mode
+  checkLang();        // Prepare for multilanguage
   var os = getOS();
   if (os === 'iOS'){
     document.getElementById('ios-info').style.color = "#0000ff"; //blue

@@ -142,6 +142,7 @@ Current as of September 2017
 <script>
   clearSessionSoft(); // paranoia vars excluded
   checkParaOn();      // Paranoia mode
+  checkLang();        // Prepare for multilanguage
 </script>
 </body>
 </html>

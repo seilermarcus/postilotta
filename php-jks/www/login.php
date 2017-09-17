@@ -53,6 +53,7 @@
   checkParaOn();     // Paranoia mode
   // Populate datalist for to field
   getToList();
+  checkLang();        // Prepare for multilanguage
   // Prepare parameters for function call
   var iname = document.forms["theForm"]["p_to"];
   var ipwd = document.forms["theForm"]["p_pwd"];

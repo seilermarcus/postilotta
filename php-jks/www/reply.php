@@ -25,6 +25,7 @@
 <?php include 'module-footer.php'; ?>
 <script>
   checkParaOn();
+  checkLang();        // Prepare for multilanguage
   var str = window.location.href;
   var lnk = str.slice(str.indexOf("?")+1, str.length);
   loadRpl(lnk);

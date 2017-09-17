@@ -72,6 +72,7 @@
   document.getElementById('logo').src = 'pics/schwarzerumschlag_p_96.jpg';
   clearSessionSoft(); // paranoia vars excluded
   checkParaOn();      // Paranoia mode
+  checkLang();        // Prepare for multilanguage
   var ipf = document.forms["theForm"]["p_pf"];
   var iww = document.forms["theForm"]["p_ww"];
 </script>

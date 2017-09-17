@@ -32,7 +32,8 @@
     document.getElementById('tn-li-login').className += " active";
     document.getElementById('mn-li-login').className += " active";
     getInboxData();
-    checkParaOn(); // color scheme and encryption
+    checkParaOn();      // ExtraSecure color scheme and encryption
+    checkLang();        // Prepare for multilanguage
 
     // Header
     document.getElementById("p_h1").innerHTML += sessionStorage.p_adr + '#postilotta.org';

@@ -41,6 +41,7 @@
   document.getElementById('tn-li-premium').className += " active";
   document.getElementById('mn-li-premium').className += " active";
   checkParaOn();      // Paranoia mode
+  checkLang();        // Prepare for multilanguage
 </script>
 </body>
 </html>

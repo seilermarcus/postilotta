@@ -65,7 +65,7 @@
   clearSessionSoft(); // paranoia vars excluded
   checkParaOn();      // Paranoia mode
   getToList();
-  checkLang();
+  checkLang();        // Prepare for multilanguage
   // iOS user info
   var os = getOS();
   if (os === 'iOS'){

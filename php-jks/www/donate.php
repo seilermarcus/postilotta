@@ -34,6 +34,7 @@
   document.getElementById('mn-li-donate').className += " active";
   clearSessionSoft(); // paranoia vars excluded
   checkParaOn();      // Paranoia mode
+  checkLang();        // Prepare for multilanguage
 </script>
 </body>
 </html>

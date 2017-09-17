@@ -30,6 +30,7 @@ Marcus Seiler<br>
 <?php include 'module-footer.php'; ?>
 <script>
   checkParaOn();      // Paranoia mode
+  checkLang();        // Prepare for multilanguage
 </script>
 </body>
 </html>

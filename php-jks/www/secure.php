@@ -38,6 +38,7 @@
 <?php include 'module-footer.php'; ?> </footer></p>
 <script>
   checkParaOn();      // Paranoia mode
+  checkLang();        // Prepare for multilanguage
 </script>
 </body>
 </html>
