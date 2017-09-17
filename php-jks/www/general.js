@@ -25,24 +25,30 @@
  */
 
 /**
-* Load Attachment in sessionStorage
+* Load attachment in sessionStorage resp. window space
+* File is stored in window.attach, file name in sessionStorage.gFilename ready for encoding
+* @return none
 */
  function upAttach(){
+   var ln = JSON.parse(sessionStorage.ln);  // prepare for language lables
    var file = document.getElementById('attach').files[0];
    var reader = new FileReader();
 
    //Process after file is loaded
    reader.onload = function(e) {
-     try {
-       window.attach = reader.result;
+
+     window.attach = reader.result;
+
+     if (window.attach.length < 7000000){  // less than 5MB
        var fname = document.getElementById('attach').value;
        fname = fname.substring(fname.lastIndexOf('\\') + 1, fname.length);
        sessionStorage.gFilename = fname;
        document.getElementById('attach').style.visibility = 'hidden';
        document.getElementById('attReady').innerHTML = '<i>' + fname + '</i> ready for sending.';
-     }catch(err) {
+      } else {
        document.getElementById('inf').innerHTML = '';
-       document.getElementById('attReady').innerHTML = '<div style="color:red;">Filesize exceeds your browsers limit! E.g. Firefox can handle about 10 MB.</div>';
+       document.getElementById('attReady').innerHTML = '<div style="color:red;">'+ ln['att_oversize'] +'</div>';
+       window.attach = null;
       }
    };
 
@@ -51,8 +57,11 @@
  }
 
  /**
-  * Message sending step 1: Generate Return Key, etc. and trigger step 2.
+  * Sending Step 1:
+  * Generate Return Key, etc. and trigger mEncryption.
   *
+  * @param {string} to - Recipients 'Address'. Just passed through.
+  * @param {string} c - Content (message without attachment) to trasnsmit. Just passed through.
   */
 function prepReply(to, c){
 
@@ -88,8 +97,15 @@ function prepReply(to, c){
 }
 
 /**
- * Message sending step 2: Encrypt and trigger transmission
+ * Sending Step 2:
+ * Encryption and triggering of mTransmission.
+ * Pulls attachment out of window.attach.
+ * Requests recipients pub key from server.
  *
+ * @param {string} to - Recipients 'Address'. Just passed through.
+ * @param {string} c - Content (message without attachment) to trasnsmit. Just passed through.
+ * @param {string} rpub - Pub Key to encrypt a reply with. Just passed through.
+ * @param {string} [frm] - Sender 'Address'.
  */
 function mEncryption(to, c, rpub, frm) {
   // Pack text and attachment into JSON
@@ -119,7 +135,6 @@ function mEncryption(to, c, rpub, frm) {
   );
 
   //Encode message
-
   var jc = window.attach;
   window.attach = null;
   var ec = sjcl.encrypt(pub, jc);
@@ -129,7 +144,15 @@ function mEncryption(to, c, rpub, frm) {
 }
 
  /**
-  * Message sending step 3: Transmit encoded message to server
+  * Sending Step 3:
+  * Transmit encoded message to server.
+  * Display success info or error message.
+  *
+  * @param {string} to - Recipients 'Address'.
+  * @param {string} e_c - Encrypted content (message incl. attachment as cipher) to trasnsmit.
+  * @param {string} rpub - Pub Key to encrypt a reply with.
+  * @param {string} frm - Sender 'Address'.
+  * @param {string} mode - Sending mode like 'rpl' for Reply, for msg state mgmt purpose.
   *
   */
 function mTransmit(to, e_c, rpub, frm, mode) {
@@ -158,8 +181,7 @@ function mTransmit(to, e_c, rpub, frm, mode) {
   sessionStorage.mode = mode; // e.g. 'rpl', store tmp for cbAfter
 
   con('write.php', {id:id, to:to, c:e_c, pub:rpub, link:link, exp:exp}, cbAfter_mT_write, true);
-}
-function cbAfter_mT_write(resp){
+} function cbAfter_mT_write(resp){
     if(resp.rcode == 0) {
       document.getElementById('inf').innerHTML = resp.msg;
         switch (window.location.pathname) {
@@ -201,8 +223,9 @@ function cbAfter_mT_write(resp){
 }
 
 
-/*
- * Get valid addresses for datalist 'adds'
+/**
+ * Get list of all valid, not-hidden addresses from server.
+ * Populate datalist 'adds' with content.
  */
 function getToList() {
   con('get_adrlist.php', {}, cbAfter_get_adrlist, true);
@@ -218,9 +241,18 @@ function cbAfter_get_adrlist(jadds){
   document.getElementById('adds').innerHTML = options;
 }
 
-/*
-*
-*/
+/**
+ * Generate new inbox.
+ *
+ * @param {string} adr - 'Address' of new inbox.
+ * @param {string} pwd - 'Password'.
+ * @param {string} eml - 'Email'
+ * @param {bool} vis - 'Visible', checkbox value.
+ * @param {bool} agb - accept the terms&conditions, checkbox value.
+ * @param {string} pay - 'Payment', radiobox selection.
+ * @param {int} prc - 'Price'. Monthly contribution.
+ * @param {string} typ - 'Type', like 'premium'.
+ */
 function signSubmit(adr, pwd, eml, vis, agb, pay, prc, typ){
   // Generate BoxID
   var id = Math.floor(Math.random() * 1000000000); //TODO ensure uniquness
@@ -278,16 +310,13 @@ function signSubmit(adr, pwd, eml, vis, agb, pay, prc, typ){
   }
 }
 
-/*
-  //Send request to server
-  xhttp.open('POST', 'write_signup.php', true);
-  xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded; charset=UTF-8');
-  xhttp.send("id=" + id + "&adr=" + adr + "&pub=" + pub_s + "&pw=" + pwd_h + "&eml=" + eml);
-*/
-
 /**
-*
-*/
+ * Check address and password for login to inbox.
+ * Forward to inbox if successfully verified.
+ *
+ * @param {string} adr - 'Address' of inbox to log into.
+ * @param {string} pwd - Password, clear.
+ */
 function loginSubmit(adr, pwd){
   sessionStorage.p_adr = adr;
   // Hash password
@@ -307,8 +336,10 @@ function cbAfter_check_login(resp){
 }
 
 /**
-*
-*/
+ * Fetch inbox profile date like ‘Email’ and ‘Visible’.
+ * Write it to sessionStorage.
+ *
+ */
 function getInboxData(){
   con('get_inbox.php', {to:sessionStorage.p_adr}, cbAfter_inbox, true);
 } function cbAfter_inbox(resp){
@@ -326,8 +357,11 @@ function getInboxData(){
 }
 
 /**
-*
-*/
+ * Fetch headers of all messages sent to an Address from server.
+ * Display list as clickable table in inbox.
+ *
+ * @param {string} adr - 'Address' of recipient.
+ */
 function fetchMsgs(adr){
   //Clear screen
   document.getElementById('fileup').innerHTML = '';
@@ -363,8 +397,11 @@ function cbAfter_get_msglist(resp){
 }
 
 /**
-*
-*/
+ * Fetch message incl. content from server.
+ * Show header and input-element for key-file for decoding.
+ *
+ * @param {string} mid - 'MsgID'.
+ */
 function loadMsg(mid){
   window.document.body.style.cursor = "wait"; // sets the cursor shape to hour-glass.
   sessionStorage.mid2dc = mid;
@@ -391,9 +428,9 @@ function loadMsg(mid){
 }
 
 
-/*
-*
-*/
+/**
+ * Decode message content and display.
+ */
 function decodeMsg(){
   window.document.body.style.cursor = "wait"; // sets the cursor shape to hour-glass.
   var file = document.getElementById("keyFile").files[0];
@@ -429,16 +466,9 @@ function decodeMsg(){
         var fname = oc.fname;
         window.gAttachment = oc.attach;
         sessionStorage.gFilename = oc.fname;
-
-
         oc = null;  // save storage space
 
-//        window.gAttachment = attach;
-//        window.gAttachment = attach;
-//        window.gFilename = fname;
-//      sessionStorage.gFilename = fname;
-
-        // Make new lines HTML ready
+        // Make new lines in message body HTML ready
         msg = msg.replace(/\n/gi,"<br>");
 
         // Display 'from' if not anonymous
@@ -482,9 +512,12 @@ function decodeMsg(){
   var out = reader.readAsText(file);
 }
 
-/*
-* Save sec key file to device
-*/
+/**
+ * Save sec key file to device.
+ *
+ * @param {string} filename - Proposed name of file to store.
+ * @param {string} text - File data to store.
+ */
 function download(filename, text) {
   var os = getOS();
   switch (os) {
@@ -504,17 +537,11 @@ function download(filename, text) {
 }
 
 /**
-*
-*/
+ * Download message attachment.
+ */
 function downAttach(){
-  // Get Attachment out of sessionStorage
-//  var filename = window.gFilename;
   var filename = sessionStorage.gFilename;
-//  window.gFilename = null;
-
-//  var data = window.gAttachment;
-   var data = window.gAttachment;
-//  window.gAttachment = null;
+  var data = window.gAttachment;
 
   // Trigger Fie Download
   var os = getOS();
@@ -538,8 +565,8 @@ function downAttach(){
 
 
 /**
-*
-*/
+ * Display input textbox and reply-button.
+ */
 function reply(){
   var but = document.getElementById('reButton')
   but.parentNode.removeChild(but);
@@ -556,7 +583,9 @@ function reply(){
 }
 
 /**
- * Message sending step 2: Encrypt reply and trigger transmission
+ * Reply Step 2:
+ * Encrypt reply and trigger mTransmission
+ * Same like mEncryption, but for reply.
  *
  */
 function rEncryption() {
@@ -591,8 +620,10 @@ function rEncryption() {
 
 
 /**
-* Get MsgID of reply and trigger loading
-*/
+ * Get MsgID of reply and trigger loading
+ *
+ * @param {string} lnk - 'Address'. Recipient of the message (reply) to display.
+ */
 function loadRpl(lnk){
 con('get_msglist.php', {to:lnk}, cbAfter_repl_list, true);
 } function cbAfter_repl_list(resp){
@@ -605,8 +636,8 @@ con('get_msglist.php', {to:lnk}, cbAfter_repl_list, true);
 }
 
 /**
-*
-*/
+ * Load module-send-form into inbox UI, for message sending.
+ */
 function loadSendForm(){
   // Clear inbox screen
   document.getElementById('err').innerHTML = '';
@@ -631,8 +662,9 @@ function loadSendForm(){
 
 
 /**
-*
-*/
+ * Trigger message sending out of inbox UI.
+ * Calls mEncryption.
+ */
 function sendNewMessage(){
   var i_to = document.forms["sendInbox"]["p_to"];
   var i_c = document.forms["sendInbox"]["p_text"];
@@ -643,9 +675,11 @@ function sendNewMessage(){
 }
 
 
-/*
-*
-*/
+/**
+ * Delete message from server.
+ *
+ * @param {string} mid - 'MsgID' of message to delete.
+ */
 function delMsg(mid){
   //Clear file upload section
   document.getElementById('fileup').innerHTML = '';
@@ -664,8 +698,10 @@ function delMsg(mid){
 
 
 /**
-*
-*/
+ * Log out of inbox UI.
+ * Incl. php session and sessionStorage cleanup.
+ * Redirect to landing page afterwards.
+ */
 function logOut(){
   //TODO Proper cleanup at Logout
   sessionStorage.clear();
@@ -673,6 +709,12 @@ function logOut(){
   location.replace("index.php");
 }
 
+/**
+ * Prompt password request for inbox destruction.
+ * Trigger destruction if password check passed.
+ *
+ * @param {string} adr - 'Address' of related inbox.
+ */
 function confirmBlow(adr){
   var pass = prompt('This will delete the whole inbox incl. all related messages of \
                     \n' + adr  + '#postilotta.org and jump ringt to postilotta home. \
@@ -687,8 +729,11 @@ function confirmBlow(adr){
 }
 
 /**
-* Delete inbox currently logged on to
-*/
+ * Delete inbox from server.
+ *
+ * @param {string} adr - 'Address' of inbox to delete.
+ * @param {string} pwd - 'Password' hashed.
+ */
 function blowUp(adr, pwd){
   con('del_inbox.php', {adr:adr, pw:pwd}, cbAfter_blow, true);
 } function cbAfter_blow(resp){
@@ -702,8 +747,11 @@ function blowUp(adr, pwd){
 }
 
 /**
-*
-*/
+ * Change state of message 'mid' to 'state'.
+ *
+ * @param {string} mid - 'MsgID' of message to change state.
+ * @param {string} state - New 'State' to change to.
+ */
 function setMsgState(mid, state){
   con('set_msgstate.php', {state:state, mid:mid}, cbAfter_msgstate, true);
 }
@@ -711,13 +759,15 @@ function cbAfter_msgstate(resp) {
   if (resp.rcode != 0){
     document.getElementById('inf').innerHTML = '';
     document.getElementById('err').innerHTML = resp.msg;
-
   }
 }
 
 /**
-*
-*/
+ * Detect Operating System of user client.
+ * Big 5 only.
+ *
+ * @return {string} os - Short name of OS.
+ */
 function getOS() {
   var userAgent = window.navigator.userAgent,
       platform = window.navigator.platform,
@@ -740,17 +790,18 @@ function getOS() {
 
   return os;
 }
+
 /*---------- AJAX con ----------------------*/
+
 /**
-* Wrapper for AJAX post calls
-* @param target: String target address to post to
-* @param params: object containing the parameters to pass
-* @param callback: function name to call after response, passing response 'this'
-* @param enc: false for raw response (no json, or paranoia)
-* @param ctype: string [optional] Content-type, default is application/x-www-form-urlencoded
-* Example call see below
-* ParanoiaLink incl.
-*/
+ * Wrapper for AJAX post calls
+ *
+ * @param {string} target - String target address to post to
+ * @param {object} params - object containing the parameters to pass
+ * @param {string} callback - function name to call after response, passing response 'this'
+ * @param {bool} enc - false for raw response (no json, or paranoia)
+ * @param {string} [ctype] - Content-type, default is application/x-www-form-urlencoded
+ */
 function con(target, params, callback, enc, ctype){
   var xhttp = new XMLHttpRequest();
   var paramStr = '';
@@ -788,7 +839,6 @@ function con(target, params, callback, enc, ctype){
       }
     }
 
-    //params = encryParaReq(params);            // paranoia encryption
     paramStr = JSON.stringify(params);
     ctype = 'Content-type:application/json';
   }else{
@@ -809,22 +859,17 @@ function con(target, params, callback, enc, ctype){
   xhttp.setRequestHeader("Content-type", ctype);
   xhttp.send(paramStr);
 }
-/*
-// Excample call of con
-con('get_msglist.php', {to:'9'}, cbAfter_Go);
-function cbAfter_Go(th){
-  console.log(th.responseText);
-}
-*/
 
-/*---------- Paranoia Mode ----------------------*/
+/*---------- ExtraSecure Mode ----------------------*/
 
 /**
-*
-*/
+ * Prepare ExtraSecure session by sending secrets to server.
+ * Display Link and QRCode where to access the session.
+ *
+ * @param {string} pf - 'Passphrase', to encrypt whole data transfer with.
+ * @param {string} ww - 'Watchword' for authenticity proof.
+ */
 function prepareParanoia(pf, ww){
-//  var encrypted = CryptoJS.AES.encrypt(JSON.stringify(ww), pf, {format: CryptoJSAesJson}).toString();
-//  document.getElementById('out').innerHTML += encrypted;
   con('write_para.php', {pf:pf, ww:ww}, cbAfter_write_para, true);
 } function cbAfter_write_para(resp){
 
@@ -860,6 +905,11 @@ function prepareParanoia(pf, ww){
     }
 }
 
+/**
+ * Enable ExtraSecure session.
+ *
+ * @param {string} pf - 'Passphrase'.
+ */
 function activateParanoia(pf){
   try{
     // Decode watchword with given passphrase
@@ -891,6 +941,9 @@ function activateParanoia(pf){
   checkParaOn();
 }
 
+/**
+ * Check whether ExtraSecure session is enabled and change style accordingly.
+ */
 function checkParaOn(){
   var pp = sessionStorage.paranoiaPWD;
 //  console.log(JSON.stringify(sessionStorage));
@@ -906,8 +959,10 @@ function checkParaOn(){
 }
 
 /**
-*
-*/
+ * Decrpyt server response in ExtraSecure mode.
+ *
+ * @param {string} resp - Server response to decrypt.
+ */
 function decrytParaResp(resp){
   // paranoia Decryption
   resp = JSON.parse(CryptoJS.AES.decrypt(resp, sessionStorage.paranoiaPWD, {format: CryptoJSAesJson}).toString(CryptoJS.enc.Utf8));
@@ -915,16 +970,18 @@ function decrytParaResp(resp){
 }
 
 /**
-*
-*/
+ * Encrpyt server request before sending in ExtraSecure mode.
+ *
+ * @param {string} req - Request to encrypt.
+ */
 function encryParaReq(req){
   req  = CryptoJS.AES.encrypt(JSON.stringify(req), sessionStorage.paranoiaPWD, {format: CryptoJSAesJson}).toString();
   return req;
 }
 
 /**
-*
-*/
+ * Clear sessionStorage except ExtraSecure related variables.
+ */
 function clearSessionSoft(){
   var tmp = sessionStorage.paranoiaPWD;
   var tmpLink = sessionStorage.paranoiaLink;
@@ -935,6 +992,10 @@ function clearSessionSoft(){
 
 
 /*--------------- Display Functions--------------------*/
+
+/**
+ * Replace TopNav for large displays by mobile version.
+ */
 function replaceNav(){
   var x = document.getElementById("monnav");
   if (x.className.indexOf("show") == -1) {
@@ -943,9 +1004,6 @@ function replaceNav(){
     x.className = x.className.replace(" show", "");
   }
 }
-
-
-
 
 /*---------- cryptojs specifics ----------------------*/
 
@@ -967,6 +1025,9 @@ var CryptoJSAesJson = {
 
 /*---------- Premium ----------------------*/
 
+/**
+ * Checks whether loged in inbox is premium and changes style accordingly
+ */
 function checkPremium() {
   if(sessionStorage.typ =='premium'){
     var elements = document.getElementsByClassName('button');
@@ -979,15 +1040,25 @@ function checkPremium() {
     for (var i = 0; i < elements.length; i++) {
         elements[i].style.color='#A9BCF5';
     }
-
     document.getElementById('typ').src = './pics/premium.png';
-
   }
 }
 
+/**
+ * Supporting function for adrSelect, returning Address property
+ *
+ * @param {object} item - current search item
+ * @return {object} this
+ */
 function searchItem(item){
   return item.Address == this;
 }
+
+/**
+ * Displays inbox-type and id-veryfied logos of selected Address
+ *
+ * @param {object} th - selection DOM input object
+ */
 function adrSelect(th){
   var a_toList = JSON.parse(sessionStorage.toList);
   var selected = a_toList.find(searchItem, th.value);
@@ -1009,6 +1080,9 @@ function adrSelect(th){
 
 /*-------------- Settings ----------------------*/
 
+/**
+ * Loads module-inbox-settings into inbox UI.
+ */
 function loadSettings(){
   // Clear inbox screen
   document.getElementById('err').innerHTML = '';
@@ -1065,6 +1139,10 @@ function loadSettings(){
   xhttp.send();
 }
 
+/**
+ * Writes changes inbox settings back to server.
+ * TODO: update changes only.
+ */
 function submitSettingsUpdate(){
   var adr = sessionStorage.p_adr;
   var npwd = document.forms['settings']['p_newpas'].value;
@@ -1097,6 +1175,10 @@ function submitSettingsUpdate(){
 
 /*-------------- ID Verification ----------------------*/
 
+/**
+ * Loads module-verify-id into inbox UI.
+ * TODO: Use more sophisticated id-verification process...
+ */
 function loadVerify(){
   // Clear inbox screen
   document.getElementById('err').innerHTML = '';
@@ -1118,6 +1200,9 @@ function loadVerify(){
   xhttp.send();
 }
 
+/**
+ * Sets id-verification status of current inbox to true.
+ */
 function verifyID(){
  con('write_verifyid.php', {adr:sessionStorage.p_adr}, cbAfter_write_verifyid, true);
 } function cbAfter_write_verifyid(resp){
@@ -1135,6 +1220,9 @@ function verifyID(){
   }
 }
 
+/**
+ * Checks wheter the current loged in inbox has id-verification and display logo accordingly.
+ */
 function checkVerified() {
   if(sessionStorage.myIdVerified == 1){
     document.getElementById('idv').src = './pics/id-verified_yellow_40.png';
@@ -1142,8 +1230,12 @@ function checkVerified() {
 }
 
 /*-------------- Multilanguage ----------------------*/
+
+/**
+ * Prepare clientside use of localised lables.
+ */
 function checkLang(){
-  // fetch general_<lang> if not already in session
+
   if (sessionStorage.ln !== undefined) {return}
 
   var lang = sessionStorage.lang;
@@ -1153,6 +1245,9 @@ function checkLang(){
   setLang(lang);
 }
 
+/**
+ * Fetches general_<lang>.json if not already in session.
+ */
 function setLang(lang, cb){
   var xhttp = new XMLHttpRequest();
   // prepare response and callback
@@ -1171,9 +1266,11 @@ function setLang(lang, cb){
   xhttp.open('POST', 'language/general_' + lang + '.json', true);
   xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
   xhttp.send();
-
 }
 
+/**
+ * Just a test.
+ */
 function test(){
   var ln = JSON.parse(sessionStorage.ln);
   document.getElementById('inf').innerHTML = ln['header'];

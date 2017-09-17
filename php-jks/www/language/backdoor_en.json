@@ -1,6 +1,10 @@
 {
   "lang"    : "en",
 
+  "header" : "Backdoor",
+  "passphrase" : "Passphrase:",
+  "enter"   : "Enter",
+
   "sendto"  : "SendTo",
   "login"   : "LogIn",
   "signup"  : "SignUp",
