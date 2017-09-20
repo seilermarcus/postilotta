@@ -1,5 +1,11 @@
 {
   "lang"    : "en",
+  
+  "header"  : "Donate",
+  "free"    : "postilotta is free for everyone.",
+  "text"    : "If you like what we do, and even more if you have a benefit from it, consider supporting us by donating.<br>Of course without any association to an inbox or send message.",
+  "regular" : "Especially donations on a regular basis make it much easier to keep the platform up.<br><br>",
+  "better" : "<b>Or even better:</b> consider <a href='premium.php'><u>postilotta premium</u></a> as a great way for giving and getting the best out of it.",
 
   "sendto"  : "SendTo",
   "login"   : "LogIn",

@@ -1,6 +1,13 @@
 {
   "lang"    : "en",
 
+  "header"    : "Imprint",
+  "phone"     : "Phone",
+  "email"     : "Email",
+  "register"  : "Commercial register ID",
+  "executive" : "Represented by executive",
+
+
   "sendto"  : "SendTo",
   "login"   : "LogIn",
   "signup"  : "SignUp",

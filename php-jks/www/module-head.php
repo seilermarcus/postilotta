@@ -1,6 +1,18 @@
-<div id="logoframe">
-<a href="index.php"><img id='logo' src='pics/postilottatext_small_proto.jpg' alt='postilotta'></a>
+<div class="lang" style="">
+  <select id="p_lang" name="p_lang" onchange="changeLang(this);">
+    <option id="o_ln_de" value="de">de</option>
+    <option id="o_ln_en" value="en">en</option>
+  </select>
+  <script>
+    document.getElementById('o_ln_' + '<?php echo $_SESSION['plang']; ?>' ).selected = true;
+  </script>
+
 </div>
+  <div id="logoframe" style="display:inline;">
+  <a href="index.php"><img id='logo' src='pics/postilottatext_small_proto.jpg' alt='postilotta'></a>
+  </div>
+
+
 <!-- Large Top Nav-->
 <ul class="topnav">
   <li><a id="tn-li-send" class="hide-small" href="send.php"><?php echo $ln['sendto']; ?></a></li>

@@ -1,0 +1,14 @@
+{
+  "lang"    : "de",
+
+  "header" : "Kontakt",
+
+  "sendto"  : "Senden",
+  "login"   : "Anmelden",
+  "signup"  : "Registrieren",
+  "premium" : "Premium",
+  "contact" : "Kontakt",
+  "donate"  : "Spenden",
+  "extrasecure" : "ExtraSecure"
+
+}

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php include './inc/language-prep.php'; ?>
 <h3>Settings</h3>
 <form id="settings">
@@ -80,6 +81,6 @@
       <button id="b_sign" type="button" class="butonfrm" onclick="window.location='signup-premium.php';">SignUp</button> (?)</td>
   </tr>
 </table>
-
+<br>
 <button type="button" class="button" onclick="submitSettingsUpdate('coming soon');">Submit Updates</button></td>
 </form>

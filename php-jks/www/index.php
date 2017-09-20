@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+<?php include './inc/language-prep.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,21 +7,21 @@
   <link rel="stylesheet" type="text/css" href="./inc/style.css" />
   <!-- postilotta core -->
   <script src="general.js"></script>
-  <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
+
   <?php include 'module-head.php'; ?>
-<h1><?php echo $ln['tagline']; ?></h1>
-<h2><?php echo $ln['header']; ?></h2>
+<h1><?php echo $ln['tagline'];?></h1>
+<h2><?php echo $ln['header'];?></h2>
 <div class="txt">
-  <p><?php echo $ln['text']; ?></p>
+  <p><?php echo $ln['text'];?></p>
 </div>
-<?php include 'module-banner.php'; ?>
-<?php include 'module-footer.php'; ?>
+<?php include 'module-banner.php';?>
+<?php include 'module-footer.php';?>
 <script>
   clearSessionSoft(); // paranoia vars excluded
   checkParaOn();      // Paranoia mode
-  checkLang();
+  checkLang();        // Prepare for multilanguage
 </script>
 </body>
 </html>

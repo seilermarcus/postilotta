@@ -1,0 +1,14 @@
+{
+  "lang"    : "de",
+  "tagline" : "Vertrauliche Kommunikation",
+  "header"  : "Sichere Postfächer für anonymen, end-zu-end-verschlüsselten Nachrichtenaustauch.",
+  "text"    : "Sie möchten anderen die Möglichkeit geben, Ihnen vertrauliche Informationen zuzusenden? Anonym, mit neuesten Verschlüsselungstechniken und kostenlos?<br>Dann sind Sie hier richtig.",
+
+  "sendto"  : "Senden",
+  "login"   : "Anmelden",
+  "signup"  : "Registrieren",
+  "premium" : "Premium",
+  "contact" : "Kontakt",
+  "donate"  : "Spenden",
+  "extrasecure" : "ExtraSecure"
+}

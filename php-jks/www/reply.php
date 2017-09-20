@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+<?php include './inc/language-prep.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +12,6 @@
   <script src="./cryptojs/enc-base64-min.js"></script>
   <!-- postilotta core -->
   <script src="general.js"></script>
-  <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
 <?php include 'module-head.php'; ?>
@@ -25,6 +26,7 @@
 <?php include 'module-footer.php'; ?>
 <script>
   checkParaOn();
+  checkLang();        // Prepare for multilanguage
   var str = window.location.href;
   var lnk = str.slice(str.indexOf("?")+1, str.length);
   loadRpl(lnk);

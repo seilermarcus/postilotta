@@ -83,6 +83,7 @@
 <?php include 'module-banner-small.php'; ?>
 <?php include 'module-footer.php'; ?>
 <script>
+  checkLang();        // Prepare for multilanguage
   document.getElementById('logoframe').className += " para";
   document.getElementById('logo').src = 'pics/schwarzerumschlag_p_96.jpg';
   sessionStorage.clear();

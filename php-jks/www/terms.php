@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+<?php include './inc/language-prep.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +7,6 @@
   <link rel="stylesheet" type="text/css" href="./inc/style.css" />
   <!-- postilotta core -->
   <script src="general.js"></script>
-  <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
 <?php include 'module-head.php'; ?>
@@ -87,7 +88,7 @@
 
 4.4 The customers are required to pay any fees that they incur as well as those arising from unauthorised use of their account by a third party, except where the use is not in the responsibility of the customer. The obligation to disprove culpability lies with the customer.<br>
 
-4.5 If the customer’s credit remains negative for two months despite warnings and reminder emails, the account’s ability to send emails will be blocked. After that, the contractual relationship will be ended by postilotta.<br>
+4.5 If the customer’s credit remains negative for two months despite warnings and reminder message, the account’s ability to send messages will be blocked. After that, the contractual relationship will be ended by postilotta.<br>
 <br>
 <strong> 5. Customer obligations</strong><br>
 <br>
@@ -95,14 +96,14 @@
 
 5.2 Customers are also responsible for third parties who use the services within their account (whether authorised or unauthorised). This does not apply when the unauthorised access had nothing to do with the customer. The obligation is on the customers to prove they had nothing to do with the usage.<br>
 
-5.3 The customer will not use postilotta service to send out advertisements for commercial purposes by email or to send standardised emails to a multitude of recipients.<br>
+5.3 The customer will not use postilotta service to send out advertisements for commercial purposes by message or to send standardised messages to a multitude of recipients.<br>
 <br>
 <strong>6. Misuse and child &amp; youth protection</strong><br>
 <br>See also Code of Ethics.<br>
 
 6.1 The customer is required not to use postilotta improperly:<br>
 <ul>
-<li>not to send any spam (and no more than 500 emails per hour and/or 1000 emails per day)</li>
+<li>not to send any spam (and no more than 100 messages per hour and/or 500 messages per day)</li>
 <li>not to break German laws</li>
 <li>not to break regulations regarding protection of children.</li>
 </ul>
@@ -142,6 +143,7 @@ Current as of September 2017
 <script>
   clearSessionSoft(); // paranoia vars excluded
   checkParaOn();      // Paranoia mode
+  checkLang();        // Prepare for multilanguage
 </script>
 </body>
 </html>

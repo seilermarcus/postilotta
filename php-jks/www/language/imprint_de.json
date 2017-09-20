@@ -1,0 +1,19 @@
+{
+  "lang"    : "de",
+
+  "header"    : "Impressum",
+  "phone"     : "Tel.",
+  "email"     : "E-Mail",
+  "register"  : "Registernummer",
+  "executive" : "Geschäftsführung",
+
+
+  "sendto"  : "Senden",
+  "login"   : "Anmelden",
+  "signup"  : "Registrieren",
+  "premium" : "Premium",
+  "contact" : "Kontakt",
+  "donate"  : "Spenden",
+  "extrasecure" : "ExtraSecure"
+
+}

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php include './inc/language-prep.php'; ?>
 <!DOCTYPE html>
 <html>
@@ -22,5 +23,8 @@
 </div>
 <?php include 'module-banner-small.php'; ?>
 <?php include 'module-footer.php'; ?>
+<script>
+  checkLang();        // Prepare for multilanguage
+</script>
 </body>
 </html>

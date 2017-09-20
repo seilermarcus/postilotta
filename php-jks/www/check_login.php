@@ -16,7 +16,6 @@ try {
       $arr = array('rcode' => 0, 'msg' => 'sizeof(result): ' . sizeof($result), 'typ' => $result[0]['Type']);
 
       // initialize session
-      // $_SESSION['name'] = $adr;
       session_start();
       $_SESSION['timestamp'] = time();
 

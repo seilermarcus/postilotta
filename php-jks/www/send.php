@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+<?php include './inc/language-prep.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,14 +12,13 @@
   <script src="./cryptojs/enc-base64-min.js"></script>
   <!-- postilotta core -->
   <script src="general.js"></script>
-  <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
 <?php include 'module-head.php'; ?>
-<h1>Send an anonymous message to a postilotta inbox</h1>
+<h1><?php echo $ln['header'];?></h1>
 <div class="txt">
   <form id="theForm">
-    <div class="capture">Inbox:</div><br>
+    <div class="capture"><?php echo $ln['inbox'];?></div><br>
     <input type="text" name="p_to" id="p_to" list="adds"  autocomplete="on" size="20" onchange="adrSelect(this);">#postilotta.org
     <img id="adr-typ" src="">
     <div class="tooltip">
@@ -27,28 +28,25 @@
     <datalist id="adds">
     </datalist>
     <br><br>
-    <div class="capture">Message:</div><br>
+    <div class="capture"><?php echo $ln['message'];?></div><br>
     <textarea name="p_text" id="p_text" cols=="45" rows="10"></textarea>
     <br><br>
-    <div class="capture">Attachment:</div> <div id="attReady"></div>
+    <div class="capture"><?php echo $ln['attach'];?></div> <div id="attReady"></div>
     <input type="file" class="button" id="attach" size="50" onchange="upAttach()"><br>
     <br>
-    <div class="capture">Security Check:</div><br>
+    <div class="capture"><?php echo $ln['security'];?></div><br>
     <img src="pics/captcha_demo.png" alt="captcha"><br>
     <input type="text" id="p_cap" size="10">
     <br>
     <br>
-    When you hit the submit button, the following things will happen:
+    <?php echo $ln['hit'];?>
     <ul>
-      <li>The message will be encrypted immediately and transferred as cipher data to the recipients inbox. His/her key will be the only way to decrypt it.</li>
-      <li>A key-file will be generated for you, which will be the only way to decrypt the response, if the recipient replies to your message.</li>
-      <li>A link (URL) will be generated and displayed, which will be the location a response can be accessed, if - you guessed it - the recipient replies to your message.</li>
-      <li>Both messages will expire 120 hours after sending and deleted automatically without any recovery option.</li>
+      <?php echo $ln['list'];?>
     </ul>
-    Make sure you keep key-file and link safe and secure.
+    <?php echo $ln['sure'];?>
     <p id="ios-info"></p>
-    <div style="color:red"><p>You noticed that this service is not yet in productive use, right?</p></div>
-    <button type="button" id="send" class="button" onclick="prepReply(i_to.value, i_c.value)">Submit</button>
+    <div style="color:red"><p><?php echo $ln['non-prod'];?></p></div>
+    <button type="button" id="send" class="button" onclick="prepReply(i_to.value, i_c.value)"><?php echo $ln['submit'];?></button>
   </form>
   <br>
   <p id="out"></p>
@@ -65,7 +63,7 @@
   clearSessionSoft(); // paranoia vars excluded
   checkParaOn();      // Paranoia mode
   getToList();
-  checkLang();
+  checkLang();        // Prepare for multilanguage
   // iOS user info
   var os = getOS();
   if (os === 'iOS'){

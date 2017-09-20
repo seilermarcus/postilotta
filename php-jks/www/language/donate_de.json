@@ -1,0 +1,18 @@
+{
+  "lang"    : "de",
+
+  "header"  : "Spenden",
+  "free"    : "postilotta ist für jederman kostenlos.",
+  "text"    : "Wenn Dir gefällt was wir tun, oder wenn Du sogar einen Nutzen von unserer Arbeit hast, würden wir uns über Deine Unterstützung freuen.<br> Natürlich ohne jegliche Verbindung zu einem Postfach oder einer Nachricht.",
+  "regular" : "Ganz besonders helfen uns regelmäßige Spänden dabei, die Plattform am laufen zu halten.<br><br>",
+  "better" : "<b>Oder noch besser:</b> Vieleicht möchtest Du <a href='premium.php'><u>postilotta premium</u></a> nutzen, um uns zu unterstützen und dabei gleichzeitig das Beste aus postilotta heraus zu holen.",
+
+  "sendto"  : "Senden",
+  "login"   : "Anmelden",
+  "signup"  : "Registrieren",
+  "premium" : "Premium",
+  "contact" : "Kontakt",
+  "donate"  : "Spenden",
+  "extrasecure" : "ExtraSecure"
+
+}

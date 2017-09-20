@@ -1,0 +1,13 @@
+{
+  "lang"    : "de",
+
+  "inbox"    : "Postfach:",
+  "message"  : "Nachricht:",
+  "attach"   : "Anhang:",
+  "security" : "Sicherheitsprüfung:",
+  "hit"      : "Wenn du auf 'Los' klickst, passiert folgendes:",
+  "list"     : "<li>Die Nachricht wird sofort verschlüsselt. Der Schlüssel des Empfängers ist die einzige Möglichkeit die Nachricht zu entschlüsseln.</li><li>Die Nachricht wird mit Deinem Schlüssel signiert, sodass der Empfänger sicher sein kann von wem die Nachricht stammt. (coming soon for premium).</li><li>Die Nachricht wird chiffriert an das Postfach des Empfängers übertragen.</li><li>Die Nachricht läuft nach 120 Stunden (bzw. dem Wert aus den Postfach-Einstellungen) ab und wird, ohne die Möglichkeit auf Wiederherstellung, automatisch gelöscht.</li>",
+  "submit"   : "Los",
+
+  "tt_idv"  : "The identity of the responsible person as well as permissions needed to represent related entities have been checked and verified."
+}

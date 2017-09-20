@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+<?php include './inc/language-prep.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,16 +7,13 @@
   <link rel="stylesheet" type="text/css" href="./inc/style.css" />
   <!-- postilotta core -->
   <script src="general.js"></script>
-  <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
 <?php include 'module-head.php'; ?>
-<h1>Donate</h1>
+<h1><?php echo $ln['header'];?></h1>
 <div class="txt">
-  <p>postilotta is free for everyone.</p>
-  <p>
-    If you like what we do, and even more if you have a benefit from it, consider supporting us by donating.<br>
-    Of course without any association to an inbox or send message.
+  <p><?php echo $ln['free'];?></p>
+  <p><?php echo $ln['text'];?>
     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
       <input type="hidden" name="cmd" value="_s-xclick">
       <input type="hidden" name="hosted_button_id" value="9KW3ZCF2H35HE">
@@ -23,8 +22,8 @@
     </form>
   </p>
   <p>
-    Especially donations on a regular basis make it much easier to keep the platform up.<br><br>
-    <b>Or even better:</b> consider <a href="premium.php"><u>postilotta premium</u></a> as a great way for giving and getting the best out of it.
+    <?php echo $ln['regular'];?>
+    <?php echo $ln['better'];?>
   </p>
 </div>
 <?php include 'module-banner-small.php'; ?>
@@ -34,6 +33,7 @@
   document.getElementById('mn-li-donate').className += " active";
   clearSessionSoft(); // paranoia vars excluded
   checkParaOn();      // Paranoia mode
+  checkLang();        // Prepare for multilanguage
 </script>
 </body>
 </html>

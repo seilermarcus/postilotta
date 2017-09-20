@@ -1,6 +1,11 @@
 {
   "lang"    : "en",
 
+  "header"    : "Inbox",
+  "cap_inbox" : "Inbox:",
+  "cap_pas"   : "Password:",
+  "submit"    : "Submit",
+
   "tt_idv"  : "The identity of the responsible person as well as permissions needed to represent related entities have been checked and verified.",
 
   "sendto"  : "SendTo",

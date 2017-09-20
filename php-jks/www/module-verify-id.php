@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php include './inc/language-prep.php'; ?>
 A more sophisticated verification process coming soon. But for now:<br>
 <br>

@@ -1,6 +1,8 @@
 {
   "lang"    : "en",
 
+  "header" : "Contact",
+
   "sendto"  : "SendTo",
   "login"   : "LogIn",
   "signup"  : "SignUp",
