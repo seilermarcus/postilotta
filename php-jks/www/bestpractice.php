@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php include './inc/language-prep.php'; ?>
 <!DOCTYPE html>
 <html>

@@ -657,7 +657,7 @@ function loadSendForm(){
   //Send msg state change request to server
   xhttp.open('POST', 'module-send-form.php', true);
   xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-  xhttp.send();
+  xhttp.send("lang="+sessionStorage.selectedLang);
 }
 
 
@@ -805,6 +805,9 @@ function getOS() {
 function con(target, params, callback, enc, ctype){
   var xhttp = new XMLHttpRequest();
   var paramStr = '';
+  if (sessionStorage.selectedLang != undefined){
+    params['lang'] = sessionStorage.selectedLang;
+  }
   if (!ctype){
     ctype = 'application/x-www-form-urlencoded';
   }
@@ -814,12 +817,12 @@ function con(target, params, callback, enc, ctype){
     if (this.readyState == 4 && this.status == 200) {
       if (callback){
         var resp = this.responseText;
-//        console.log('RESPONSE (raw): ' + JSON.stringify(resp));
+        console.log('RESPONSE (raw): ' + JSON.stringify(resp));
 
         //decode if paranoia
         if((sessionStorage.paranoiaLink != undefined) && (sessionStorage.paranoiaLink != 'undefined')){
           resp = decrytParaResp(resp);
-//          console.log('RESPONSE (dec): ' + JSON.stringify(resp));
+          console.log('RESPONSE (dec): ' + JSON.stringify(resp));
         }
 
         resp = JSON.parse(resp);
@@ -852,7 +855,7 @@ function con(target, params, callback, enc, ctype){
   paramStr = paramStr.slice(0,paramStr.length -1);
   }
 
-//  console.log('REQUEST:' + target + '?' + paramStr);
+  console.log('REQUEST:' + target + '?' + paramStr);
 
   //Send msg state change request to server
   xhttp.open("POST", target, true);
@@ -985,9 +988,13 @@ function encryParaReq(req){
 function clearSessionSoft(){
   var tmp = sessionStorage.paranoiaPWD;
   var tmpLink = sessionStorage.paranoiaLink;
+  var lang = sessionStorage.selectedLang;
+  var ln = sessionStorage.ln;
   sessionStorage.clear();
   sessionStorage.paranoiaPWD = tmp;
   sessionStorage.paranoiaLink = tmpLink;
+  sessionStorage.selectedLang = lang;
+  sessionStorage.ln = ln;
 }
 
 
@@ -1136,7 +1143,7 @@ function loadSettings(){
   //Send msg state change request to server
   xhttp.open('POST', 'module-inbox-settings.php', true);
   xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-  xhttp.send();
+  xhttp.send("lang="+sessionStorage.selectedLang);
 }
 
 /**
@@ -1197,7 +1204,7 @@ function loadVerify(){
   //Send msg state change request to server
   xhttp.open('POST', 'module-verify-id.php', true);
   xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-  xhttp.send();
+  xhttp.send("lang="+sessionStorage.selectedLang);
 }
 
 /**
@@ -1235,14 +1242,30 @@ function checkVerified() {
  * Prepare clientside use of localised lables.
  */
 function checkLang(){
-
-  if (sessionStorage.ln !== undefined) {return}
-
-  var lang = sessionStorage.lang;
-  if(lang === undefined){
-   lang = navigator.language;
+  // Set language to selected or default
+//  var lang = sessionStorage.selectedLang;
+  var lang = document.getElementById('p_lang').value;
+  if(lang == 'undefined'){
+    lang = navigator.language;
+//    sessionStorage.selectedLang = lang;
   }
+  //document.getElementById('o_ln_' + lang).selected = true;
+
+  // Load language file if not already here
+  if (sessionStorage.ln == 'undefined') {
+    setLang(lang);
+  }
+}
+
+/**
+ * Change language on new selection
+ */
+function changeLang(th){
+  var lang = th.value;
   setLang(lang);
+  var target = window.location.href.replace(/\?lang=.{2}/gi, '');
+  target += '?lang=' + lang;
+  window.location.assign(target);
 }
 
 /**
@@ -1256,12 +1279,10 @@ function setLang(lang, cb){
       if (this.status == 200){
         sessionStorage.ln = this.responseText;
       }else{
-        sessionStorage.lang = 'en';
         setLang('en');
        }
     }
   };
-
   //Send msg state change request to server
   xhttp.open('POST', 'language/general_' + lang + '.json', true);
   xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');

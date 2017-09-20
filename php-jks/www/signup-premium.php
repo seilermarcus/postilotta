@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+<?php include './inc/language-prep.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,69 +10,68 @@
   <script src="./cryptojs/enc-base64-min.js"></script>
   <script src="general.js"></script>
   <script src="https://www.paypalobjects.com/api/checkout.js"></script>
-  <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
 <?php include 'module-head.php'; ?>
-<h1>Get Your postilotta Premium Inbox</h1>
+<h1><?php echo $ln['header'];?></h1>
 <div class="txt">
   <form id="theForm">
-    <div class="capture">Desired Inbox Address:</div><br>
+    <div class="capture"><?php echo $ln['inbox'];?></div><br>
     <input type="text" id="p_name" size="30">#postilotta.org
+    <img id="adr-typ" src="./pics/premium_25.png">
     <br><br>
-    <div class="capture">Login Password:</div><br>
+    <div class="capture"><?php echo $ln['pass'];?></div><br>
     <input type="password" id="p_pwd" size="20">
     <br><br>
-    <div class="capture">Confirm Password:</div><br>
+    <div class="capture"><?php echo $ln['confirm'];?></div><br>
     <input type="password" id="p_pwd2" size="20" onchange='checkPWDConf();'>  <span id='notConf'></span>
     <br><br>
-    <div class="capture">E-Mail</div> (optional, if you want to get notified about new messages):<br>
+    <div class="capture"><?php echo $ln['email'];?></div> <?php echo $ln['optional'];?><br>
     <input type="email" id="p_mail" size="40"><br>
     <br>
 <hr>
     <div>
       <input type="checkbox" id="p_visible" name="p_visible" value="1" checked>
-      <label for="visible"><div class="capture">Visible</div> (e.g. in dropdown list and autocompletion on send form. You can change it anytime after login.)</label>
+      <label for="visible"><div class="capture"><?php echo $ln['visible'];?></div> <?php echo $ln['vis_explain'];?></label>
     </div>
     <br>
     <div>
       <input type="checkbox" id="p_agb" name="p_agb" value="1">
-      <label for="agb">I agree with postilotta's <u><a href="terms.php">Terms</a></u> and <u><a href="privacy.php">Privacy Policy</a></u></label>
+      <label for="agb"><?php echo $ln['agb'];?></label>
     </div>
     <br>
     <hr>
-    <div class="capture">Payment &amp; Price</div><br>
+    <div class="capture"><?php echo $ln['pay_header'];?></div><br>
     <br>
-    Make a suggestion you want to pay.<br>
-    Considere your financial means and expected benefit, e.g. somewhat between 1 and 100 €.<br>
-    <input type="number" id="p_price" size="10"> EUR per month
+    <?php echo $ln['suggest'];?>
+    <br>
+    <input type="number" id="p_price" size="10"><?php echo $ln['eur'];?>
     <br><br>
-    We don't care who or how. Just make sure there are credit entries refering to your inbox name or id (?) in reason for transfer.<br>
-
-    <input type="radio" id="r_paypal" name="p_pay" value="paypal" onchange='displayPaypalInfo();'> PayPal<br>
-      <div id="inf-pal" style="display: none;" class="inf"><p>Great choice. For your convenience a PayPal 'PayNow-Button' will be displayed after you hit submit.</p></div>
-    <input type="radio" id="r_bank" name="p_pay" value="bank" onchange='displayBankInfo();'> Bank Transfer<br>
-      <div id="inf-bank" style="display: none;" class="inf"><p>IBAN:.... BIC:...</p></div>
-    <input type="radio" id="r_others" name="p_pay" value="others" onchange='displayOthersInfo();'> Others<br>
-      <div id="inf-others" style="display: none;" class="inf"><p>O.k. You do it your way.</p></div>
+    <?php echo $ln['care'];?><br>
     <br>
-    Further payment options coming soon.<br>
+    <input type="radio" id="r_paypal" name="p_pay" value="paypal" onchange='displayPaypalInfo();'> <?php echo $ln['paypal'];?><br>
+      <div id="inf-pal" style="display: none;" class="inf"><p><?php echo $ln['paypal_sel'];?></p></div>
+    <input type="radio" id="r_bank" name="p_pay" value="bank" onchange='displayBankInfo();'> <?php echo $ln['bank'];?><br>
+      <div id="inf-bank" style="display: none;" class="inf"><p><?php echo $ln['bank_sel'];?></p></div>
+    <input type="radio" id="r_others" name="p_pay" value="others" onchange='displayOthersInfo();'> <?php echo $ln['other'];?><br>
+      <div id="inf-others" style="display: none;" class="inf"><p><?php echo $ln['other_sel'];?></p></div>
     <br>
+    <?php echo $ln['soon'];?>
+    <br><br>
     <hr>
-    When you hit the submit button (and the name isn't already taken), the following things will happen:
+    <?php echo $ln['hit'];?>
     <ul>
-      <li>Your new postilotta premium inbox will be created and immediately available for incoming messages.</li>
-      <li>A key file will be generated for you, which will be the only way to decrypt messages send to your inbox.</li>
+      <?php echo $ln['list'];?>
     </ul>
-    So make sure you keep your password and key-file safe and secure.
+    <?php echo $ln['sure'];?>
     <br>
     <p id="ios-info"></p>
-    <div style="color:red"><p>You noticed that this service is not yet in productive use, right?</p></div>
-    <button type="button" class="button" onclick="signSubmit(iname.value, ipwd.value, ipmail.value, ivisi.checked, iagb.checked, ipay.value, iprice.value, 'premium', 0)">Submit</button>
+    <div style="color:red"><p><?php echo $ln['non-prod'];?></p></div>
+    <button type="button" class="button" onclick="signSubmit(iname.value, ipwd.value, ipmail.value, ivisi.checked, iagb.checked, ipay.value, iprice.value, 'premium', 0)"><?php echo $ln['submit'];?></button>
   </form>
 
   <p id="inf" class="inf"></p>
-  <p id="err" class="err"></p><br>
+  <p id="err" class="err"></p>
   <p id="out"></p>
 
   <form id="paypal_button" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" style="display:none;"><!-- TODO from settings -->
@@ -101,10 +102,7 @@
   var os = getOS(); // TODO move to general.js into a single checkOS()
   if (os === 'iOS'){
     document.getElementById('ios-info').style.color = "#0000ff"; //blue
-    document.getElementById('ios-info').innerHTML = '&#63743; ATTENTION: On an Apple mobile device, please make sure:<ul>'
-                      + '<li>the popup function in your browser settings is enabled</li>'
-                      + '<li>you have a storage ready to save the key-file to (e.g. iCloud Drive, Dropbox, GoogleDrive...)</li></ul>'
-                      + 'When the key-file download opens up in a new tap, store it as a file in the location of your choice and close the tap afterwards.';
+    document.getElementById('ios-info').innerHTML = '<?php echo $ln['apple'];?>';
 
   }
     var iname = document.forms["theForm"]["p_name"];

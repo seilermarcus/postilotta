@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+<?php include './inc/language-prep.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,11 +7,10 @@
   <link rel="stylesheet" type="text/css" href="./inc/style.css" />
   <!-- postilotta core -->
   <script src="general.js"></script>
-  <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
 <?php include 'module-head.php'; ?>
-<h1>Contact</h1>
+<h1><?php echo $ln['header'];?></h1>
 <hr>
 <h2>Report Misuse</h2>
 <div class="txt">
@@ -31,6 +32,7 @@ Inbox: <a href="send.php?p_to=misuse"><u>misuse#postilotta.com</u></a><br>
 <div class="txt">
 email: info@postilotta.com<br>
 inbox: info#postilotta.com<br>
+<br>
 </div>
 <?php include 'module-banner-small.php'; ?>
 <?php include 'module-footer.php'; ?>

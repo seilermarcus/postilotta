@@ -1,0 +1,33 @@
+{
+  "lang"    : "de",
+
+  "header"       : "Eigenes postilotta Postfach anlegen",
+  "inbox"        : "Gewünschter Postfach Name:",
+  "pass"         : "Login Passwort:",
+  "confirm"      : "Passwort erneut eingeben:",
+  "email"        : "E-Mail",
+  "optional"     : "(Optional. Falls Du über eingehende Nachrichten informiert werden möchtest):",
+  "visible"      : "Sichtbar",
+  "vis_explain"  : "(z.B. in Dropdown-Liste und Autovervollständigung beim Senden von Nachrichten. Kann nach dem Login in den Einstellungen jederzeit geändert werden.)",
+  "testbox"      : "Test Postfach",
+  "test_explain" : "(Für Generalproben und Testläufe, wird nach 48 Stunden automatisch gelöscht.)",
+  "agb"          : "Ich stimme den <u><a href='terms.php'>AGBs</a></u> von postilotta zu.",
+  "hit"          : "Wenn Du auf 'Los' klickst (und der Name noch nicht vergeben ist), passiert follgendes:",
+  "list"         : "<li>Dein neues postilotta Postfach wird angelegt und steht sofort für eingehende Nachrichten bereit.</li><li>Es wird eine Schlüssel-Datei für Dich generiert. Nachrichten, die an Dein Postfach gesendet werden, können ausschließlich hiermit entschlüsselt werden.</li>",
+  "sure"         : "Also beware die Schlüssel-Datei sicher auf.",
+  "non-prod"     : "Dir ist aufgefallen, dass dieser Dienst noch nicht offiziell in Betrieb ist, ja?",
+  "submit"       : "Los",
+
+  "apple"    : "&#63743; ATTENTION: On an Apple mobile device, please make sure:<ul><li>the popup function in your browser settings is enabled</li><li>you have a storage ready to save the key-file to (e.g. iCloud Drive, Dropbox, GoogleDrive...)</li></ul>When the key-file download opens up in a new tap, store it as a file in the location of your choice and close the tap afterwards.",
+  "no_match" : "Stimmt nicht überein.",
+
+  "sendto"  : "Senden",
+  "login"   : "Anmelden",
+
+  "signup"  : "Registrieren",
+  "premium" : "Premium",
+  "contact" : "Kontakt",
+  "donate"  : "Spenden",
+  "extrasecure" : "ExtraSecure"
+
+}

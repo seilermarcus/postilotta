@@ -1,0 +1,22 @@
+{
+  "lang"    : "de",
+
+  "hello"   : "Willkommen!",
+
+  "fetchmsgs"    : "Posteingang",
+  "loadsendform" : "Neue Nachricht",
+  "logout"       : "Abmelden",
+  "confirmblow"  : "Postfach Löschen",
+  "loadsettings" : "Einstellungen",
+
+  "tt_idv"  : "The identity of the responsible person as well as permissions needed to represent related entities have been checked and verified.",
+
+  "sendto"  : "Senden",
+  "login"   : "Anmelden",
+  "signup"  : "Registrieren",
+  "premium" : "Premium",
+  "contact" : "Kontakt",
+  "donate"  : "Spenden",
+  "extrasecure" : "ExtraSecure"
+
+}

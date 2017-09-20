@@ -1,7 +1,21 @@
 {
-  "lang"    : "en",
+  "lang"     : "en",
 
-  "tt_idv"  : "The identity of the responsible person as well as permissions needed to represent related entities have been checked and verified.", 
+  "header"   : "Send an anonymous message to a postilotta inbox",
+  "inbox"    : "Inbox:",
+  "message"  : "Message:",
+  "attach"   : "Attachment:",
+  "security" : "Security Check:",
+  "hit"      : "When you hit the submit button, the following things will happen:",
+  "list"     : "<li>The message will be encrypted immediately and transferred as cipher data to the recipients inbox. His/her key will be the only way to decrypt it.</li><li>A key-file will be generated for you, which will be the only way to decrypt the response, if the recipient replies to your message.</li><li>A link (URL) will be generated and displayed, which will be the location a response can be accessed, if - you guessed it - the recipient replies to your message.</li><li>Both messages will expire 120 hours after sending and deleted automatically without any recovery option.</li>",
+  "sure"     : "Make sure you keep key-file and link safe and secure.",
+  "non-prod" : "You noticed that this service is not yet in productive use, right?",
+  "submit"   : "Submit",
+
+
+
+
+  "tt_idv"  : "The identity of the responsible person as well as permissions needed to represent related entities have been checked and verified.",
 
   "sendto"  : "SendTo",
   "login"   : "LogIn",

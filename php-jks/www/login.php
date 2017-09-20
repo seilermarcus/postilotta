@@ -1,4 +1,5 @@
 <?php session_start(); ?>
+<?php include './inc/language-prep.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,18 +12,17 @@
   <script src="./cryptojs/enc-base64-min.js"></script>
   <!-- postilotta core -->
   <script src="general.js"></script>
-  <?php include './inc/language-prep.php'; ?>
 </head>
 <body>
 <?php include 'module-head.php'; ?>
   </ul>
-<h1 id="p_h2">Inbox</h1>
+<h1 id="p_h2"><?php echo $ln['header'];?></h1>
 <div class="txt">
   <p id="out"></p>
   <p id="inf" class="inf"></p>
   <p id="err" class="err"></p>
   <form id="theForm">
-    <div class="capture">Inbox:</div><br>
+    <div class="capture"><?php echo $ln['cap_inbox'];?></div><br>
     <input type="text" name="p_to" id="p_to" list="adds" autocomplete="on" size="20" onchange="adrSelect(this);">#postilotta.org
     <img id="adr-typ" src="">
     <div class="tooltip">
@@ -33,10 +33,10 @@
     </datalist>
     <br>
     <br>
-    <div class="capture">Password:</div><br>
+    <div class="capture"><?php echo $ln['cap_pas'];?></div><br>
     <input type="password" id="p_pwd" size="20">
     <br><br>
-    <button type="button" class="button" onclick="loginSubmit(iname.value, ipwd.value)">Submit</button>
+    <button type="button" class="button" onclick="loginSubmit(iname.value, ipwd.value)"><?php echo $ln['submit'];?></button>
   </form>
 </div>
 
