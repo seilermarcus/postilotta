@@ -1,0 +1,30 @@
+{
+  "lang"   : "en",
+
+  "att_oversize" : "For now file size is limited to max. 5 MB.",
+  "watchword" : "Watchword",
+  "aesactive" : "AES session encryption activated.<br>Use navigation bar above or replace url by reply-link to proceed.",
+  "noaes"     : "Unable to decrypt watchword package.<br> Activating paranoia mode failed.<br>Are you sure about the passphrase?<br>Consider starting over.",
+  "extraoff"  : "Turn ExtraSecure Off",
+  "access"    : "Activation-Link:",
+  "state"     : "State",
+  "statevalue" : {
+                "NEW"     : "New",
+                "READ"    : "Read",
+                "REPLYED" : "Replyed"
+  },
+  "delmsg"    : "Delete Message",
+  "msgid"     : "Message ID",
+  "msgrec"    : "Received (UTC+0)",
+  "keyselect" : "Please select your key file to decode the message content",
+  "from"      : "From",
+  "msg"       : "Message",
+  "attach"    : "Attachment",
+  "reply"     : "Reply",
+  "decfailed" : "Decryption failed.",
+  "send"      : "Submit",
+  "notyet"    : "No response available (yet).",
+  "nomsgs"    : "No messages.",
+  "delsuccess": "Message deleted.",
+  "delfail"   : "Action failed:"
+}

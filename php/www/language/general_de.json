@@ -1,0 +1,30 @@
+{
+  "lang"   : "de",
+
+  "att_oversize" : "Aktuell ist die Dateigröße noch auf 5 MB begrenzt.",
+  "watchword" : "Parole",
+  "aesactive" : "AES-Verschlüsselung aktiviert.<br>Nutze obige Navigationsleiste oder gib einen Antwort-Link ins URL-Feld des Browsers ein um fortzufahren.",
+  "noaes"     : "Die Aktivierung des ExtraSecure-Modus ist fehlgeschlagen.<br>Die Parole kann nicht entschlüsselt werden.<br>Ist das Passwort korrekt eingegeben?<br>Ziehe in Betracht den Vorgang abzubrechen.",
+  "extraoff"  : "ExtraSecure AUSSCHALTEN",
+  "access"    : "ExctaSecure Aktivierung-Link:",
+  "state"     : "Status",
+  "statevalue" : {
+                "NEW"     : "Neu",
+                "READ"    : "Gelesen",
+                "REPLYED" : "Beantwortet"
+  },
+  "delmsg"    : "Nachricht löschen",
+  "msgid"     : "Nachrichten-ID",
+  "msgrec"    : "Empfangen (UTC+0)",
+  "keyselect" : "Bitte wähle Deine Schlüssel-Datei zur Entschlüsselung der Nachricht",
+  "from"      : "Absender",
+  "msg"       : "Nachricht",
+  "attach"    : "Anhang",
+  "reply"     : "Antworten",
+  "decfailed" : "Dekodierung fehlgeschlagen.",
+  "send"      : "Absenden",
+  "notyet"    : "(Noch) keine Antwort vorfügbar.",
+  "nomsgs"    : "Keine Nachrichten",
+  "delsuccess": "Nachricht gelöscht.",
+  "delfail"   : "Löschen fehlgeschlagen:"
+}

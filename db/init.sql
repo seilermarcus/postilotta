@@ -11,6 +11,7 @@ CREATE TABLE Message (
     ReturnLink VARCHAR(255),
     Expire DATETIME
 );
+
 CREATE TABLE Inbox (
     BoxID INT PRIMARY KEY,
     Address VARCHAR (255) UNIQUE,
@@ -27,19 +28,28 @@ CREATE TABLE Inbox (
     Info VARCHAR(255)
 
 );
+
 CREATE TABLE Paranoia (
     PLink VARCHAR (255) PRIMARY KEY,
     Passphrase VARCHAR (255),
     Watchword VARCHAR (255),
-    Time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    Expire TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+
 CREATE EVENT MessageExpire
     ON SCHEDULE EVERY 1 HOUR
-    COMMENT 'Deletes expired medssages.'
+    COMMENT 'Deletes expired messages.'
     DO
-      DELETE FROM Message WHERE Expire <= NOW();
+      DELETE FROM Message WHERE Expire <= UTC_TIMESTAMP();
+
+CREATE EVENT ParanoiaExpire
+    ON SCHEDULE EVERY 1 HOUR
+    COMMENT 'Deletes expired ExtraSecure Sessions.'
+    DO
+      DELETE FROM Paranoia WHERE Expire <= UTC_TIMESTAMP();
 
 CREATE VIEW v_Msg AS SELECT MsgID, Recipient, Date, State, Expire FROM Message;
 CREATE VIEW v_Inb AS SELECT Address, EMail, Visible, Type, Payment, Price, PaidUntil, MsgLife, IdVerified, Info FROM Inbox;
 
 SET GLOBAL event_scheduler = ON;
+SET GLOBAL time_zone = '+00:00';

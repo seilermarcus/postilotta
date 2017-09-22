@@ -1,0 +1,14 @@
+{
+  "lang"    : "en",
+
+  "header" : "Anonymous Reply",
+
+  "sendto"  : "SendTo",
+  "login"   : "LogIn",
+  "signup"  : "SignUp",
+  "premium" : "Premium",
+  "contact" : "Contact",
+  "donate"  : "Donate",
+  "extrasecure" : "ExtraSecure"
+
+}

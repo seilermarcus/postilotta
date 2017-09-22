@@ -1,0 +1,16 @@
+{
+  "lang"    : "de",
+
+  "header" : "ExtraSecure Aktivierung",
+  "passphrase" : "Passwort:",
+  "enter"   : "Enter",
+
+  "sendto"  : "Senden",
+  "login"   : "Anmelden",
+  "signup"  : "Registrieren",
+  "premium" : "Premium",
+  "contact" : "Kontakt",
+  "donate"  : "Spenden",
+  "extrasecure" : "ExtraSecure"
+
+}

@@ -1,0 +1,20 @@
+{
+  "lang"    : "en",
+
+  "header"  : "ExtraSecure Mode",
+  "text"    : "Using postilotta and a non-compromised device already makes your messages secure as hell.<br>However, if you have very sensitive content to transmit and the suspicion to be at special risk (e.g. man-in-the-middle is already watching): Let's add an extra independent AES encryption layer (used by governments for top secret purpose).<br><br>We recommend doing this as follows:",
+  "list"    : "<li>Type in a passphrase and watchword below.</li><li>Get the generated backdoor-link (e.g. via QR-Code).</li><li>Use another device at another access point and visit the activation-link within 48h.</li><li>Type in your passphrase and if the site can respond with the watchword, the additional security layer has been established.</li>",
+  "ifnot"   : "If the site does not answer correctly, something not-trustworthy had happened and you should not proceed and start over the ExtraSecure activation process.",
+  "pass"    : "Passphrase:",
+  "watch"   : "Watchword:",
+  "submit"  : "Submit",
+
+  "sendto"  : "SendTo",
+  "login"   : "LogIn",
+  "signup"  : "SignUp",
+  "premium" : "Premium",
+  "contact" : "Contact",
+  "donate"  : "Donate",
+  "extrasecure" : "ExtraSecure"
+
+}
