@@ -1,0 +1,346 @@
+<!--body {margin: 0;} -->
+
+h1 {
+  padding: 0 16px;
+  font-family: Arial;
+}
+
+h2 {
+  padding: 0 16px;
+  font-family: Arial;
+}
+
+h3 {
+  padding: 0 16px;
+  font-family: Arial;
+}
+
+a:link {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: underline;
+    color: inherit;
+}
+
+.capture {
+  font-family: Arial;
+  font-size: 18px;
+  font-weight: bold;
+  display: inline;
+}
+
+input {
+ font-size: 16px;
+}
+.setselect {
+  font-size: 16px;
+}
+
+.setselect select {
+  font-size: 16px;
+}
+
+.topcorner {
+ }
+
+.lang {
+  position:absolute;
+  top:0;
+  right:0;
+  font-size: 14px;
+  font-family: Arial;
+  color: #A4A4A4;
+  padding-right:5px;
+  padding-top:5px;
+  display:inline;
+}
+
+textarea {
+  font-size: 16px;
+  width: 95%;
+}
+
+.txt {
+  padding:0 16px 0 16px;
+  font-size: 20px;
+  font-family: serif;
+}
+
+.ban p{
+  background: #BDBDBD;
+  padding:10px 16px 10px 16px;
+  align-items: center;
+  -webkit-align-items: center; /* Safari 7.0+ */
+  align-items: center;
+/*  display: flex; */
+/*  justify-content: space-between;*/
+}
+.ban a {
+  padding: 15px 10px 15px 10px;
+  display: inline-block;
+}
+
+.bansmall-bord {
+  background: #585858;
+  padding:5px 5px 5px 5px;
+  align-items: center;
+  -webkit-align-items: center; /* Safari 7.0+ */
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+.bansmall a {
+  padding: 5px 10px 5px 10px;
+  display: inline-block;
+}
+
+
+.foot {
+  padding:0 16px;
+  font-size: 16px;
+  font-family: Arial;
+  color: #A4A4A4;
+}
+
+.para {
+  background-color: black;
+  color: #A4A4A4;
+}
+
+.err {
+  color:#ff0000;
+}
+
+.inf {
+  color:#0080FF;
+}
+
+.button {
+/*    background-color: #D7DF01;  dark yellow */
+    background-color: #ecd201; /* logo yellow */
+    border: none;
+    color: black;
+    padding: 5px 32px 5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: Arial;
+    cursor: pointer;
+/*    margin: 5px;*/
+/*    display: inline-block;
+    float: left; */
+}
+
+.butonfrm {
+    border: 2px solid #ecd201; /* logo yellow */
+    background-color: white;
+    color: #ecd201; /* logo yellow */
+    padding: 5px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: Arial;
+    cursor: pointer;
+/*    margin: 5px;*/
+ }
+
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family: Arial;
+    font-size: 16px;
+}
+
+ul.topnav li a:hover:not(.active) {
+ background-color: #111;
+}
+
+ul.topnav li a.active {
+  background-color: #ecd201; /* logo yellow */
+  color: #000000;
+}
+
+ul.topnav li a.paraoff {
+  /*background-color: black;*/
+  color: #6495ED;
+  /*color: #A4F2F3; ice*/
+  /*color: hotpink;*/
+}
+
+
+ul.topnav li.right {float: right;}
+
+/*-- Top Nav Large--*/
+.show-small{display:none;}
+.show{display:block!important;}
+.hide-large{display:none;}
+
+@media screen and (max-width: 400px){
+    ul.topnav li.right,
+    ul.topnav li {float: none;}
+
+    .hide-small{display:none!important;}
+    .show-small{display:block!important;}
+}
+
+ul.toolbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+ul.toolbar li {float: left;}
+
+.tbitem {
+    display: block;
+    color: #ecd201;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family: Arial;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.tbitem:hover:not(.active) {
+ background-color: #111;
+}
+
+.tbitem.active {
+  background-color: #ecd201; /* logo yellow */
+  color: #000000;
+}
+
+.set td {
+  vertical-align: top;
+  text-align: left;
+  padding: 7px;
+}
+
+table.indx {
+  border-collapse:collapse;
+  border-spacing:0;
+  width:100%;
+  display:table;
+}
+
+.indx tr {
+  border-bottom:1px solid #ddd;
+
+}
+/*
+tr:nth-child(even){
+  background-color: #D8D8D8;
+}*/
+
+table.msglst {
+    border-collapse: collapse;
+/*   border-spacing: 15px;*/
+}
+
+th.msglst, td.msglst {
+    padding: 8px;
+    text-align: left;
+    border-top: 1px solid #ddd;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+tr.msglst:hover{
+ background:#D8D8D8;
+}
+
+div.msg {
+  background-color:#D8D8D8;
+  min-height:200px;
+  width:auto;
+  padding:20px;
+/*  overflow-y: auto;*/
+}
+
+div.att {
+  background-color:#D8D8D8;
+  width:auto;
+  padding:20px;
+  overflow-x: scroll;
+}
+
+.term td {
+  vertical-align: top;
+  text-align: left;
+  padding: 5px;
+}
+
+.hide{display:none;}
+
+@media only screen and (min-width: 400px) {
+    div.msg {
+      min-width:320px;
+      display:inline-block;
+      /*max-width:400px;*/
+    }
+
+    div.att {
+      min-width:320px;
+      display:inline-block;
+    }
+    textarea {
+      width: 360px;
+    }
+}
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+/*    border-bottom: 1px dotted black; If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 5px;
+/*    border-radius: 6px; rounded borders*/
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 105%;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
