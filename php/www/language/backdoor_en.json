@@ -3,7 +3,7 @@
 
   "header" : "ExtraSecure Activation",
   "passphrase" : "Passphrase:",
-  "enter"   : "Enter",
+  "enter"   : "Activate Connection",
 
   "sendto"  : "SendTo",
   "login"   : "LogIn",

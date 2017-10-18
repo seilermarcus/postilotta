@@ -1,13 +1,14 @@
 {
   "lang"    : "en",
 
-  "header" : "postilotta premium",
+  "header"   : "postilotta premium",
   "b_signup" : "SignUp",
-  "learn" : "LearnMore",
-  "free" : "postilotta and its basic features are forever free for everyone.",
-  "offer" : "In addition, we offer <i>postilotta premium</i>, which includes:",
-  "list" : "<li>Identity-verified inbox</li><li>Message signing <i>[under construction]</i></li><li>Own sub domains (like tim#apple.postilotta.org) <i>[under construction]</i></li><li>Premium Support</li><li>Send multiple attachments <i>[under construction]</i></li><li>Reply directly with attachment <i>[under construction]</i></li><li>Folders in inbox <i>[under construction]</i></li><li>Message lifetime definition.</li>",
-  "money" : "Starting at <b>1 € per month</b><br>Money should not stop you from using <i>postilotta premium</i>.<br>So our approach is to agree with you on a monthly fee that fits your financial means and perceived benefit.<br><br>Interessted?",
+  "learn"    : "LearnMore",
+  "free"     : "postilotta's basic functions will always free of charge",
+  "offer"    : "postilotta premium includes:",
+  "list"     : "<li>Identity-verified inbox</li><li>Verified signature option <i>[in development]</i></li><li>User-created sub domains (like tim#apple.postilotta.org) <i>[in development]</i></li><li>Premium Support</li><li>Multiple attachment option <i>[in development]</i></li><li>Reply directly with attachment <i>[under construction]</i></li><li>Folders in inbox <i>[under construction]</i></li><li>Message lifetime definition.</li>",
+  "money"    : "Starting at <b>4 € per month</b><br>If the subscription costs exeed your financial means or your perceived benefit, please contact us.",
+  "interest" : "Interested?",
 
   "sendto"  : "SendTo",
   "login"   : "LogIn",

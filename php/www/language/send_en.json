@@ -1,16 +1,16 @@
 {
   "lang"     : "en",
 
-  "header"   : "Send an anonymous message to a postilotta inbox",
+  "header"   : "Send Anonymous Message",
   "inbox"    : "Inbox:",
   "message"  : "Message:",
   "attach"   : "Attachment:",
   "security" : "Security Check:",
-  "hit"      : "When you hit the submit button, the following things will happen:",
+  "hit"      : "When you hit the button, the following things will happen:",
   "list"     : "<li>The message will be encrypted immediately and transferred as cipher data to the recipients inbox. His/her key will be the only way to decrypt it.</li><li>A key-file will be generated for you, which will be the only way to decrypt the response, if the recipient replies to your message.</li><li>A link (URL) will be generated and displayed, which will be the location a response can be accessed, if - you guessed it - the recipient replies to your message.</li><li>Both messages will expire 120 hours after sending and deleted automatically without any recovery option.</li>",
   "sure"     : "Make sure you keep key-file and link safe and secure.",
   "non-prod" : "You noticed that this service is not yet in productive use, right?",
-  "submit"   : "Submit",
+  "submit"   : "Send Message",
 
 
 

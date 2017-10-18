@@ -1,16 +1,16 @@
 {
   "lang"     : "de",
 
-  "header"   : "Sende eine anonyme Nachricht an ein postilotta Postfach",
+  "header"   : "Anonyme Nachricht Senden",
   "inbox"    : "Postfach:",
   "message"  : "Nachricht:",
   "attach"   : "Anhang:",
   "security" : "Sicherheitsprüfung:",
-  "hit"      : "Wenn Du auf 'Los' klickst, passiert folgendes:",
+  "hit"      : "Wenn Du auf 'Nachricht Senden' klickst, passiert folgendes:",
   "list"     : "<li>Die Nachricht wird sofort verschlüsselt und chiffriert an das Postfach des Empfängers übertragen. Dessen Schlüssel ist die einzige Möglichkeit die Nachricht zu entschlüsseln.</li><li>Für Dich wird eine Schlüssel-Datei generiert. Diese ist die einzige Möglichkeit eine mögliche Antwort des Empfängers auf Deine Nachricht zu entschlüsseln.</li><li> Ein Link (URL) wird generiert, unter dem die Antwort abgerufen werden kann.</li><li>Beide Nachrichten laufen jeweils 120 Stunden nach dem Senden ab und werden automatisch, ohne die Möglichkeit der Wiederherstellung, gelöscht.</li>",
   "sure"     : "Beware die Schlüssel-Datei und den Link sicher auf.",
   "non-prod" : "Dir ist aufgefallen, dass dieser Dienst noch nicht offiziell in Betrieb ist, ja?",
-  "submit"   : "Los",
+  "submit"   : "Nachricht Senden",
 
 
 

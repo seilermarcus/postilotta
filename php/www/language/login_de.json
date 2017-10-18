@@ -2,9 +2,10 @@
   "lang"    : "de",
 
   "header"    : "Postfach",
-  "cap_inbox" : "Postfach Name:",
+  "cap_inbox" : "Name:",
   "cap_pas"   : "Passwort:",
-  "submit"    : "Los",
+  "submit"    : "Anmelden",
+  "pass-forgot" : "Passwort vergessen?",
 
   "tt_idv"    : "The identity of the responsible person as well as permissions needed to represent related entities have been checked and verified.",
 

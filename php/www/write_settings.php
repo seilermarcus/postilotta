@@ -2,6 +2,7 @@
 session_start();
 include 'inc/settings.inc';
 include 'inc/session.php'; // Session check
+include './inc/language-prep.php'; //multilanguage ready
 
 $adr = $_REQUEST["adr"];
 $mail = $_REQUEST["mail"];
@@ -18,7 +19,7 @@ try {
   $sql = "UPDATE Inbox SET Email='". $mail ."', Visible='". $vis ."', MsgLife=". $mlf .", Payment='". $pay ."', Price=". $price .", Password='".$pw ."' WHERE ADDRESS='". $adr ."'";
   // use exec() because no results are returned
   $conn->exec($sql);
-  $arr = array('rcode' => 0, 'msg' => 'Settings successfully updated, becomming effective after re-login.');
+  $arr = array('rcode' => 0, 'msg' => $ln['success']);
   $out = json_encode($arr);
 
 }catch(PDOException $e){

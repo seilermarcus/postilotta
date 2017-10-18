@@ -26,7 +26,7 @@
 
 /**
 * Load attachment in sessionStorage resp. window space
-* File is stored in window.attach, file name in sessionStorage.gFilename ready for encoding
+* File is stored in window.attachfile, file name in sessionStorage.gFilename ready for encoding
 * @return none
 */
  function upAttach(){
@@ -37,9 +37,9 @@
    //Process after file is loaded
    reader.onload = function(e) {
 
-     window.attach = reader.result;
+     window.attachfile = reader.result;
 
-     if (window.attach.length < 7000000){  // less than 5MB
+     if (window.attachfile.length < 7000000){  // less than 5MB
        var fname = document.getElementById('attach').value;
        fname = fname.substring(fname.lastIndexOf('\\') + 1, fname.length);
        sessionStorage.gFilename = fname;
@@ -48,7 +48,7 @@
       } else {
        document.getElementById('inf').innerHTML = '';
        document.getElementById('attReady').innerHTML = '<div style="color:red;">'+ ln['att_oversize'] +'</div>';
-       window.attach = null;
+       window.attachfile = null;
       }
    };
 
@@ -99,7 +99,7 @@ function prepReply(to, c){
 /**
  * Sending Step 2:
  * Encryption and triggering of mTransmission.
- * Pulls attachment out of window.attach.
+ * Pulls attachment out of window.attachfile.
  * Requests recipients pub key from server.
  *
  * @param {string} to - Recipients 'Address'. Just passed through.
@@ -111,13 +111,13 @@ function mEncryption(to, c, rpub, frm) {
   // Pack text and attachment into JSON
   var oc = {
     txt:c,
-    attach:window.attach,
+    attach:window.attachfile,
     fname:sessionStorage.gFilename,
     from:frm
   };
   sessionStorage.gFilename = null;
   var jc = JSON.stringify(oc);
-  window.attach = jc;
+  window.attachfile = jc;
   sessionStorage.to = to;
   sessionStorage.rpub = rpub;
   sessionStorage.frm = frm;
@@ -135,8 +135,8 @@ function mEncryption(to, c, rpub, frm) {
   );
 
   //Encode message
-  var jc = window.attach;
-  window.attach = null;
+  var jc = window.attachfile;
+  window.attachfile = null;
   var ec = sjcl.encrypt(pub, jc);
 
   //Trigger transmission to server
@@ -177,9 +177,7 @@ function mTransmit(to, e_c, rpub, frm, mode) {
   if ( (sessionStorage.getItem("myMsgLife") !== null) && (sessionStorage.typ == 'premium') ) {
     exp = sessionStorage.myMsgLife;
   }
-
   sessionStorage.mode = mode; // e.g. 'rpl', store tmp for cbAfter
-
   con('write.php', {id:id, to:to, c:e_c, pub:rpub, link:link, exp:exp}, cbAfter_mT_write, true);
 } function cbAfter_mT_write(resp){
     if(resp.rcode == 0) {
@@ -226,6 +224,7 @@ function mTransmit(to, e_c, rpub, frm, mode) {
 /**
  * Get list of all valid, not-hidden addresses from server.
  * Populate datalist 'adds' with content.
+ *
  */
 function getToList() {
   con('get_adrlist.php', {}, cbAfter_get_adrlist, true);
@@ -242,6 +241,18 @@ function cbAfter_get_adrlist(jadds){
 }
 
 /**
+ * Get list of all addresses from server.
+ * Write to sessionStorage.
+ *
+ */
+function getAdrNameList() {
+  con('get_adrlist.php', {}, cbAfter_get_adrNamelist, true);
+}
+function cbAfter_get_adrNamelist(jadds){
+  sessionStorage.toList = JSON.stringify(jadds);
+}
+
+/**
  * Generate new inbox.
  *
  * @param {string} adr - 'Address' of new inbox.
@@ -254,6 +265,56 @@ function cbAfter_get_adrlist(jadds){
  * @param {string} typ - 'Type', like 'premium'.
  */
 function signSubmit(adr, pwd, eml, vis, agb, pay, prc, typ){
+  var ln = JSON.parse(sessionStorage.ln);  // prepare for multilanguage usage
+  // form  validation
+  document.getElementById('err').innerHTML = '';
+  var valid = true;
+  if (adr == ''){
+    document.getElementById('err').innerHTML += '&#216; &#8594; ' + ln['mis-adr'] + '<br>';
+    document.getElementById('p_name').style.borderColor = 'red';
+    valid = false;
+  }else{
+      document.getElementById('p_name').style.borderColor = 'initial';
+  }
+  if (pwd == ''){
+    document.getElementById('err').innerHTML += '&#216; &#8594; ' + ln['mis-pwd'] + '<br>';
+    document.getElementById('p_pwd').style.borderColor = 'red';
+    valid = false;
+  }
+  else{
+      document.getElementById('p_pwd').style.borderColor = 'initial';
+  }
+
+  if (agb == ''){
+    document.getElementById('err').innerHTML += '&#216; &#8594; ' + ln['mis-agb'] + '<br>';
+    document.getElementById('l_agb').style.color = 'red';
+    valid = false;
+  }else{
+      document.getElementById('l_agb').style.color = 'initial';
+  }
+  var alist = JSON.parse(sessionStorage.toList);
+  var exist = alist.find(searchItem, document.getElementById('p_name').value)
+  if(exist != undefined){
+    document.getElementById('err').innerHTML += '&#216; &#8594; ' + ln['taken'] + '<br>';
+    document.getElementById('p_name').style.borderColor = 'red';
+    valid = false;
+  }
+  // premium form validation
+  if (typ == 'premium'){
+    if(prc == ''){
+      document.getElementById('err').innerHTML += '&#216; &#8594; ' + ln['mis-price'] + '<br>';
+      document.getElementById('p_price').style.borderColor = 'red';
+      valid = false;
+    }
+    if(pay == ''){
+      document.getElementById('err').innerHTML += '&#216; &#8594; ' + ln['mis-pay'] + '<br>';
+      document.getElementById('paytype').style.color = 'red';
+      valid = false;
+    }
+  }
+
+  if (!valid) {return;}
+
   // Generate BoxID
   var id = Math.floor(Math.random() * 1000000000); //TODO ensure uniquness
 
@@ -279,9 +340,9 @@ function signSubmit(adr, pwd, eml, vis, agb, pay, prc, typ){
   download(filename, sec_s);
 
   // Init PaidUntil
-    var d = new Date();
-    var s = d.toISOString();
-    var unt = s.substring(0, 9); // YYYY-MM-DD only
+  var d = new Date();
+  var s = d.toISOString();
+  var unt = s.substring(0, 10); // YYYY-MM-DD only
 
   // Make bool to int
   vis = vis ? 1 : 0;
@@ -296,6 +357,8 @@ function signSubmit(adr, pwd, eml, vis, agb, pay, prc, typ){
   if(resp.rcode == 0) {
     switch (resp.pay) {
       case 'paypal':
+        document.forms['paypal_button']['a3'].value = resp.prc + '.00';
+        document.forms['paypal_button']['item_name'].value = resp.adr + '#postilotta.org';
         document.getElementById('paypal_button').style.display = 'block';
 //        break;
       default:
@@ -303,6 +366,14 @@ function signSubmit(adr, pwd, eml, vis, agb, pay, prc, typ){
         document.getElementById('inf').innerHTML = resp.msg;
         document.getElementById('theForm').style.visibility = 'hidden';
         document.getElementById('theForm').style.height = '1px';
+        var c2 = document.getElementById('container-2');
+        if(c2 != null){
+            c2.parentNode.removeChild(c2);
+        }
+        var c3 = document.getElementById('container-3');
+        if(c3 != null){
+          c3.parentNode.removeChild(c3);
+        }
     }
   }else{
     document.getElementById('inf').innerHTML = '';
@@ -374,7 +445,7 @@ function fetchMsgs(adr){
 function cbAfter_get_msglist(resp){
   var ln = JSON.parse(sessionStorage.ln);  // prepare for language lables // prepare for multilanguage usage
   if ( resp.length != 0 ){
-    var msglist = '<table class="msglst" id="mtable"><thead><tr><th>MsgID</th><th>UTC+0000</th><th>'+ ln['state'] +'</th></tr></thead><tbody>';
+    var msglist = '<table class="msglst" id="mtable"><thead><tr><th>MsgID</th><th>UTC+0</th><th>'+ ln['state'] +'</th></tr></thead><tbody>';
     for (i = 0; i < resp.length; i++) {
       msglist += '<tr class="msglst"><td class="msglst">' + resp[i].MsgID + '</td><td class="msglst">' + resp[i].Date + '</td><td class="msglst">' + ln.statevalue[resp[i].State] + '</td></tr>';
     }
@@ -413,9 +484,12 @@ function loadMsg(mid){
   sessionStorage.state2dc = resp[0].State;
   //TODO pull ReturnPubKey and ReturnLink from below to sessionStorage
 
-  var out = '<button type="button" class="button" onclick="delMsg(' + mid + ')">'+ ln['delmsg'] +'</button><br>'
-          + '<p><b>'+ ln['msgid'] +':</b> ' + mid + '</p>'
-          + '<p><b>'+ ln['msgrec'] +':</b> ' + resp[0].Date + '</p>'
+  var out = '<button type="button" class="button" onclick="delMsg(' + mid + ')">'+ ln['delmsg'] +'</button><br><br>'
+          + '<table class="msghead">'
+          + '<tr><td><b>'+ ln['msgid'] +':</b></td><td>' + mid + '</td></tr>'
+          + '<tr><td><b>'+ ln['msgrec'] +':</b></td><td>' + resp[0].Date + '</td></tr>'
+          + '<tr><td><b>'+ ln['msgexp'] +':</b></td><td>' + resp[0].Expire + '</td></tr>'
+          + '</table>'
           + '<p hidden id="ReturnPubKey">' + resp[0].ReturnPubKey + '</p>'
           + '<p hidden id="ReturnLink">' + resp[0].ReturnLink + '</p>';
 
@@ -484,7 +558,7 @@ function decodeMsg(){
         document.getElementById('out').innerHTML += '<b>'+ ln['msg'] +':</b><br><div class="msg">' + msg + '</div>';
 
         // Download option if attachment was included
-        if (attach !== null && attach !== undefined) {
+        if (attach != null && attach != undefined) {
           document.getElementById('out').innerHTML += '<br><b>'+ ln['attach'] +':</b><br><div class="att"><a href="javascript:downAttach();">' + fname + '</a></div>';
         }
 
@@ -628,7 +702,7 @@ function rEncryption() {
  * @param {string} lnk - 'Address'. Recipient of the message (reply) to display.
  */
 function loadRpl(lnk){
-con('get_msglist.php', {to:lnk}, cbAfter_repl_list, true);
+  con('get_msglist.php', {to:lnk}, cbAfter_repl_list, true);
 } function cbAfter_repl_list(resp){
   var ln = JSON.parse(sessionStorage.ln);  // prepare for language lables  // prepare for language lables
 
@@ -669,13 +743,14 @@ function loadSendForm(){
  * Trigger message sending out of inbox UI.
  * Calls mEncryption.
  */
-function sendNewMessage(){
-  var i_to = document.forms["sendInbox"]["p_to"];
-  var i_c = document.forms["sendInbox"]["p_text"];
+function sendNewMessage(to, c){
+//  var i_to = document.forms["sendInbox"]["p_to"];
+//  var i_c = document.forms["sendInbox"]["p_text"];
   // Use own pub key. User own address as 'from'.
   var abs = sessionStorage.p_adr;
   var pub =  sessionStorage.myPub;
-  mEncryption(i_to.value, i_c.value, pub, abs);
+//  mEncryption(i_to.value, i_c.value, pub, abs);
+  mEncryption(to, c, pub, abs);
 }
 
 
@@ -883,19 +958,18 @@ function prepareParanoia(pf, ww){
 } function cbAfter_write_para(resp){
   var ln = JSON.parse(sessionStorage.ln);  // prepare for language lables
 
-  document.getElementById("out").innerHTML = resp.msg;
   if(resp.rcode == 0) {
       // Clear screen
-      document.getElementById("theForm").style.visibility = "hidden";
-      document.getElementById("theForm").style.height = "1px";
-      document.getElementById('inf').innerHTML = '';
+      var form = document.getElementById('theForm');
+      form.parentNode.removeChild(form);
       document.getElementById('err').innerHTML = '';
-      // Display Backdoor-Link
-      document.getElementById("out").style.color = '#6495ED';
-      var lnkout = 'http://'+ window.location.host +'/backdoor.php?' + resp.plink;
-      document.getElementById("out").innerHTML += '<br><br>' + ln['access'] + '<br>'
-                                              + '<a href="' + lnkout + '">' + lnkout + '</a>';
 
+      // Display Backdoor-Link
+      document.getElementById('inf').style.color = '#6495ED';
+      document.getElementById('inf').innerHTML = resp.msg;
+      var lnkout = 'http://'+ window.location.host +'/backdoor.php?' + resp.plink;
+      document.getElementById('inf').innerHTML += '<br>' + ln['access'] + '<br>'
+                                               + '<a href="' + lnkout + '">' + lnkout + '</a>';
       // Generate QR-Code
       var qrcode = new QRCode(document.getElementById("qrcode"), {
         text: lnkout,
@@ -1024,6 +1098,159 @@ function replaceNav(){
   }
 }
 
+//--- Password Strength -------
+function pwdStrength(){
+  var ln = JSON.parse(sessionStorage.ln);  // prepare for language lables
+  var strength = {
+          0: ln['bad'],
+          1: ln['weak'],
+          2: ln['weak'],
+          3: ln['good'],
+          4: ln['strong']
+  }
+
+  var password = document.getElementById('p_pwd');
+  var text = document.getElementById('password-strength-text');
+
+  password.addEventListener('input', function() {
+      var val = password.value;
+      var result = zxcvbn(val);
+      // Update the text indicator
+      if(val !== "") {
+        document.getElementById('p_pwd').style.borderColor = 'initial';
+          text.innerHTML = strength[result.score];
+          switch (result.score) {
+            case 4:
+              document.getElementById('password-strength-text').style.color = 'green';
+              break;
+            case 3:
+              document.getElementById('password-strength-text').style.color = 'orange';
+              break;
+            default:
+              document.getElementById('password-strength-text').style.color = 'red';
+          }
+      }
+      else {
+          text.innerHTML = "";
+      }
+  });
+}
+
+/**
+ *
+ */
+function checkPWDConf() {
+var ln = JSON.parse(sessionStorage.ln);  // prepare for language lables
+  if (document.getElementById('p_pwd').value ==
+  document.getElementById('p_pwd2').value) {
+    document.getElementById('notConf').style.color = 'green';
+    document.getElementById('notConf').innerHTML = '';
+  } else {
+    document.getElementById('notConf').style.color = 'red';
+    document.getElementById('notConf').innerHTML = ln['no_match'];
+  }
+}
+
+/**
+ *
+ */
+function checkAdrExist(th){
+  var ln = JSON.parse(sessionStorage.ln);  // prepare for language lables
+  var alist = JSON.parse(sessionStorage.toList);
+  var exist = alist.find(searchItem, th.value)
+  if(exist != undefined){
+    document.getElementById('adrtaken').innerHTML = ln['taken'];;
+    document.getElementById('adrtaken').style.color = 'red';
+    document.getElementById('p_name').style.borderColor = 'red';
+  }else{
+    document.getElementById('adrtaken').innerHTML = "";
+    document.getElementById('p_name').style.borderColor = 'initial';
+//    document.getElementById('p_name').style.textAlign = 'right';
+  }
+}
+
+/**
+ *
+ */
+function agbChanged(th) {
+  if (th.checked == true){
+    document.getElementById('l_agb').style.color = 'initial';
+  }
+}
+/**
+ *
+ */
+function priceChanged(th){
+  var ln = JSON.parse(sessionStorage.ln);  // prepare for language lables
+  if(th.value < 5){
+    document.getElementById('noprice').innerHTML = ln['noprice'];
+    document.getElementById('noprice').style.color = 'red';
+    th.style.borderColor = 'red';
+  } else {
+    th.style.borderColor = 'initial';
+    document.getElementById('noprice').innerHTML = '';
+  }
+}
+
+
+/**
+ * Send form validate.
+ * Calls prepReply if successfull.
+ *
+ * @param {string} to - Recipients 'Address'. Just passed through.
+ * @param {string} c - Content (message without attachment) to trasnsmit. Just passed through.
+ */
+function checkSend(caller, to, c){
+  var ln = JSON.parse(sessionStorage.ln);  // prepare for language lables // prepare for multilanguage usage
+  if (caller == 'inbox'){
+    to = document.forms["sendInbox"]["p_to"].value;
+    c = document.forms["sendInbox"]["p_text"].value;
+  }
+  document.getElementById('err').innerHTML = '';
+  var valid = true;
+
+  if (to == ''){
+    document.getElementById('err').innerHTML += '&#216; &#8594; ' + ln['mis-adr'] + '<br>';
+    document.getElementById('p_to').style.borderColor = 'red';
+    valid = false;
+  }else{
+    document.getElementById('p_to').style.borderColor = 'initial';
+    var alist = JSON.parse(sessionStorage.toList);
+    var exist = alist.find(searchItem, document.getElementById('p_to').value)
+    if(exist == undefined){
+      document.getElementById('err').innerHTML += '&#216; &#8594; ' + ln['adr-noexist'] + '<br>';
+      document.getElementById('p_to').style.borderColor = 'red';
+      valid = false;
+    }
+  }
+  if (c == ''){
+    document.getElementById('err').innerHTML += '&#216; &#8594; ' + ln['mis-text'] + '<br>';
+    document.getElementById('p_text').style.borderColor = 'red';
+    valid = false;
+  }
+  else{
+      document.getElementById('p_text').style.borderColor = 'initial';
+  }
+
+  if (valid) {
+    switch (caller) {
+      case 'anonym':
+        prepReply(to, c);
+        break;
+      case 'inbox':
+        sendNewMessage(to, c);
+    }
+
+  }
+}
+
+/**
+ *
+ */
+function changedMsgtxt(th){
+  th.style.borderColor = 'initial';
+}
+
 /*---------- cryptojs specifics ----------------------*/
 
 var CryptoJSAesJson = {
@@ -1079,21 +1306,33 @@ function searchItem(item){
  * @param {object} th - selection DOM input object
  */
 function adrSelect(th){
+  var ln = JSON.parse(sessionStorage.ln);  // prepare for language lables
   var a_toList = JSON.parse(sessionStorage.toList);
   var selected = a_toList.find(searchItem, th.value);
-  switch (selected.Type) {
-    case 'premium':
-      document.getElementById('adr-typ').src = './pics/premium_25.png';
+
+  if(selected == undefined){
+    document.getElementById('adr-noex').innerHTML = ln['adr-noex'];;
+    document.getElementById('adr-noex').style.color = 'red';
+    document.getElementById('p_to').style.borderColor = 'red';
+    document.getElementById('adr-typ').src = '';
+  }else{
+    document.getElementById('adr-noex').innerHTML = "";
+    document.getElementById('p_to').style.borderColor = 'initial';
+
+    switch (selected.Type) {
+      case 'premium':
+        document.getElementById('adr-typ').src = './pics/premium_25.png';
+        break;
+      case 'basic':
+        document.getElementById('adr-typ').src = './pics/basic_25.png';
       break;
-    case 'basic':
-      document.getElementById('adr-typ').src = './pics/basic_25.png';
-    break;
-    default:
-  }
-  if (selected.IdVerified) {
-    document.getElementById('adr-idv').src = './pics/id-verified_yellow_30.png';
-  } else {
-    document.getElementById('adr-idv').src = '';
+      default:
+    }
+    if (selected.IdVerified) {
+      document.getElementById('adr-idv').src = './pics/id-verified_yellow_30.png';
+    } else {
+      document.getElementById('adr-idv').src = '';
+    }
   }
 }
 
@@ -1115,17 +1354,19 @@ function loadSettings(){
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById('out').innerHTML = this.responseText;
       checkPremium();
+
+      // Badic settings
       document.forms["settings"]["p_mail"].value = sessionStorage.myEmail;
       if (sessionStorage.myVisible == 1) {document.forms["settings"]["p_visible"].checked = true;}
       document.getElementById('p_typ').innerHTML = sessionStorage.typ;
 
+      // Premium settings
       if (sessionStorage.myPayment!= 0) {
         document.getElementById('o_' + sessionStorage.myPayment).selected = true;
       }else {
         document.getElementById('o_none').selected = true;
       }
       document.forms["settings"]["p_price"].value = sessionStorage.myPrice;
-//      document.getElementById('p_until').innerHTML = 'settled until: ' + sessionStorage.myPaidUntil;
       document.forms["settings"]["p_msglife"].value = parseInt(sessionStorage.myMsgLife);
 
       // make premium settins editable
@@ -1145,6 +1386,10 @@ function loadSettings(){
           document.getElementById('d_very').innerHTML = 'Verification completed &#10003;';
         }
       } else {
+        document.getElementById('b_very').onclick = '';     // Disable ID verification
+        // Disable premium submit update button
+        document.getElementById('sub2').className = 'buttonfrm';
+        document.getElementById('sub2').onclick = '';
         document.getElementById('d_quit').innerHTML = 'Go premium';
         // remove back to basic button
         var but = document.getElementById('b_quit');
@@ -1223,6 +1468,9 @@ function loadVerify(){
  * Sets id-verification status of current inbox to true.
  */
 function verifyID(){
+  window.open('https://calendly.com/postilotta/id-verification','_blank')
+}
+/*
  con('write_verifyid.php', {adr:sessionStorage.p_adr}, cbAfter_write_verifyid, true);
 } function cbAfter_write_verifyid(resp){
 
@@ -1238,6 +1486,7 @@ function verifyID(){
     document.getElementById('err').innerHTML = resp.msg;
   }
 }
+*/
 
 /**
  * Checks wheter the current loged in inbox has id-verification and display logo accordingly.
@@ -1299,12 +1548,4 @@ function setLang(lang, cb){
   xhttp.open('POST', 'language/general_' + lang + '.json', true);
   xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
   xhttp.send();
-}
-
-/**
- * Just a test.
- */
-function test(){
-  var ln = JSON.parse(sessionStorage.ln);  // prepare for language lables
-  document.getElementById('inf').innerHTML = ln['header'];
 }

@@ -29,7 +29,7 @@ start=`date +%s`
 now=$(date +"%Y-%m-%d_%H-%M")
 echo "START build of $syst at $now"
 
-# Go up to project roo dir
+# Go up to project root dir
 cd ..
 tpwd=$PWD
 
@@ -44,6 +44,11 @@ docker stop $php && \
 docker rm $php && \
 docker rmi $php && \
 rm php/www/inc/sql-ip.inc
+
+# write SMTP password to .inc file
+smtppas=$(cat /etc/pta/$syst-smtp)
+pasfile="<?php \$smtp_password = \"$smtppas\"; ?>"
+echo $pasfile > "./php/www/inc/smtp-pwd.inc"
 
 # write sql password to .inc file
 out="<?php \$password = \"$dbpas\"; ?>"
@@ -80,6 +85,10 @@ docker build -t $php . \
    $php
 #    -e "LETSENCRYPT_TEST=true" \
 #    -e "DEBUG=true" \
+
+# install PEAR Mail package
+docker exec $php bash -c "pear install Mail"
+docker exec $php bash -c "pear install Net_SMTP"
 
 # wait for mysql server to come up
 echo 'waiting for mysql server (50 sec)'

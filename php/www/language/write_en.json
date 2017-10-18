@@ -1,6 +1,10 @@
 {
   "lang"   : "en",
-  
+
   "success" : "Message successfully sent.<br>",
-  "lnktxt"  : "A response will be available here:<br><br>"
+  "lnktxt"  : "A response will be available here:<br><br>",
+
+  "e_sub"   : "New message received",
+  "e_body"  : "Hi,\n\nThere is a new message in ",
+  "e_bye"   : ".\n\nBest,\npostilotta"
 }

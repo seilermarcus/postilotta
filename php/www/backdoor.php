@@ -68,17 +68,22 @@
     }
   ?>
 <?php include 'module-head.php'; ?>
-<h1 id="p_h2"><?php echo $ln['header'];?></h1>
-<div class="txt">
-  <form id="theForm">
-    <?php echo $ln['passphrase'];?><br>
-    <input type="password" name="p_pf" id="p_pf" size="20">
-    <button type="button" class="button" onclick="activateParanoia(ipf.value)"><?php echo $ln['enter'];?></button>
-  </form>
-  <br>
-  <p id="out"></p>
-  <p id="err" class="err"></p>
-  <p id="inf" class="inf"></p>
+<div id="container" class="container-midi">
+  <h1 id="p_h2"><?php echo $ln['header'];?></h1>
+  <div class="txt">
+    <form id="theForm">
+      <?php echo $ln['passphrase'];?><br>
+      <div class="biginput">
+        <input type="password" name="p_pf" id="p_pf" size="20"><br>
+        <br>
+      </div>
+      <button type="button" class="button" onclick="activateParanoia(ipf.value)"><?php echo $ln['enter'];?></button>
+    </form>
+    <br>
+    <p id="out"></p>
+    <p id="err" class="err"></p>
+    <p id="inf" class="inf"></p>
+  </div>
 </div>
 <?php include 'module-banner-small.php'; ?>
 <?php include 'module-footer.php'; ?>

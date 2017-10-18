@@ -1,13 +1,13 @@
 {
   "lang"    : "en",
 
-  "inbox"    : "Inbox:",
+  "inbox"    : "To:",
   "message"  : "Message:",
   "attach"   : "Attachment:",
   "security" : "Security Check:",
-  "hit"      : "When you hit the submit button, the following things will happen:",
+  "hit"      : "When you hit the button, the following things will happen:",
   "list"     : "<li>The message will be encrypted immediately. The recipients key will be the only way to decrypt it.</li><li>The encrypted message will be signed with your key, so the recipient can be sure about who sent it (coming soon for premium).</li><li>The message will be transferred as cipher data to the recipients inbox.</li><li>The message will expire after 120 hours (resp. value of your settings) and then deleted automatically without any recovery option.</li>",
-  "submit"   : "Submit",
+  "submit"   : "Send Message",
 
   "tt_idv"  : "The identity of the responsible person as well as permissions needed to represent related entities have been checked and verified."
 }

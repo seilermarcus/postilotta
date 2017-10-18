@@ -1,3 +1,34 @@
 {
-  "lang"    : "en"
+  "lang"    : "en",
+
+  "header"      : "Settings",
+  "mail"        : "Email",
+  "pass"        : "Reset Password",
+  "key"         : "Reset Key-File",
+  "b_key"       : "Generate New Key",
+  "vis"         : "Visible",
+  "t_vis"       : "e.g. in dropdown list on send form",
+  "typ"         : "Inbox Type",
+  "b_submit"    : "Submit Updates",
+  "prem_header" : "premium Settings",
+  "exp"         : "Default Expiration:<br>(of Send Messages)",
+  "hours"       : "hours",
+  "very"        : "ID Verification",
+  "b_very"      : "Start Verification",
+  "color"       : "Color Scheme<br>(coming soon)",
+  "domain"      : "Own Subdomain",
+  "b_domain"    : "Request Subdomain",
+  "pay"         : "Payment Type",
+  "o_pay"       : {
+                  "paypal" : "PayPal",
+                  "bank"   : "Bank Transfer",
+                  "others" : "Others"
+                  },
+  "amount"      : "Contribution",
+  "per"         : " € per Month",
+  "state"       : "Payment State",
+  "terminate"   : "Terminate premium",
+  "b_basic"     : "Back to basic",
+  "b_prem"      : "SignUp"
+
 }

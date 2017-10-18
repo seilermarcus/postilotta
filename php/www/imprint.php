@@ -10,22 +10,24 @@
 </head>
 <body>
 <?php include 'module-head.php'; ?>
-<h1><?php echo $ln['header'];?></h1>
-<div class="txt">
-<b>Uwezo Engineering GmbH</b><br>
-Emmeransstr. 38<br>
-55116 Mainz<br>
-(Germany)<br>
-<br>
-<?php echo $ln['phone'];?>: +49 6131 – 495 79 00<br>
-<?php echo $ln['email'];?>: info@uwezo-engineering.com<br>
-<br>
-<?php echo $ln['register'];?>: HRB 46947<br>
-USt.-Id.-Nr.: DE307695510<br>
-<br>
-<?php echo $ln['executive'];?>:<br>
-Marcus Seiler<br>
-<br>
+<div id="container" class="container-midi">
+  <h1><?php echo $ln['header'];?></h1>
+  <div class="txt">
+  <b>Uwezo Engineering GmbH</b><br>
+  Emmeransstr. 38<br>
+  55116 Mainz<br>
+  (Germany)<br>
+  <br>
+  <?php echo $ln['phone'];?>: +49 6131 – 495 79 00<br>
+  <?php echo $ln['email'];?>: info@uwezo-engineering.com<br>
+  <br>
+  <?php echo $ln['register'];?>: HRB 46947<br>
+  USt.-Id.-Nr.: DE307695510<br>
+  <br>
+  <?php echo $ln['executive'];?>:<br>
+  Marcus Seiler<br>
+  <br>
+  </div>
 </div>
 <?php include 'module-banner-small.php'; ?>
 <?php include 'module-footer.php'; ?>

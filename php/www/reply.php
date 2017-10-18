@@ -15,12 +15,14 @@
 </head>
 <body>
 <?php include 'module-head.php'; ?>
-<h1><?php echo $ln['header'];?></h1>
-<div class="txt">
-<p id="out"></p>
-<p id="inf" class="inf"></p>
-<p id="err" class="err"></p>
-<p id="fileup"></p>
+<div id="container" class="container">
+  <h1><?php echo $ln['header'];?></h1>
+  <div class="txt">
+  <p id="out"></p>
+  <p id="inf" class="inf"></p>
+  <p id="err" class="err"></p>
+  <p id="fileup"></p>
+  </div>
 </div>
 <?php include 'module-banner-small.php'; ?>
 <?php include 'module-footer.php'; ?>

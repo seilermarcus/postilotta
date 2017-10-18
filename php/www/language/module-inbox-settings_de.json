@@ -1,0 +1,34 @@
+{
+  "lang"    : "de",
+
+  "header"      : "Einstellungen",
+  "mail"        : "E-Mail",
+  "pass"        : "Neues Passwort",
+  "key"         : "Schlüssel-Datei",
+  "b_key"       : "Zurücksetzen",
+  "vis"         : "Sichtbarkeit",
+  "t_vis"       : "z.B. in Dropdown-Liste beim Nachrichtenversand",
+  "typ"         : "Postfach Type",
+  "b_submit"    : "Änderungen Speichern",
+  "prem_header" : "premium Einstellungen",
+  "exp"         : "Haltbarkeit:<br>(neu gesendeter Nachrichten)",
+  "hours"       : "Stunden",
+  "very"        : "Identitäts-Prüfung",
+  "b_very"      : "Prüfung Straten",
+  "color"       : "Farbschema<br>(coming soon)",
+  "domain"      : "Eigene Subdomain",
+  "b_domain"    : "Subdomain Anlegen",
+  "pay"         : "Zahlungsart",
+  "o_pay"       : {
+                  "paypal" : "PayPal",
+                  "bank"   : "Überweisung",
+                  "others" : "Sonstiges"
+                  },
+  "amount"      : "Beitragshöhe",
+  "per"         : " € pro Monat",
+  "state"       : "Zahlungsstatus",
+  "terminate"   : "Premium kündigen",
+  "b_basic"     : "Zurück zu basic",
+  "b_prem"      : "Registrieren"
+
+}

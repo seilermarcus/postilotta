@@ -2,12 +2,14 @@
   "lang"    : "en",
 
   "header"  : "ExtraSecure Mode",
-  "text"    : "Using postilotta and a non-compromised device already makes your messages secure as hell.<br>However, if you have very sensitive content to transmit and the suspicion to be at special risk (e.g. man-in-the-middle is already watching): Let's add an extra independent AES encryption layer (used by governments for top secret purpose).<br><br>We recommend doing this as follows:",
-  "list"    : "<li>Type in a passphrase and watchword below.</li><li>Get the generated backdoor-link (e.g. via QR-Code).</li><li>Use another device at another access point and visit the activation-link within 48h.</li><li>Type in your passphrase and if the site can respond with the watchword, the additional security layer has been established.</li>",
-  "ifnot"   : "If the site does not answer correctly, something not-trustworthy had happened and you should not proceed and start over the ExtraSecure activation process.",
+  "tag"     : "Extra Independent AES Encryption Layer",
+  "tag2"    : "As Used by Governments for Top Secret Purpose",
+  "text"    : "postilotta in combination with a non-compromised device yield a highly secure messaging service.<br><br>postilotta can increase security levels even more by adding an independent AES encryption layer in the <i>ExtraSecure Mode</i>.<br><br>Extra Secure Mode best practice:",
+  "list"    : "<li>Type in a passphrase and watchword above.</li><li>Get the generated activation-link (e.g. via QRCode).</li><li>Use another device at another access point and visit the activation-link within 48h.</li><li>Type in your passphrase and if the site can respond with your watchword, the additional security layer has been established.</li>",
+  "ifnot"   : "If the site does not answer correctly, there may have been a breach in message security. Please stop the current messaging process and initiate a new Extra Secure Session to ensure the highest level of messaging security.",
   "pass"    : "Passphrase:",
   "watch"   : "Watchword:",
-  "submit"  : "Submit",
+  "submit"  : "Prepare Connection",
 
   "sendto"  : "SendTo",
   "login"   : "LogIn",
