@@ -33,29 +33,40 @@
 </head>
 <body>
 <?php include 'module-head.php'; ?>
-<h1 id="p_h2"><?php echo $ln['header'];?></h1>
-<div class="txt">
 
-  <p><?php echo $ln['text'];?></p>
-  <ol>
-    <?php echo $ln['list'];?>
-  </ol>
-  <?php echo $ln['ifnot'];?></li>
-  <p id="out"></p>
-  <p id="err" class="err"></p>
-  <p id="inf" class="inf"></p>
-  <a id='qrcode-href'><div class="qrfrm" id="qrcode"></div></a>
-  <form id="theForm">
-    <?php echo $ln['pass'];?><br>
-    <input type="password" name="p_pf" id="p_pf" size="20">
-    <br><br>
-    <?php echo $ln['watch'];?><br>
-    <input type="password" id="p_ww" size="20">
-    <br><br>
-    <button type="button" class="button" onclick="prepareParanoia(ipf.value, iww.value)"><?php echo $ln['submit'];?></button>
-  </form>
+<div id="container" class="container-midi">
+  <h1 id="p_h2"><?php echo $ln['header'];?></h1>
+  <div class="txt">
+    <form id="theForm">
+      <?php echo $ln['pass'];?><br>
+      <div class="biginput">
+        <input type="password" name="p_pf" id="p_pf" size="20">
+      </div>
+      <br>
+      <?php echo $ln['watch'];?><br>
+      <div class="biginput">
+        <input type="password" id="p_ww" size="20">
+      </div>
+      <br>
+      <button type="button" class="button" onclick="prepareParanoia(ipf.value, iww.value)"><?php echo $ln['submit'];?></button>
+    </form>
+    <div id="err" class="err"></div>
+    <div id="inf" class="inf"></div>
+    <a id='qrcode-href'><div class="qrfrm" id="qrcode"></div></a>
+  </div>
 </div>
-<br>
+
+<div id="container-2" class="container-midi">
+  <h2><?php echo $ln['tag'];?></h2>
+  <h3><?php echo $ln['tag2'];?></h3>
+  <div class="txt">
+    <p><?php echo $ln['text'];?></p>
+    <ol>
+      <?php echo $ln['list'];?>
+    </ol>
+    <?php echo $ln['ifnot'];?></li>
+  </div>
+</div>
 <?php include 'module-banner-small.php'; ?>
 <?php include 'module-footer.php'; ?>
 <script>

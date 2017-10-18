@@ -13,16 +13,25 @@
 # Set variables
 syst=$1
 reuse=$2
-dbpas=$(cat /etc/pta/$syst-sql)
 db="pta_$syst-sql"
 php="pta_$syst-php"
 
-# Go up to project roo dir
+# Start script with standard message output
+start=`date +%s`
+now=$(date +"%Y-%m-%d_%H-%M")
+echo "START build of $syst at $now"
+
+# Go up to project root dir
 cd ..
 tpwd=$PWD
 
+# write SMTP password to .inc file
+smtppas=$(cat /etc/pta/$syst-smtp)
+pasfile="<?php \$smtp_password = \"$smtppas\"; ?>"
+echo $pasfile > "./php/www/inc/smtp-pwd.inc"
 
 # write sql password to .inc file
+dbpas=$(cat /etc/pta/$syst-sql)
 pasfile="<?php \$password = \"$dbpas\"; ?>"
 echo $pasfile > "./php/www/inc/sql-pwd.inc"
 
@@ -59,9 +68,18 @@ docker build -t $php . \
 #    -e "LETSENCRYPT_TEST=true" \
 #    -e "DEBUG=true" \
 
+# install PEAR Mail package
+docker exec $php bash -c "pear install Mail"
+docker exec $php bash -c "pear install Net_SMTP"
+
 # wait for mysql server to come up
 echo 'waiting for mysql server (50 sec)'
 sleep 50
 
 # initialise DB scheme
 docker exec $db bash -c "mysql -u root -p$dbpas < /tmp/init.sql"
+
+# Finish script with standard output
+end=`date +%s`
+runtime=$((end-start))
+echo "END build of $syst after $runtime sec"

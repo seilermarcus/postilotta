@@ -20,7 +20,7 @@ if [ -z "$1" ]
 fi
 
 # Start script with standard message output
-echo "START build of $sys at $now sec"
+echo "START build of $sys at $now"
 
 # Clear up before build
 

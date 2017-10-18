@@ -1,7 +1,14 @@
 {
   "lang"    : "en",
 
-  "header" : "Contact",
+  "header"     : "Contact",
+  "txt"        : "Email: info@uwezo-engineering.com<br>",
+  "faq"        : "FAQ",
+  "faq-txt"    : "<i>Coming soon.</i>",
+  "issues"     : "Technical Issues",
+  "issues-txt" : "<i>Coming soon.</i> Using GitHub Issue Tool.",
+  "misuse"     : "Report Misuse",
+  "misuse-txt" : "If you know, or even just suspect, that an inbox is misused in whatever way, please contact us immediately.<br><br>Inbox: <a href='send.php?p_to=misuse'><u>misuse#postilotta.org</u></a><br>",
 
   "sendto"  : "SendTo",
   "login"   : "LogIn",

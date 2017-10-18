@@ -9,6 +9,7 @@ $ww = $_REQUEST["ww"];
 //Generate $plink TODO
 $itg = rand(10000, 99999) * mt_rand(10000, 99999);
 $plnk = hash('sha256' , strval(date(U)) . strval($itg));
+$plnk = substr($plnk, 32);
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);

@@ -16,51 +16,14 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Inbox`
---
-
-DROP TABLE IF EXISTS `Inbox`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Inbox` (
-  `BoxID` int(11) NOT NULL,
-  `Address` varchar(255) DEFAULT NULL,
-  `PubKey` varchar(255) DEFAULT NULL,
-  `Password` varchar(255) DEFAULT NULL,
-  `Email` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`BoxID`),
-  UNIQUE KEY `Address` (`Address`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `Inbox`
 --
 
 LOCK TABLES `Inbox` WRITE;
 /*!40000 ALTER TABLE `Inbox` DISABLE KEYS */;
-INSERT INTO `Inbox` VALUES (15182036,'wikileaks','FMuyQWPS%2BR7Ylm1TEUwnB1HABxV34Ey3GrqhL79BNOk4NDas7aizYpLweetceJTI7e0XTSn%2F2I11Ljrh77qvhA%3D%3D','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3',''),(55111016,'amnesty-international','8bh9luyAiv5iCqm7ARNSGz4GtT2O47TBTdRAXsL4GvMGcqsdrVn7fhhrbKdq28snYw6vFpvEo8uLobmq9Fq%2BxA%3D%3D','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3',''),(169720857,'new','Fhefu56533dgr%2FdgCQ80pbeEjbY4Rce5hIEYVq%2BctyrLwsb6DJNk8zTK0WX%2Bgnvdx6bjYboDCYMl8CWKNGyCXw%3D%3D','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3',''),(173244611,'survey2017@vw-europe','LQGTdtZDFu%2FyZo3B20iUOQFQ9WgsJI5yNiyMDv0My7YGZGqP55SA7UB5OXTwQ%2BO416cdm%2FzRlkegKUAmjI%2BUCA%3D%3D','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3',''),(383223723,'tax-authority-swiss','o5CZlYVdlWnN6JSupePLWqeQohOzJwa5UZ0b9EktT10lKl7jYVWtRQi%2Bwp5NOhDTsbfeleQAkwjpu7uq%2Fv3Ckg%3D%3D','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3',''),(502057861,'weiÃŸer-ring','osnhsEE5Gd6UAHvREM69eSyDq8Ia0F3vDxJItYpUxp%2BSrl2yBDfFVmXK5BvJWYwlFhjaIb6LPajWPv%2FN8z4VrQ%3D%3D','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3',''),(517364725,'1','DAdSzqREEo9xYh7zveqkbpAA6Debz%2ByleiyQqQ9Fn6PINZQ3WXetaLu8tvOdKitYgZCbEq3QOuKRWocEhrN4zA%3D%3D','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3',''),(623268423,'polizei-rlp','7kck19Pk6gwY2f3IuBIoMzlnDkpm%2FCK6cVpEvJXnszUvGWZfBRKHOG3osJyyRw%2B6WCHx1LGACWQ4lWvkj4rQ6w%3D%3D','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3',''),(778350801,'frauenhaus-berlin','c4U3%2ByHAMPJ5%2Bf1hdATMnesHu%2BlctFQ8ajTbZSb%2FDPzukJxZs5PQ6gGl6WQc6eJTfpjJraaCTuY2qJmX0k%2BtDg%3D%3D','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3',''),(834683367,'nypd','zQA7BzbiZJn8vTWgvCEPUKJPnPI%2BaXZz9MQ%2BR%2F1qlIDtLAF6rKhfmuVovtLqb2QII4zBi%2BYMksNT5QmS4EEGdw%3D%3D','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3','');
+INSERT INTO `Inbox` VALUES (33569612,'1','o7Q4cy5IEA7kbw0pbDyUqBNWlwART40I5ePBdEFUmEGJpOJKkvV2a3ugXLXFuVHvak8g2tcSX1gUCFwgqsZVIQ%3D%3D','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3','',1,'basic','0',0,'2017-09-02',120,1,NULL),(195407071,'polizei-hessen','Fcs9R50%2Bj%2FOU3jTpsOFUO4tWiJzuPeoXO41TO4u3a2aWmPXWBwdiyuzDofzt2xCw17LxTm3N7SZENhXgLGwSrA%3D%3D','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3','',1,'premium','others',1,'2017-09-02',120,1,NULL),(289853067,'wikileaks','p2dFdpw%2BI3Ibq5nt%2Bbql9apE8k4Gn%2FyPud0n2wVY6h1g%2BphqVCHwuYuoS2%2FkHU2bJqhPCzvG37Q1%2BefmY5E5Jw%3D%3D','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3','',1,'premium','others',1,'2017-09-02',120,1,NULL),(330052535,'frauenhaus-mainz','ILA6Hvteww5QPzVJr0ux5DEfQ3XDlSI2V4ieJRiEtX2Ac7Ow2M%2Fn0Ui6Sc6mcjZssuIpBVQNrHmhfFgn8sdJJw%3D%3D','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3','',1,'premium','others',1,'2017-09-02',120,1,NULL),(398402005,'weiÃŸer-ring','cd%2FyuZNStS65x05YfwkrlNccbl915g72luJMAKX9MyZxnM1zoAWCGhfbs%2FBwkrUjcfkaDZC7gVrJzBGFLrNyvA%3D%3D','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3','',1,'premium','others',1,'2017-09-02',120,1,NULL),(527354508,'finanzamt-berlin','kHpOMFJHBFjBTOCU7XV%2BoUZ8XypX%2Fm%2B6TaZD3mrrk1DSAlw72ABN4Co5Nzd0aO37QrMyAb1qk7SSAl9U5RQwwg%3D%3D','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3','',1,'premium','bank',1,'2017-09-02',120,1,NULL),(540009945,'survey-2017@bosch','658dOhBfLyhSblYbgP7w3jBA0DUNdhE5yeaZSQEtIg5JSTH%2Bk9jNLotzgXM5t2dwqN9P%2BRMgBcKn5%2FwlJ5BGdg%3D%3D','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3','',1,'premium','bank',3,'2017-09-02',120,1,NULL);
 /*!40000 ALTER TABLE `Inbox` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `Message`
---
-
-DROP TABLE IF EXISTS `Message`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Message` (
-  `MsgID` int(11) NOT NULL,
-  `Recipient` varchar(255) DEFAULT NULL,
-  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `State` varchar(255) DEFAULT 'NEW',
-  `Content` mediumblob,
-  `ReturnPubKey` blob,
-  `ReturnLink` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`MsgID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `Message`
@@ -68,24 +31,9 @@ CREATE TABLE `Message` (
 
 LOCK TABLES `Message` WRITE;
 /*!40000 ALTER TABLE `Message` DISABLE KEYS */;
+INSERT INTO `Message` VALUES (288338534,'1','2017-09-22 20:35:13','NEW','%7B%22iv%22%3A%22CbNwevX%2Fg3AWMplE8cx1mA%3D%3D%22%2C%22v%22%3A1%2C%22iter%22%3A10000%2C%22ks%22%3A128%2C%22ts%22%3A64%2C%22mode%22%3A%22ccm%22%2C%22adata%22%3A%22%22%2C%22cipher%22%3A%22aes%22%2C%22kemtag%22%3A%22SMBOXnkeFgf7v0X6Xjcq79P0ZS3N%2BgJWxIxGoTnYN8MrDxw2Pduxb9a%2FGzP57YusrLJmXWxjonnJW5Kud7DCRA%3D%3D%22%2C%22ct%22%3A%22vAGKd6KWjHV5%2B1%2FlZUHh4Zqj%2F%2FV2%2FmMvtPKJihh9jsDFnwT%2B%22%7D','oq9m1S0ei2NG3UnpW48FUznMu97KYJq9vmR96l7eHfb5zu7aZa%2FtV2jYxVMRwREitBRl4BC9WKqxQ9AZfXKyeg%3D%3D','19349425','2017-09-27 20:35:13');
 /*!40000 ALTER TABLE `Message` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `Paranoia`
---
-
-DROP TABLE IF EXISTS `Paranoia`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Paranoia` (
-  `PLink` varchar(255) NOT NULL,
-  `Passphrase` varchar(255) DEFAULT NULL,
-  `Watchword` varchar(255) DEFAULT NULL,
-  `Time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`PLink`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `Paranoia`
@@ -105,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-09-06  8:30:17
+-- Dump completed on 2017-09-22 20:53:04

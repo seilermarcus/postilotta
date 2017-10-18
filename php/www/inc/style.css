@@ -11,7 +11,7 @@ h2 {
 }
 
 h3 {
-  padding: 0 16px;
+/*  padding: 0 16px; */
   font-family: Arial;
 }
 
@@ -43,7 +43,15 @@ a:active {
 
 input {
  font-size: 16px;
+ padding-top: 7px;
+ padding-bottom: 7px;
 }
+
+.biginput input {
+  width: 97%;
+  max-width: 320px;
+}
+
 .setselect {
   font-size: 16px;
 }
@@ -128,11 +136,10 @@ textarea {
 }
 
 .button {
-/*    background-color: #D7DF01;  dark yellow */
     background-color: #ecd201; /* logo yellow */
     border: none;
     color: black;
-    padding: 5px 32px 5px;
+    padding: 7px 40px 7px;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
@@ -143,7 +150,7 @@ textarea {
     float: left; */
 }
 
-.butonfrm {
+.buttonfrm {
     border: 2px solid #ecd201; /* logo yellow */
     background-color: white;
     color: #ecd201; /* logo yellow */
@@ -208,18 +215,35 @@ ul.topnav li.right {float: right;}
     .show-small{display:block!important;}
 }
 
-ul.toolbar {
+@media screen and (max-width: 700px){
+    .hide-700{display:none!important;}
+}
+
+@media screen and (max-width: 600px){
+    .hide-600{display:none!important;}
+}
+
+@media screen and (max-width: 500px){
+    .hide-500{display:none!important;}
+}
+/*ul.toolbar {*/
+.toolbar {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #333;
+    text-align:center;
 }
 
-ul.toolbar li {float: left;}
+ul.toolbar li {
+  display: inline;
+  /*float: left;*/
+}
 
 .tbitem {
-    display: block;
+/*    display: block;*/
+    display:inline-block;
     color: #ecd201;
     text-align: center;
     padding: 14px 16px;
@@ -244,17 +268,17 @@ ul.toolbar li {float: left;}
   padding: 7px;
 }
 
-table.indx {
-  border-collapse:collapse;
-  border-spacing:0;
-  width:100%;
-  display:table;
+table.msghead {
+  border-collapse: collapse;
+  margin-bottom: 10px;
 }
 
-.indx tr {
-  border-bottom:1px solid #ddd;
-
+.msghead td {
+  padding-top:    5px;
+  padding-bottom: 5px;
+  padding-right:  5px;
 }
+
 /*
 tr:nth-child(even){
   background-color: #D8D8D8;
@@ -262,6 +286,7 @@ tr:nth-child(even){
 
 table.msglst {
     border-collapse: collapse;
+    margin: auto;
 /*   border-spacing: 15px;*/
 }
 
@@ -276,6 +301,7 @@ th.msglst, td.msglst {
 tr.msglst:hover{
  background:#D8D8D8;
 }
+
 
 div.msg {
   background-color:#D8D8D8;
@@ -343,4 +369,48 @@ div.att {
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltiptext {
     visibility: visible;
+}
+
+.container {
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: auto;
+  max-width: 800px;
+  border: 2px solid grey;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+.container-login {
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  width: auto;
+  max-width: 400px;
+  border: 2px solid grey;
+  padding-top: 5px;
+  padding-bottom: 20px;
+}
+
+.container-midi {
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  width: auto;
+  max-width: 700px;
+  border: 2px solid grey;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+.container-transp {
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: auto;
+  max-width: 800px;
+/*  border: 2px solid grey;*/
+  padding-top: 5px;
+  padding-bottom: 10px;
 }

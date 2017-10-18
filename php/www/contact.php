@@ -5,34 +5,40 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
   <link rel="stylesheet" type="text/css" href="./inc/style.css" />
-  <!-- postilotta core -->
   <script src="general.js"></script>
 </head>
 <body>
-<?php include 'module-head.php'; ?>
-<h1><?php echo $ln['header'];?></h1>
-<hr>
-<h2>Report Misuse</h2>
-<div class="txt">
-If you know, or even just suspect, that a inbox is misused in whatever way, please contact us immediately.<br><br>
-Inbox: <a href="send.php?p_to=misuse"><u>misuse#postilotta.com</u></a><br>
+<?php include 'module-head.php';?>
+
+<div id="container" class="container-midi">
+  <h1><?php echo $ln['header'];?></h1>
+  <div class="txt">
+    <?php echo $ln['txt'];?>
+  <br>
+  </div>
 </div>
-<hr>
-<h2>FAQ</h2>
-<div class="txt">
-  <i>Coming soon.</i>
+
+<div id="container-2" class="container-midi">
+    <h2><?php echo $ln['faq'];?></h2>
+    <div class="txt">
+      <?php echo $ln['faq-txt'];?>
+    </div>
 </div>
-<hr>
-<h2>Technical Issues</h2>
-<div class="txt">
-  <i>Coming soon.</i> Using GitHup Issue Tool.
+
+<div id="container-3" class="container-midi">
+    <h2><?php echo $ln['issues'];?></h2>
+    <div class="txt">
+      <?php echo $ln['issues-txt'];?>
+    </div>
 </div>
-<hr>
-<h2>Contact</h2>
-<div class="txt">
-Email: info@uwezo-engineering.com<br>
-<br>
+
+<div id="container-4" class="container-midi">
+  <h2><?php echo $ln['misuse'];?></h2>
+  <div class="txt">
+    <?php echo $ln['misuse-txt'];?>
+    </div>
 </div>
+
 <?php include 'module-banner-small.php'; ?>
 <?php include 'module-footer.php'; ?>
 <script>

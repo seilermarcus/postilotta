@@ -2,12 +2,14 @@
   "lang"    : "de",
 
   "header"  : "ExtraSecure Modus",
-  "text"    : "postilotta zusammen mit einem 'nicht-kompromittierten' Computer zu benutzen ist schon echt seeehr sicher.<br>Nichtsdestotrotz, wenn Du äußerst sensible Information übermitteln willst und vielleicht sogar schon den Verdacht hast einem besonderen Risiko ausgesetzt zu sein (z.B. der Man-in-der-Mitte lauert schon): Dann lass uns eine zusätzliche, unabhängige AES Verschlüsselungs-Schicht zuschalten (wie sie von Regierungen für die höchste Geheimhaltungsstufe verwendet wird).<br><br>Wir empfehlen das auf folgende Weise zu tun:",
-  "list"    : "<li>Gib unten ein Passwort und eine Parole ein.</li><li>Speichere den generierten Aktivierungs-Link (z.B. via QR-Code).</li><li>Wähle Dich, innerhalb von 48 Stunden, mit einem anderen Gerät (Smartphone, PC,...) über einen anderen Zugang (Hotspot...) ins Internet ein und rufe den Link auf.</li><li>Gib das Passwort ein und wenn die Seite mit der Parole antwortet, ist die zusätzliche Verschlüsselungs-Schicht aktiviert und es kann los gehen.</li>",
+  "tag"     : "Zusätzliche unabhängige AES Verschlüsselungs-Schicht",
+  "tag2"    : "Wie von Regierungen für die höchste Geheimhaltungsstufe verwendet",
+  "text"    : "postilotta zusammen mit einem 'nicht-kompromittierten' Computer zu benutzen ist schon sehr sehr sicher.<br><br>Nichtsdestotrotz, wenn Du äußerst sensible Information zu übermitteln hast und vielleicht sogar schon den Verdacht hast einem besonderen Risiko ausgesetzt zu sein (Man-in-der-Mitte...): Dafür haben wir den <b>ExtraSecure Modus</b>.<br><br>Wir empfehlen dabei folgendes Vorgehen:",
+  "list"    : "<li>Gib oben ein Passwort und eine Parole ein.</li><li>Speichere den generierten Aktivierungs-Link (z.B. via QR-Code).</li><li>Wähle Dich, innerhalb von 48 Stunden, mit einem anderen Gerät (Smartphone, PC,...) über einen anderen Zugang (Hotspot...) ins Internet ein und rufe den Link auf.</li><li>Gib das Passwort ein und wenn die Seite mit Deiner Parole antwortet, ist die zusätzliche Verschlüsselungs-Schicht aktiviert und es kann los gehen.</li>",
   "ifnot"   : "Kann die Seite nicht korrekt antworten, ist etwas 'nicht-vertrauenswürdiges' geschehen und Du solltest nicht fortfahren, sondern ggf. einen komplett neuen Anlauf starten.",
   "pass"    : "Passwort:",
   "watch"   : "Parole:",
-  "submit"  : "Los",
+  "submit"  : "Verbindung Einrichten",
 
   "sendto"  : "Senden",
   "login"   : "Anmelden",

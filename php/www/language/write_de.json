@@ -2,5 +2,9 @@
   "lang"   : "de",
 
   "success" : "Nachricht erfolgreich gesendet.<br>",
-  "lnktxt"  : "Eine Antwort wird unter diesen Link verfügbar sein:<br><br>"
+  "lnktxt"  : "Eine Antwort wird unter diesen Link verfügbar sein:<br><br>",
+
+  "e_sub"   : "Neue Nachricht empfangen",
+  "e_body"  : "Hi,\n\nNeue Nachricht in ",
+  "e_bye"   : ".\n\nGrüße,\npostilotta"
 }

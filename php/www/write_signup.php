@@ -21,7 +21,7 @@ try {
   VALUES (". $id .", '". $adr ."', '". $pub ."', '". $pw ."', '". $eml ."', '". $vis ."', '". $typ ."', '". $pay ."', '". $prc ."', '". $unt ."')");
   $stmt->execute();
 
-  $arr = array('rcode' => 0, 'msg' => $ln['success'], 'pay' => $pay);
+  $arr = array('rcode' => 0, 'msg' => $ln['success'], 'pay' => $pay, 'prc' => $prc, 'adr' => $adr);
   $out = json_encode($arr);
 }
 catch(PDOException $e) {

@@ -15,12 +15,18 @@
 </head>
 <body>
 <?php include 'module-head.php'; ?>
-<p><h1 id="p_h1" style="display:inline"></h1><img id="typ" src=""><img id="idv" src=""></p>
+
+<div id="container" class="container-transp">
+  <h1 id="p_h1" style="display:inline"></h1><img id="typ" src=""><img id="idv" src="">
+</div>
+
+<div id="container" class="container">
 <div class="txt">
-  <p id="err" class="err"></p>
+  <div id="err" class="err"></div>
   <p id="inf" class="inf"><?php echo $ln['hello'];?></p>
   <p id="out"></p>
   <p id="fileup"></p>
+</div>
 </div>
 <?php include 'module-toolbar.php'; ?>
 <?php include 'module-banner-small.php'; ?>

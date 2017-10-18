@@ -10,10 +10,13 @@
 </head>
 <body>
 <?php include 'module-head.php'; ?>
+<div id="container" class="container-midi">
 <h1><?php echo $ln['header'];?></h1>
 <div class="txt">
-  <button id="signPrem" type="button" class="button" onclick="window.location='signup-premium.php'"><?php echo $ln['b_signup'];?></button>
-  <button id="signPrem" type="button" class="butonfrm" onclick=""><?php echo $ln['learn'];?></button>
+
+    <button id="signPrem" type="button" class="button" onclick="window.location='signup-premium.php'"><?php echo $ln['b_signup'];?></button>
+    <button id="signPrem" type="button" class="buttonfrm" onclick=""><?php echo $ln['learn'];?></button>
+
   <p><?php echo $ln['free'];?></p>
     <p><?php echo $ln['offer'];?>
       <ul>
@@ -22,8 +25,13 @@
     </p>
     <p>
       <?php echo $ln['money'];?>
-      <button id="signPrem" type="button" class="button" onclick="window.location='signup-premium.php'"><?php echo $ln['b_signup'];?></button><br>
+      <br><br>
+
+        <?php echo $ln['interest'];?>
+        <button id="signPrem" type="button" class="button" onclick="window.location='signup-premium.php'"><?php echo $ln['b_signup'];?></button><br>
+      
     </p>
+</div>
 </div>
 <?php include 'module-banner-small.php'; ?>
 <?php include 'module-footer.php'; ?>
