@@ -15,8 +15,8 @@
   <p><i>Infographic coming soon.</i></p>
   <p>
     <b>In a nutshell:</b><br>
-    You don't have to trust us, that we do what we promise. Our code is open source, so everyone can verify this,
-     and hundreds of geeks and IT-professionals have already done thad (soon).
+    You don't have to trust us that we do what we promise. Our code is open source, so everyone can verify this,
+     and hundreds of geeks and IT-professionals have already done that (soon).
    </p>
    <table align="center">
      <tr>
@@ -32,7 +32,7 @@
        </tr>
      </table>
   <p>
-    We can do this without risking system integrity, because we practice <i>privacy by design</i> and don't rely on <i>security through obscurity</i>.
+    We can do this without risking system integrity because we practice <i>privacy by design</i> and don't rely on <i>security through obscurity</i>.
   </p>
 </div>
 <?php include 'module-banner-small.php'; ?>

@@ -3,9 +3,9 @@
 
   "header"  : "Spenden",
   "free"    : "postilotta ist für jedermann kostenlos.",
-  "text"    : "Wenn Dir gefällt was wir tun, oder wenn Du sogar einen Nutzen von unserer Arbeit hast, würden wir uns über Deine Unterstützung freuen.<br>Alle Spenden werden vertraulich behandelt und haben keinerlei Bezug zu einem Postfach oder einer Nachricht.",
-  "regular" : "Ganz besonders helfen uns regelmäßige Spenden dabei, die Plattform zu betreiben und weiter zu entwickeln.<br><br>",
-  "better" : "<b>Oder noch besser:</b> Vielleicht möchtest Du <a href='premium.php'><u>postilotta premium</u></a> nutzen, um uns zu unterstützen und dabei gleichzeitig das Beste aus postilotta heraus zu holen.",
+  "text"    : "Wenn dir gefällt, was wir tun, oder wenn du sogar einen Nutzen von unserer Arbeit hast, würden wir uns über deine Unterstützung freuen.<br>Alle Spenden werden vertraulich behandelt und haben keinerlei Bezug zu einem Postfach oder einer Nachricht.",
+  "regular" : "Ganz besonders helfen uns regelmäßige Spenden dabei, die Plattform zu betreiben und weiterzuentwickeln.<br><br>",
+  "better" : "<b>Oder noch besser:</b> Vielleicht möchtest du <a href='premium.php'><u>postilotta premium</u></a> nutzen, um uns zu unterstützen und dabei gleichzeitig das Beste aus postilotta herauszuholen.",
 
   "sendto"  : "Senden",
   "login"   : "Anmelden",

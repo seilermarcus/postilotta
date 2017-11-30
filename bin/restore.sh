@@ -40,8 +40,8 @@ lftp -c "open -u d27590a,$ftppass backup.contabo.net; mirror -v pta_$sys/ /srv/b
 && sfile=$(ls -t *.sql | head -1) \
 && docker cp $sfile $db:/tmp/$sfile \
 && docker exec $db bash -c "mysql -uroot -p$sqlpass postilotta_msgng < /tmp/$sfile" \
-&& docker exec $db bash -c "rm /tmp/$sfile"
-&& rm ./*
+&& docker exec $db bash -c "rm /tmp/$sfile" \
+&& rm -rf ./*
 
 # Finish script with standard output
 end=`date +%s`

@@ -4,7 +4,7 @@
   "header"  : "Best Practice",
   "intro"   : "Regardless of individual security requirements, postilotta can be used for anonymous and secure communication.",
   "consider" : "To ensure that the up- and down-stream communication is as anonymous and secure as possible, please follow the following guidelines:",
-  "list"    : "<ul><li>Do not open links contained in emails.</li><li>Do not inform 3rd parties about your message</li><li>Secure the key-file with care</li><li>Avoid using 3rd party hardware (i.e. a corporate laptop or smart phone)</li><li>Use trustworthy, public access points (i.e. safe hot-spots)</li><li>Use <a href='paranoia.php'><u>ExtraSecure Mode</u></a> to increase security</li><li>Use a non-permanent operating system, which can be booted from an external storage device</li><li>Use a dedicated secure device (more information coming soon)</li></ul>",
+  "list"    : "<ul><li>Do not open links contained in emails.</li><li>Do not inform 3rd parties about your message</li><li>Secure the key-file with care</li><li>Avoid using 3rd party hardware (i.e. a corporate laptop or smart phone)</li><li>Use trustworthy, public access points (i.e. safe hot-spots)</li><li>Use <a href='paranoia.php'><u>ExtraSecure Mode</u></a> to increase security</li><li>Use a non-permanent operating system which can be booted from an external storage device</li><li>Use a dedicated secure device (more information coming soon)</li></ul>",
   "thumbrule" : "<b>As a rule of thumb:</b> Take care of your generated key-file, browser, device and internet access point, we take care of the rest.",
 
   "sendto"  : "SendTo",
