@@ -1,7 +1,7 @@
 {
   "lang"    : "de",
 
-  "header"       : "Premium Postfach Anlegen",
+  "header"       : "Premium Postfach anlegen",
   "inbox"        : "Postfach Name:",
   "pass"         : "Passwort:",
   "confirm"      : "Passwort wiederholen:",
@@ -15,19 +15,19 @@
   "eur"          : "EUR pro Monat",
   "paytype"      : "Zahlungsart:",
   "paypal"       : "PayPal",
-  "paypal_sel"   : "Gute Wahl. Um es Dir zu erleichtern wird im nächsten Schritt ein PayPal 'PayNow-Button' angezeigt.",
+  "paypal_sel"   : "Gute Wahl. Im nächsten Schritt wird ein PayPal 'PayNow-Button' angezeigt.",
   "bank"         : "Überweisung",
   "bank_sel"     : "IBAN: DE98 4306 0967 7020 7832 00<br>BIC: GENODEM1GLS<br>Mit dem Postfach Namen im Verwendungszweck.",
   "other"        : "Sonstiges",
-  "other_sel"    : "O.k. Du machst das also auf Deine eigene Weise. Wir sind gespannt.",
+  "other_sel"    : "O.k. du machst das also auf deine eigene Weise.",
 
 
   "agb"          : "Ich stimme den <u><a href='terms.php'>AGBs</a></u> von postilotta zu.",
-  "hit"          : "Wenn Du auf 'Postfach Anlegen' klickst, passiert follgendes:",
-  "list"         : "<li>Dein neues postilotta Postfach wird angelegt und steht sofort für eingehende Nachrichten bereit.</li><li>Es wird eine Schlüssel-Datei für Dich generiert. Nachrichten, die an Dein Postfach gesendet werden, können ausschließlich hiermit entschlüsselt werden.</li>",
-  "sure"         : "Also beware die Schlüssel-Datei sicher auf.",
+  "hit"          : "Wenn du auf 'Postfach anlegen' klickst, passiert follgendes:",
+  "list"         : "<li>Dein neues postilotta Postfach wird angelegt und steht sofort für eingehende Nachrichten bereit.</li><li>Es wird eine Schlüssel-Datei für dich generiert. Nachrichten, die an dein Postfach gesendet werden, können ausschließlich hiermit entschlüsselt werden.</li>",
+  "sure"         : "Also bewahre die Schlüssel-Datei sicher auf.",
   "non-prod"     : "Dir ist aufgefallen, dass dieser Dienst noch nicht offiziell in Betrieb ist, ja?",
-  "submit"       : "Postfach Anlegen",
+  "submit"       : "Postfach anlegen",
 
   "apple"         : "&#63743; ATTENTION: On an Apple mobile device, please make sure:<ul><li>the popup function in your browser settings is enabled</li><li>you have a storage ready to save the key-file to (e.g. iCloud Drive, Dropbox, GoogleDrive...)</li></ul>When the key-file download opens up in a new tap, store it as a file in the location of your choice and close the tap afterwards.",
 

@@ -2,13 +2,13 @@
   "lang"    : "de",
 
   "header" : "Kontakt",
-  "txt"        : "E-Mail: info@uwezo-engineering.com<br>",
+  "txt"        : "E-Mail: mail@postilotta.org<br>",
   "faq"        : "FAQ",
   "faq-txt"    : "<i>Coming soon.</i>",
-  "issues"     : "Technische Probleme Melden",
+  "issues"     : "Technische Probleme melden",
   "issues-txt" : "<i>Coming soon.</i> GitHub Issue Tool.",
-  "misuse"     : "Missbrauch Melden",
-  "misuse-txt" : "Wenn Du weiß, oder vermutest, dass ein Postfach in irgend einer Weiße missbraucht wird, informiere uns bitte sofort.<br><br>Postfach: <a href='send.php?p_to=misuse'><u>misuse#postilotta.org</u></a><br>",
+  "misuse"     : "Missbrauch melden",
+  "misuse-txt" : "Wenn du weißt oder vermutest, dass ein Postfach in irgendeiner Weise missbraucht wird, informiere uns bitte sofort.<br><br>Postfach: <a href='send.php?p_to=misuse'><u>misuse#postilotta.org</u></a><br>",
 
 
   "sendto"  : "Senden",

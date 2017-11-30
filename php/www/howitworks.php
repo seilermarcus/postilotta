@@ -17,7 +17,7 @@
   <ul>
     <li>Cutting-edge client-side encryption with zero-knowledge server</li>
     <li>Privacy-by-design</li>
-    <li>Multi layer encryption:</li>
+    <li>Multilayer encryption:</li>
     <ul>
       <li>Message (256 Bit Elliptic Curve, Public Key Encryption)</li>
       <li>Transmission (<i>ExtraSecure Mode</i>: 256 Bit AES Algorithm)</li>

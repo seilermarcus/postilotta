@@ -3,11 +3,11 @@
 
   "header"   : "postilotta premium",
   "b_signup" : "Registrieren",
-  "learn"    : "Mehr Erfahren",
+  "learn"    : "Mehr erfahren",
   "free"     : "postilotta und seine Grundfunktionen sind für immer und für jeden kostenlos.",
   "offer"    : "<i>postilotta premium</i> bietet zusätzlich:",
-  "list"     : "<li>Identitäts-Check für Postfächer</li><li>eSignierte Nachrichten <i>[in Entwicklung]</i></li><li>Eigene Subdomain (wie z.B. tim#apple.postilotta.org) <i>[in Entwicklung]</i></li><li>Premium Support</li><li>Mehrere Anhänge pro Nachricht versenden <i>[in Entwicklung]</i></li><li>Anhänge direkt als Antworten versenden <i>[in Entwicklung]</i></li><li>Ordner in Postfächern <i>[in Entwicklung]</i></li><li>Lebensdauer der Nachrichten selbst festlegen.</li>",
-  "money"    : "Schon ab <b>4 € pro Monat</b>.<br><br>Sollte der Beitrag Deine finanziellen Mitte oder den empfundenen Nutzen übersteigen, schreib uns!",
+  "list"     : "<li>Identitäts-Check für Postfächer</li><li>Elektronische Signatur für Nachrichten <i>[in Entwicklung]</i></li><li>Eigene Subdomain (wie z.B. tim#apple.postilotta.org) <i>[in Entwicklung]</i></li><li>Premium Support</li><li>Mehrere Anhänge pro Nachricht versenden <i>[in Entwicklung]</i></li><li>Anhänge direkt als Antworten versenden <i>[in Entwicklung]</i></li><li>Ordner in Postfächern <i>[in Entwicklung]</i></li><li>Lebensdauer der Nachrichten selbst festlegen</li>",
+  "money"    : "Schon ab <b>4 € pro Monat</b>.<br><br>Sollte der Beitrag deine finanziellen Mitte oder den empfundenen Nutzen übersteigen, schreib uns!",
   "interest" : "Interessiert?",
 
   "sendto"   : "Senden",

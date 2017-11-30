@@ -1,7 +1,7 @@
 {
   "lang"    : "de",
 
-  "header"       : "Postfach Anlegen",
+  "header"       : "Postfach anlegen",
   "inbox"        : "Postfach Name",
   "pass"         : "Passwort",
   "confirm"      : "Passwort wiederholen",
@@ -12,12 +12,12 @@
   "testbox"      : "Test Postfach",
   "test_explain" : "(Zum Ausprobieren, nach 48 Stunden automatisch gelöscht.)",
   "agb"          : "Ich stimme den <u><a href='terms.php'>AGBs</a></u> von postilotta zu.",
-  "hit"          : "Wenn Du auf 'Postfach Anlegen' klickst, passiert follgendes:",
-  "list"         : "<li>Dein neues postilotta Postfach wird angelegt und steht sofort für eingehende Nachrichten bereit.</li><li>Es wird eine Schlüssel-Datei für Dich generiert. Nachrichten die an Dein Postfach gesendet werden, können ausschließlich hiermit entschlüsselt werden.</li>",
-  "sure"         : "Password und Schlüssel-Datei sind uns nicht bekannt, also beware sie bitte sicher auf.",
+  "hit"          : "Wenn du auf 'Postfach anlegen' klickst, passiert Folgendes:",
+  "list"         : "<li>Dein neues postilotta Postfach wird angelegt und steht sofort für eingehende Nachrichten bereit.</li><li>Es wird eine Schlüssel-Datei für dich generiert. Nachrichten, die an dein Postfach gesendet werden, können ausschließlich hiermit entschlüsselt werden.</li>",
+  "sure"         : "Passwort und Schlüssel-Datei sind uns nicht bekannt, also bewahre sie bitte sicher auf.",
   "non-prod"     : "Dir ist aufgefallen, dass dieser Dienst noch nicht offiziell in Betrieb ist, ja?",
-  "submit"       : "Postfach Anlegen",
-  "gopremium"    : "Zu Premium Wechseln",
+  "submit"       : "Postfach anlegen",
+  "gopremium"    : "Zu Premium wechseln",
 
   "apple"    : "&#63743; ATTENTION: On an Apple mobile device, please make sure:<ul><li>the popup function in your browser settings is enabled</li><li>you have a storage ready to save the key-file to (e.g. iCloud Drive, Dropbox, GoogleDrive...)</li></ul>When the key-file download opens up in a new tap, store it as a file in the location of your choice and close the tap afterwards.",
 

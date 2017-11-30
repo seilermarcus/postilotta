@@ -1,4 +1,8 @@
 <?php
+
+echo $_SERVER[SERVER_NAME]=='dev.postilotta.com';
+
+/*
 include 'inc/settings.inc';
 include 'inc/crypto-lib.inc';
 
@@ -30,7 +34,7 @@ try {
 }
 
 $conn = null;
-
+*/
 
 /*
 $encrypted = cryptoJsAesEncrypt("pwd", "Greatings from Server!");

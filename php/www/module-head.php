@@ -1,3 +1,4 @@
+<?php include 'inc/settings.inc'; ?>
 <div class="lang" style="">
   <select id="p_lang" name="p_lang" onchange="changeLang(this);">
     <option id="o_ln_de" value="de">de</option>
@@ -9,7 +10,7 @@
 
 </div>
   <div id="logoframe" style="display:inline;">
-  <a href="index.php"><img id='logo' src='pics/postilottatext_small_proto.jpg' alt='postilotta'></a>
+  <a href="index.php"><img id='logo' src='<?php echo $logo; ?>' alt='postilotta'></a>
   </div>
 
 
