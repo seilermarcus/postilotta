@@ -5,8 +5,8 @@
 # Backup pta sql via dump and ftp
 # (run with sudo)
 #
-# @param $1: system abbr. to backup
-# @param $2: ftp user name, test system as default
+# @param $1: system abbr. to backup, "prod" as default
+# @param $2: ftp user name, prod system as default
 #
 ####################################
 
@@ -15,27 +15,26 @@ start=`date +%s`
 # check sys argument
 if [ -z "$1" ]
   then
-    echo "Pass system abbr. to clear as single argument."
-    exit 1
+    sys="prod"
   else
     sys=$1
 fi
 if [ -z "$2" ]
   then
-    ftpusr="d27590a"
+    ftpusr="d27590b"
   else
     ftpusr=$2
 fi
 
 # Prepare Variables
-db="pta_$sys-sql"
+db="pta-sql"
 today=$(date +"%Y-%m-%d_%H-%M")
 archive_file="$db-$today.tgz"
 backup_file="$db-$today.sql"
 
 # read passwords from 700 files
 ftppass=$(cat /etc/pta/ftpbackup)
-sqlpass=$(cat /etc/pta/$sys-sql)
+sqlpass=$(cat /etc/pta/sql)
 
 # Print start status message
 echo "START backup $db-$today"

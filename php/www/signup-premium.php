@@ -8,7 +8,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
   <link rel="stylesheet" type="text/css" href="./inc/style.css" />
-  <script type="text/javascript" src="./zxcvbn/zxcvbn.js" async></script>
+  <script type="text/javascript" src="./zxcvbn/zxcvbn.js"></script>
   <script type="text/javascript" src="./sjcl/sjcl.js"></script>
   <script src="./cryptojs/aes.js"></script>
   <script src="./cryptojs/enc-base64-min.js"></script>
@@ -102,7 +102,7 @@
       <label id="l_agb" for="agb"><?php echo $ln['agb'];?></label>
     </div>
     <div style="color:red"><p><?php echo $ln['non-prod'];?></p></div>
-    <button type="button" class="button" onclick="signSubmit(iname.value, ipwd.value, ipmail.value, ivisi.checked, iagb.checked, ipay.value, iprice.value, 'premium', 0)"><?php echo $ln['submit'];?></button>
+    <button type="button" id="signup" class="button" onclick="signSubmit(iname.value, ipwd.value, ipmail.value, ivisi.checked, iagb.checked, ipay.value, iprice.value, 'premium', 0)"><?php echo $ln['submit'];?></button>
   </form>
 
   <p id="err" class="err"></p>
