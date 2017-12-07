@@ -6,7 +6,7 @@
   "faq"        : "FAQ",
   "faq-txt"    : "<i>Coming soon.</i>",
   "issues"     : "Technische Probleme melden",
-  "issues-txt" : "Feedback, Schwierigkeiten, Bugs bitte gerne <b><u><a href='https://tree.taiga.io/project/marcusuwezo-postilotta/issues' target='_blank'>hier</a></u></b>.",
+  "issues-txt" : "Feedback, Schwierigkeiten, Bugs bitte gerne <b><u><a href='https://tree.taiga.io/project/marcusuwezo-postilotta/issues' target='_blank'>hier via taiga.io</a></u></b><br>oder einfach per Mail an mail@postilotta.org.",
   "misuse"     : "Missbrauch melden",
   "misuse-txt" : "Wenn du weißt oder vermutest, dass ein Postfach in irgendeiner Weise missbraucht wird, informiere uns bitte sofort.<br><br>Postfach: <a href='send.php?p_to=misuse'><u>misuse#postilotta.org</u></a><br>",
 
