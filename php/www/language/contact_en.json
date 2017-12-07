@@ -6,7 +6,7 @@
   "faq"        : "FAQ",
   "faq-txt"    : "<i>Coming soon.</i>",
   "issues"     : "Technical Issues",
-  "issues-txt" : "<i>Coming soon.</i> Using GitHub Issue Tool.",
+  "issues-txt" : "Feedback, problems, bugs simply <b><u><a href='https://tree.taiga.io/project/marcusuwezo-postilotta/issues' target='_blank'>this way</a></u></b>",
   "misuse"     : "Report Misuse",
   "misuse-txt" : "If you know, or even just suspect, that an inbox is misused in whatever way, please contact us immediately.<br><br>Inbox: <a href='send.php?p_to=misuse'><u>misuse#postilotta.org</u></a><br>",
 
